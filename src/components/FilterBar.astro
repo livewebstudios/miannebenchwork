@@ -1,0 +1,50 @@
+---
+import { rel } from '../lib/rel';
+import { categories } from '../lib/catalog';
+interface Props { current: string; count: number; widthFilter: boolean; seriesSwitch?: boolean }
+const { current, count, widthFilter, seriesSwitch = false } = Astro.props;
+const r = (p: string) => rel(Astro.url, p);
+const series = ['24-series', '30-series', '36-series'];
+---
+<div class="filterbar">
+  <div class="wrap">
+    <nav class="filterbar__cats" aria-label="Catalog categories">
+      <ul>
+        {categories.map((c) => (
+          <li>
+            <a href={r(`catalog/${c.slug}/`)} aria-current={c.slug === current ? 'page' : undefined}>{c.nav}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <div class="filterbar__tools">
+      {widthFilter && (
+        <div class="seg" role="group" aria-label="Filter by section width">
+          <span class="seg__label">WIDTH</span>
+          <button type="button" data-w="" aria-pressed="true">ALL</button>
+          <button type="button" data-w="24" aria-pressed="false">24"</button>
+          <button type="button" data-w="30" aria-pressed="false">30"</button>
+          <button type="button" data-w="36" aria-pressed="false">36"</button>
+        </div>
+      )}
+      {seriesSwitch && (
+        <nav class="seg" aria-label="Switch section width">
+          <span class="seg__label">WIDTH</span>
+          {series.map((s) => (
+            <a href={r(`catalog/${s}/`)} aria-current={s === current ? 'page' : undefined}>{s.slice(0, 2)}"</a>
+          ))}
+        </nav>
+      )}
+      <label class="sort">
+        <span class="seg__label">SORT</span>
+        <select data-sort>
+          <option value="catalog">CATALOG ORDER</option>
+          <option value="price-asc">PRICE: LOW TO HIGH</option>
+          <option value="price-desc">PRICE: HIGH TO LOW</option>
+          <option value="size">SIZE: SMALL TO LARGE</option>
+        </select>
+      </label>
+      <span class="filterbar__count spec" aria-live="polite"><span data-count>{count}</span> MODELS</span>
+    </div>
+  </div>
+</div>

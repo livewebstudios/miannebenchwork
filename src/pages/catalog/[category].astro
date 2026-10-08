@@ -1,0 +1,249 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import FilterBar from '../../components/FilterBar.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import TrainRule from '../../components/TrainRule.astro';
+import '../../styles/catalog.css';
+import { categories, productsIn, category as getCategory, slugify, minPrice, money, PHONE, PHONE_TEL } from '../../lib/catalog';
+import { categoryPages } from '../../data/categoryPages';
+import { rel, canonical, SITE } from '../../lib/rel';
+
+export function getStaticPaths() {
+  return categories.map((c) => ({ params: { category: c.slug } }));
+}
+
+const { category: slug } = Astro.params as { category: string };
+const cat = getCategory(slug);
+const page = categoryPages[slug];
+const items = productsIn(slug);
+const r = (p: string) => rel(Astro.url, p);
+const pageUrl = canonical(Astro.url);
+const from = minPrice(slug);
+const heroSub = `${items.length} ${items.length === 1 ? 'model' : 'models'}${from != null ? ` from ${money(from)}` : ''}. Every size and price listed.`;
+
+const itemList = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: page.h1,
+  numberOfItems: items.length,
+  itemListElement: items.map((p, i) => {
+    const product: Record<string, unknown> = {
+      '@type': 'Product',
+      name: `${p.name} (${p.model})`,
+      sku: p.model,
+      description: p.useCase,
+      image: `${SITE}/${p.image}`,
+      brand: { '@type': 'Brand', name: 'Mianne' },
+      url: `${pageUrl}#m-${slugify(p.model)}`,
+    };
+    if (p.price != null) {
+      product.offers = {
+        '@type': 'Offer',
+        price: p.price.toFixed(2),
+        priceCurrency: 'USD',
+        availability: 'https://schema.org/InStock',
+        url: pageUrl,
+        seller: { '@id': `${SITE}/#business` },
+      };
+    }
+    return { '@type': 'ListItem', position: i + 1, item: product };
+  }),
+};
+const crumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+    { '@type': 'ListItem', position: 2, name: 'Catalog', item: `${SITE}/catalog/` },
+    { '@type': 'ListItem', position: 3, name: page.h1, item: pageUrl },
+  ],
+};
+---
+<Base
+  title={page.title}
+  description={page.description}
+  ogImage={`images/${page.hero}.jpg`}
+  schema={[itemList, crumbs]}
+  preloadImage={{ href: `images/${page.hero}.avif`, srcset: `${r(`images/${page.hero}-960.avif`)} 960w, ${r(`images/${page.hero}.avif`)} 1920w`, type: 'image/avif' }}
+>
+  <PageHero title={page.h1} sub={heroSub} image={page.hero} alt={page.heroAlt} kicker="THE MIANNE CATALOG" />
+
+  <FilterBar current={slug} count={items.length} widthFilter={page.widthFilter} seriesSwitch={page.seriesSwitch} />
+
+  <section class="catalog-intro">
+    <div class="wrap">
+      <p class="reveal">{page.intro}</p>
+    </div>
+  </section>
+
+  <section class="section--tight" aria-labelledby="grid-title">
+    <div class="wrap">
+      <div class="grid-head">
+        <h2 id="grid-title">Every size, every price</h2>
+        <p>Tap any model for the full diagram. Prices at standard 40" height, shipping extra.</p>
+      </div>
+      <ul class="pgrid" data-grid>
+        {items.map((p, i) => <ProductCard p={p} index={i} />)}
+      </ul>
+    </div>
+  </section>
+
+  <div class="wrap section--tight"><TrainRule /></div>
+
+  <CtaBand
+    title="Questions about sizes?"
+    text="Call us. Tell us your room and your track plan and we'll point you at the right kit, or design one around you at no charge."
+    button="SEE ALL THE KITS"
+    href="catalog/"
+  />
+
+  <dialog class="pdialog" aria-labelledby="pd-model" data-dialog>
+    <button class="pdialog__close" type="button" data-close aria-label="Close details">CLOSE</button>
+    <div class="pdialog__inner">
+      <div class="pdialog__img"><img data-pd-img src="" alt="" width="720" height="720" /></div>
+      <div class="pdialog__info">
+        <p class="pdialog__count spec" data-pd-count></p>
+        <h2 class="pdialog__model spec" id="pd-model" data-pd-model></h2>
+        <p class="pdialog__name" data-pd-name></p>
+        <dl class="pdialog__specs">
+          <dt>SIZE</dt><dd data-pd-dims></dd>
+          <dt>GOOD FOR</dt><dd data-pd-use></dd>
+          <dt>PRICE</dt><dd><span class="price-chip spec pdialog__price" data-pd-price></span></dd>
+        </dl>
+        <div class="pdialog__order">
+          <a class="btn" href={`tel:${PHONE_TEL}`}>CALL TO ORDER: {PHONE}</a>
+          <a class="btn btn-ghost" href={r('pdfs/order-form.pdf')}>PRINT THE ORDER FORM</a>
+          <p>Mon to Fri, 8:00 to 4:30 Eastern. Any height and custom sizes at no extra charge.</p>
+        </div>
+      </div>
+    </div>
+    <div class="pdialog__nav">
+      <button type="button" data-prev aria-label="Previous model">← PREV</button>
+      <span class="pdialog__hint">Use the arrow keys or swipe to flip through</span>
+      <button type="button" data-next aria-label="Next model">NEXT →</button>
+    </div>
+  </dialog>
+
+  <script is:inline slot="scripts">
+    (function () {
+      var grid = document.querySelector('[data-grid]');
+      if (!grid) return;
+      var cards = Array.prototype.slice.call(grid.querySelectorAll('.pcard'));
+      var countEl = document.querySelector('[data-count]');
+      var sortEl = document.querySelector('[data-sort]');
+      var wButtons = document.querySelectorAll('[data-w]');
+      var width = '';
+
+      // DOM order, so flipping follows the current sort.
+      function visible() { return Array.prototype.slice.call(grid.querySelectorAll('.pcard:not([hidden])')); }
+
+      function apply() {
+        cards.forEach(function (c) { c.hidden = !!width && c.dataset.width !== width; });
+        var mode = sortEl ? sortEl.value : 'catalog';
+        var sorted = cards.slice().sort(function (a, b) {
+          var pa = a.dataset.price === '' ? Infinity : +a.dataset.price;
+          var pb = b.dataset.price === '' ? Infinity : +b.dataset.price;
+          if (mode === 'price-asc') return pa - pb || a.dataset.index - b.dataset.index;
+          if (mode === 'price-desc') return (pb === Infinity ? -1 : pb) - (pa === Infinity ? -1 : pa) || a.dataset.index - b.dataset.index;
+          if (mode === 'size') return a.dataset.size - b.dataset.size || a.dataset.index - b.dataset.index;
+          return a.dataset.index - b.dataset.index;
+        });
+        sorted.forEach(function (c) { grid.appendChild(c); c.classList.add('is-in'); });
+        if (countEl) countEl.textContent = visible().length;
+        wButtons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.w === width)); });
+      }
+
+      function setWidth(w, push) {
+        width = w;
+        if (push) history.replaceState(null, '', w ? '#' + w : location.pathname + location.search);
+        apply();
+      }
+
+      wButtons.forEach(function (b) {
+        b.addEventListener('click', function () { setWidth(b.dataset.w, true); });
+      });
+      if (sortEl) sortEl.addEventListener('change', apply);
+
+      function fromHash() {
+        var h = location.hash.replace('#', '');
+        if (wButtons.length && /^(24|30|36)$/.test(h)) setWidth(h, false);
+        else if (/^m-/.test(h)) {
+          var target = document.getElementById(h);
+          if (target) open(target);
+        }
+      }
+
+      // Detail dialog: flip through whatever is visible, in the current order.
+      var dlg = document.querySelector('[data-dialog]');
+      var current = null;
+      var q = function (s) { return dlg.querySelector(s); };
+      function show(card) {
+        current = card;
+        var list = visible();
+        var i = list.indexOf(card);
+        var img = q('[data-pd-img]');
+        img.src = card.dataset.img;
+        img.alt = card.dataset.alt;
+        q('[data-pd-model]').textContent = card.dataset.model;
+        q('[data-pd-name]').textContent = card.dataset.name;
+        q('[data-pd-dims]').textContent = card.dataset.dims;
+        q('[data-pd-use]').textContent = card.dataset.use;
+        q('[data-pd-price]').textContent = card.dataset.priceLabel;
+        q('[data-pd-count]').textContent = (i + 1) + ' OF ' + list.length;
+      }
+      function open(card) {
+        show(card);
+        if (typeof dlg.showModal === 'function') { if (!dlg.open) dlg.showModal(); }
+        else dlg.setAttribute('open', '');
+      }
+      function step(d) {
+        var list = visible();
+        var i = list.indexOf(current);
+        if (i < 0) return;
+        show(list[(i + d + list.length) % list.length]);
+      }
+      function close() {
+        if (dlg.open) dlg.close();
+      }
+      dlg.addEventListener('close', function () {
+        if (current) {
+          var hit = current.querySelector('.pcard__hit');
+          if (hit) hit.focus();
+        }
+      });
+      grid.addEventListener('click', function (e) {
+        var hit = e.target.closest('.pcard__hit');
+        if (hit) open(hit.closest('.pcard'));
+      });
+      q('[data-prev]').addEventListener('click', function () { step(-1); });
+      q('[data-next]').addEventListener('click', function () { step(1); });
+      q('[data-close]').addEventListener('click', close);
+      dlg.addEventListener('click', function (e) { if (e.target === dlg) close(); });
+      dlg.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
+      });
+      var x0 = null, y0 = null;
+      dlg.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+      dlg.addEventListener('touchend', function (e) {
+        if (x0 === null) return;
+        var dx = e.changedTouches[0].clientX - x0;
+        var dy = e.changedTouches[0].clientY - y0;
+        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) step(dx < 0 ? 1 : -1);
+        x0 = y0 = null;
+      });
+
+      // Keep the current category pill in view on narrow screens.
+      var cats = document.querySelector('.filterbar__cats');
+      var cur = cats && cats.querySelector('[aria-current="page"]');
+      if (cats && cur && cats.scrollWidth > cats.clientWidth) {
+        cats.scrollLeft += cur.getBoundingClientRect().left - cats.getBoundingClientRect().left - (cats.clientWidth - cur.offsetWidth) / 2;
+      }
+
+      fromHash();
+      window.addEventListener('hashchange', fromHash);
+    })();
+  </script>
+</Base>

@@ -1,0 +1,22 @@
+---
+import { rel } from '../lib/rel';
+interface Props { base: string; alt: string; eager?: boolean; forceRoot?: boolean }
+const { base, alt, eager = true, forceRoot = false } = Astro.props;
+const r = (p: string) => rel(Astro.url, p, forceRoot);
+const set = (ext: string) => `${r(`images/${base}-960.${ext}`)} 960w, ${r(`images/${base}.${ext}`)} 1920w`;
+---
+<picture>
+  <source type="image/avif" srcset={set('avif')} sizes="100vw" />
+  <source type="image/webp" srcset={set('webp')} sizes="100vw" />
+  <img
+    src={r(`images/${base}.jpg`)}
+    srcset={set('jpg')}
+    sizes="100vw"
+    width="1920"
+    height="1072"
+    alt={alt}
+    loading={eager ? 'eager' : 'lazy'}
+    fetchpriority={eager ? 'high' : undefined}
+    decoding={eager ? 'sync' : 'async'}
+  />
+</picture>

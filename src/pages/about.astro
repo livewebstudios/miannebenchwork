@@ -1,0 +1,78 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import TrainRule from '../components/TrainRule.astro';
+import { rel, SITE } from '../lib/rel';
+import { PHONE, PHONE_TEL } from '../lib/catalog';
+
+const r = (p: string) => rel(Astro.url, p);
+const about = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'The Mianne Story',
+  url: `${SITE}/about/`,
+  about: { '@id': `${SITE}/#business` },
+  mainEntity: {
+    '@type': 'Person',
+    name: 'Tim Foley',
+    jobTitle: 'Founder and cabinetmaker',
+    worksFor: { '@id': `${SITE}/#business` },
+  },
+};
+const photos = [
+  { f: 'dsc_1546', alt: 'A customer layout on Mianne benchwork, track and scenery in progress' },
+  { f: 'dsc_0053', alt: 'Mianne hardwood benchwork supporting a finished model railroad' },
+  { f: 'dsc_0060', alt: 'Open-grid Mianne benchwork under an O gauge layout' },
+  { f: 'dsc_1548', alt: 'Mianne I-beams and legs carrying a large layout' },
+];
+---
+<Base
+  title="The Mianne Story | Hardwood Benchwork Since 1997"
+  description="A cabinetmaker, a dumpster, and a better idea. How Tim Foley built the benchwork system named for his three kids."
+  ogImage="images/hero-about.jpg"
+  schema={[about]}
+  preloadImage={{ href: 'images/hero-about.avif', srcset: `${r('images/hero-about-960.avif')} 960w, ${r('images/hero-about.avif')} 1920w`, type: 'image/avif' }}
+>
+  <PageHero
+    title="The Mianne Story"
+    sub="A cabinetmaker, a dumpster, and a better idea."
+    image="hero-about"
+    alt="A New England woodshop with stacks of milled poplar and a workbench in warm light"
+    kicker="ATTLEBORO, MASSACHUSETTS · SINCE 1997"
+  />
+
+  <section class="section">
+    <div class="wrap narrow prose">
+      <h2 class="reveal">It started with a layout in a dumpster</h2>
+      <p class="reveal">Tim Foley is a professional cabinetmaker and a lifelong model railroader. When he sold his house years ago, his layout couldn't come along. The benchwork was nailed, glued, and screwed into something that could only leave in pieces. So it did... straight into a dumpster.</p>
+      <p class="reveal">Tim decided no one should have to do that twice. He designed benchwork the way fine furniture is built: solid kiln-dried poplar, hardwood I-beams, and cam fasteners that lock with a half turn and unlock just as fast. A layout you can build in an evening, change on a whim, and take with you when life moves.</p>
+    </div>
+  </section>
+
+  <section class="section--tight">
+    <div class="wrap photo-grid">
+      {photos.map((p) => (
+        <figure class="reveal">
+          <picture>
+            <source type="image/webp" srcset={r(`images/photos/${p.f}.webp`)} />
+            <img src={r(`images/photos/${p.f}.jpg`)} alt={p.alt} width="1000" height="664" loading="lazy" decoding="async" />
+          </picture>
+        </figure>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap narrow prose">
+      <h2 class="reveal">The name on the box</h2>
+      <p class="reveal">Mianne (say it "me-ah-nee") is named for Tim's three children. It's been built in Attleboro, Massachusetts and shipped factory direct across the country since 1997. Railroad Model Craftsman <a href={r('reviews/railroad-model-craftsman-1997/')}>reviewed it that first year</a>. O Gauge Railroading <a href={r('reviews/benchwork-can-be-fun/')}>called benchwork "fun,"</a> which may be a first.</p>
+
+      <h2 class="reveal">Call and you get Tim</h2>
+      <p class="reveal">No phone tree, no ticket number. Questions about your room, your track plan, or a part you can't name? Call <a href={`tel:${PHONE_TEL}`}>{PHONE}</a> and talk to the guy who designed the system. Layout design help is free, and almost half of what we ship is custom.</p>
+      <TrainRule />
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

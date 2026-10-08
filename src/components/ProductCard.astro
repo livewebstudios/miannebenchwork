@@ -1,0 +1,41 @@
+---
+import { rel } from '../lib/rel';
+import { altFor, priceLabel, sizeKey, slugify, type Product } from '../lib/catalog';
+import PriceChip from './PriceChip.astro';
+interface Props { p: Product; index: number }
+const { p, index } = Astro.props;
+const img = rel(Astro.url, p.image);
+const label = priceLabel(p);
+---
+<li
+  class="pcard reveal"
+  id={`m-${slugify(p.model)}`}
+  data-index={index}
+  data-width={p.widthSeries ?? ''}
+  data-price={p.price ?? ''}
+  data-size={sizeKey(p)}
+  data-model={p.model}
+  data-name={p.name}
+  data-dims={p.dimensions}
+  data-use={p.useCase}
+  data-price-label={label}
+  data-img={img}
+  data-alt={altFor(p)}
+>
+  <article>
+    <div class="pcard__img">
+      <img src={img} alt={altFor(p)} width="720" height="720" loading="lazy" decoding="async" />
+    </div>
+    <div class="pcard__body">
+      <p class="pcard__model spec">{p.model}</p>
+      <h3 class="pcard__name">{p.name}</h3>
+      <p class="pcard__dims">{p.dimensions}</p>
+      <p class="pcard__use">{p.useCase}</p>
+      <div class="pcard__foot">
+        <PriceChip label={label} />
+        <span class="pcard__more" aria-hidden="true">DETAILS</span>
+      </div>
+    </div>
+    <button class="pcard__hit" type="button" aria-haspopup="dialog" aria-label={`${p.model} details: ${p.dimensions}, ${label}`}></button>
+  </article>
+</li>

@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { rel } from '../lib/rel';
+import { PHONE, PHONE_TEL } from '../lib/catalog';
+// Netlify serves this file at whatever URL was missed, so links resolve from the site root.
+const r = (p: string) => rel(Astro.url, p, true);
+---
+<Base
+  title="Wrong Track | Mianne Benchwork"
+  description="That page isn't on the schedule. Head back to the Mianne catalog or call 508.226.1600."
+  forceRoot
+  noindex
+  baseHref="/"
+>
+  <PageHero title="Wrong track." image="hero-walkthrough" alt="U-shaped Mianne walk-through benchwork with an open entry" forceRoot />
+  <section class="section">
+    <div class="wrap narrow">
+      <h2>That page isn't on the schedule</h2>
+      <p>Head back to the catalog or call us at <a href={`tel:${PHONE_TEL}`}>{PHONE}</a>.</p>
+      <div class="btn-row">
+        <a class="btn" href={r('catalog/')}>BACK TO THE CATALOG</a>
+      </div>
+    </div>
+  </section>
+</Base>

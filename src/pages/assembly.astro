@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CamLockAnimation from '../components/CamLockAnimation.astro';
+import YouTubeEmbed from '../components/YouTubeEmbed.astro';
+import CtaBand from '../components/CtaBand.astro';
+import TrainRule from '../components/TrainRule.astro';
+import { rel, SITE } from '../lib/rel';
+import { YOUTUBE_CHANNEL } from '../lib/catalog';
+
+const r = (p: string) => rel(Astro.url, p);
+const video = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: 'Mianne Benchwork 4x8 Assembly',
+  description: 'A Mianne ST-4x8TSR starter table going together from the box with a screwdriver and the color-coded plan.',
+  thumbnailUrl: 'https://i.ytimg.com/vi/uA0jC3VzhQg/hqdefault.jpg',
+  uploadDate: '2016-01-24',
+  embedUrl: 'https://www.youtube-nocookie.com/embed/uA0jC3VzhQg',
+  contentUrl: 'https://www.youtube.com/watch?v=uA0jC3VzhQg',
+  publisher: { '@id': `${SITE}/#business` },
+};
+---
+<Base
+  title="Benchwork Assembly: One Screwdriver | Mianne Benchwork"
+  description="How Mianne cam-lock benchwork goes together: half a turn per joint, color-coded plans, level in minutes. Watch the video."
+  ogImage="images/hero-assembly.jpg"
+  schema={[video]}
+  preloadImage={{ href: 'images/hero-assembly.avif', srcset: `${r('images/hero-assembly-960.avif')} 960w, ${r('images/hero-assembly.avif')} 1920w`, type: 'image/avif' }}
+>
+  <PageHero
+    title="Assembly"
+    sub="A screwdriver, a pair of pliers, and one free evening."
+    image="hero-assembly"
+    alt="Close-up of a Mianne cam lock joining a hardwood I-beam to a leg, screwdriver alongside"
+    kicker="HOW MIANNE BENCHWORK GOES TOGETHER"
+  />
+
+  <section class="section">
+    <div class="wrap narrow">
+      <h2 class="reveal">Half a turn. That's the whole trick.</h2>
+      <p class="reveal">Every Mianne joint works the same way: a steel cam in the I-beam grabs a post on the leg, and a half turn of a Phillips screwdriver locks it tight. The same furniture-grade fastener that holds fine cabinetry together, doing it for your railroad.</p>
+      <CamLockAnimation />
+    </div>
+  </section>
+
+  <section class="section section--band">
+    <div class="wrap split">
+      <div>
+        <h2 class="reveal">Color-coded plans, numbered pieces</h2>
+        <p class="reveal">Every kit ships with color-coded assembly diagrams. Match the piece to the plan, lock it, move on. Customers regularly put up room-sized layouts in a single day. The record holders did a 28 by 20 footer in about 12 hours, level and ready for track.</p>
+        <h2 class="reveal">Level in minutes</h2>
+        <p class="reveal">Every leg has a built-in leveling foot. Basement floors slope. Mianne doesn't care.</p>
+      </div>
+      <figure class="reveal">
+        <img src={r('images/products/ar1212-30.jpg')} alt="Mianne AR1212-30 benchwork kit, 12' x 12' room footprint, 30 inch sections" width="720" height="720" loading="lazy" decoding="async" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap narrow">
+      <h2 class="reveal">Watch a 4x8 go together</h2>
+      <div class="reveal">
+        <YouTubeEmbed id="uA0jC3VzhQg" title="Mianne Benchwork 4x8 assembly" />
+      </div>
+      <div class="btn-row reveal">
+        <a class="btn btn-ghost" href={YOUTUBE_CHANNEL} target="_blank" rel="noopener">MORE ASSEMBLY VIDEOS ON OUR YOUTUBE CHANNEL</a>
+      </div>
+      <TrainRule />
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

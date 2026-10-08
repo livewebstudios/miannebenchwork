@@ -1,0 +1,82 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import CategoryTile from '../../components/CategoryTile.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import TrainRule from '../../components/TrainRule.astro';
+import { categories, minPrice, productsIn, products, PHONE, PHONE_TEL } from '../../lib/catalog';
+import { categoryPages } from '../../data/categoryPages';
+import { rel, SITE } from '../../lib/rel';
+
+const r = (p: string) => rel(Astro.url, p);
+const list = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Benchwork Kits & Parts',
+  url: `${SITE}/catalog/`,
+  hasPart: categories.map((c) => ({ '@type': 'WebPage', name: categoryPages[c.slug].h1, url: `${SITE}/catalog/${c.slug}/` })),
+};
+---
+<Base
+  title="Benchwork Kits & Parts | Mianne Benchwork"
+  description="Every Mianne kit with sizes and prices: starter tables, classic layouts, around the room, walk-through, expansion sections and parts."
+  ogImage="images/hero-around.jpg"
+  schema={[list]}
+  preloadImage={{ href: 'images/hero-around.avif', srcset: `${r('images/hero-around-960.avif')} 960w, ${r('images/hero-around.avif')} 1920w`, type: 'image/avif' }}
+>
+  <PageHero
+    title="Benchwork Kits & Parts"
+    sub="Every kit, every size, every price. Flip through and find the one that fits your room."
+    image="hero-around"
+    alt="Mianne benchwork running around all four walls of a finished basement"
+    kicker={`${products.length} MODELS · PRICES LISTED`}
+  />
+
+  <section class="section">
+    <div class="wrap split">
+      <div>
+        <h2 class="reveal">How the sizes work</h2>
+        <p class="reveal">Three numbers tell you everything. Starter and Around the Room model numbers are the footprint in feet: an ST-4x8 is a 4 foot by 8 foot table. The 24, 30, and 36 series tell you the width of the bench sections in inches. Narrower sections keep everything in easy reach. Wider sections give you deeper scenery and bigger curves.</p>
+        <p class="reveal">Standard height is 40 inches, and any height is available at no extra charge. The whole system works in 6 inch increments, so a size change in any direction needs no custom parts.</p>
+      </div>
+      <figure class="reveal">
+        <img src={r('images/products/ar1216-30.jpg')} alt="Mianne AR1216-30 benchwork kit, 12' x 16' room footprint, 30 inch sections" width="720" height="720" loading="lazy" decoding="async" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section--band" aria-labelledby="cats-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="cats-title" class="reveal">Pick a category</h2>
+        <p class="reveal">Starting prices shown. Every model inside lists its size and price, no phone call needed to find out what it costs.</p>
+      </div>
+      <div class="tiles">
+        {categories.map((c) => {
+          const pg = categoryPages[c.slug];
+          return (
+            <CategoryTile
+              href={`catalog/${c.slug}/`}
+              image={pg.hero}
+              label={pg.tile}
+              sub={pg.tileSub}
+              from={minPrice(c.slug)}
+              count={productsIn(c.slug).length}
+            />
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap narrow">
+      <h2 class="reveal">Don't see your room?</h2>
+      <p class="reveal">Almost half our business is custom layouts designed for one specific space. Send us your room dimensions and your track plan, or just your room dimensions. Design help is free. Call <a href={`tel:${PHONE_TEL}`}>{PHONE}</a>.</p>
+      <p class="reveal">Prefer paper? <a href={r('pdfs/catalog.pdf')}>Download the 2024 printed catalog</a> (PDF, 3.3 MB).</p>
+      <TrainRule />
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

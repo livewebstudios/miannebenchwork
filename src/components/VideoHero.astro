@@ -1,0 +1,50 @@
+---
+import HeroPicture from './HeroPicture.astro';
+import { rel } from '../lib/rel';
+const r = (p: string) => rel(Astro.url, p);
+---
+<section class="hero-video">
+  <div class="hero-video__media">
+    <HeroPicture base="hero-home-poster" alt="A sceniced model railroad on open-grid Mianne hardwood benchwork in a finished basement" />
+  </div>
+  <!-- Poster lives in the <picture> underneath; the video fades in over it once it plays. -->
+  <video
+    class="js-hero-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="none"
+    aria-hidden="true"
+    tabindex="-1"
+    data-webm={r('video/hero-home.webm')}
+    data-mp4={r('video/hero-home.mp4')}
+  ></video>
+  <div class="scrim" aria-hidden="true"></div>
+  <div class="wrap hero-video__content">
+    <slot />
+  </div>
+</section>
+<script is:inline>
+  (function () {
+    var v = document.querySelector('.js-hero-video');
+    if (!v) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var save = navigator.connection && navigator.connection.saveData;
+    if (reduce || save) return;
+    function start() {
+      var webm = document.createElement('source');
+      webm.src = v.dataset.webm; webm.type = 'video/webm';
+      var mp4 = document.createElement('source');
+      mp4.src = v.dataset.mp4; mp4.type = 'video/mp4';
+      v.appendChild(webm); v.appendChild(mp4);
+      v.preload = 'auto';
+      v.load();
+      v.addEventListener('playing', function () { v.classList.add('is-playing'); }, { once: true });
+      var p = v.play();
+      if (p && p.catch) p.catch(function () {});
+    }
+    if (document.readyState === 'complete') setTimeout(start, 200);
+    else window.addEventListener('load', function () { setTimeout(start, 200); });
+  })();
+</script>

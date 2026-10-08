@@ -1,0 +1,52 @@
+---
+// Brass rule with a small train that runs across as the line draws in.
+// Use at most once per page (design.md §6.2).
+---
+<div class="train-rule reveal" aria-hidden="true">
+  <span class="train-rule__line"></span>
+  <svg class="train-rule__train" viewBox="0 0 96 30" focusable="false">
+    <g>
+      <rect x="0" y="12" width="26" height="10" rx="1.5" />
+      <rect x="29" y="12" width="20" height="10" rx="1.5" />
+      <rect x="52" y="10" width="24" height="12" rx="2" />
+      <rect x="74" y="5" width="16" height="17" rx="1.5" />
+      <rect x="58" y="4" width="5" height="7" />
+      <path d="M90 22 L96 22 L96 19 L90 16 Z" />
+      <circle cx="6" cy="24" r="3" />
+      <circle cx="20" cy="24" r="3" />
+      <circle cx="34" cy="24" r="3" />
+      <circle cx="44" cy="24" r="3" />
+      <circle cx="58" cy="24" r="4" />
+      <circle cx="69" cy="24" r="4" />
+      <circle cx="82" cy="24" r="4" />
+    </g>
+  </svg>
+</div>
+<style>
+  .train-rule {
+    position: relative;
+    height: 34px;
+    margin: 0 auto;
+    max-width: var(--max);
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .train-rule__line {
+    position: absolute; left: 0; right: 0; bottom: 6px; height: 2px;
+    background: var(--brass);
+    transform: scaleX(0); transform-origin: left center;
+    transition: transform 2.6s var(--ease);
+  }
+  .train-rule__train {
+    position: absolute; bottom: 7px; left: 0; width: 72px; height: 23px;
+    fill: var(--brown);
+    transition: left 2.6s var(--ease);
+  }
+  .train-rule.is-in .train-rule__line { transform: scaleX(1); }
+  .train-rule.is-in .train-rule__train { left: calc(100% - 72px); }
+  :global(.no-js) .train-rule__line { transform: scaleX(1); }
+  @media (prefers-reduced-motion: reduce) {
+    .train-rule__line { transform: scaleX(1); }
+    .train-rule__train { left: calc(100% - 72px); }
+  }
+</style>

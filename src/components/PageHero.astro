@@ -1,0 +1,14 @@
+---
+import HeroPicture from './HeroPicture.astro';
+interface Props { title: string; sub?: string; image: string; alt: string; kicker?: string; forceRoot?: boolean }
+const { title, sub, image, alt, kicker, forceRoot = false } = Astro.props;
+---
+<section class="page-hero">
+  <HeroPicture base={image} alt={alt} forceRoot={forceRoot} />
+  <div class="scrim" aria-hidden="true"></div>
+  <div class="wrap page-hero__content">
+    {kicker && <p class="kicker fade-up">{kicker}</p>}
+    <h1 class="fade-up d1">{title}</h1>
+    {sub && <p class="fade-up d2">{sub}</p>}
+  </div>
+</section>

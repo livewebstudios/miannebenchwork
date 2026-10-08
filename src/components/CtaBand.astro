@@ -1,0 +1,22 @@
+---
+import { rel } from '../lib/rel';
+import { PHONE, PHONE_TEL } from '../lib/catalog';
+interface Props { title?: string; text?: string; button?: string; href?: string; forceRoot?: boolean }
+const {
+  title = 'Tell us about your room',
+  text = "Layout design help is free and there's no obligation. Call with your room size and we'll figure out the rest together.",
+  button = 'REACH OUT',
+  href = 'contact/',
+  forceRoot = false,
+} = Astro.props;
+---
+<section class="section cta-band">
+  <div class="wrap narrow">
+    <h2 class="reveal">{title}</h2>
+    <p class="reveal">{text}</p>
+    <p class="phone-big reveal"><a href={`tel:${PHONE_TEL}`}>{PHONE}</a></p>
+    <div class="btn-row reveal">
+      <a class="btn btn-cream" href={rel(Astro.url, href, forceRoot)}>{button}</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { rel } from '../lib/rel';
+import { PHONE, PHONE_TEL, FAX, EMAIL } from '../lib/catalog';
+
+const r = (p: string) => rel(Astro.url, p);
+---
+<Base
+  title="Contact Mianne Benchwork | 508.226.1600"
+  description="Call Monday to Friday 8 to 4:30 Eastern and talk to Tim. Free layout design help, printable order form, Attleboro MA."
+  ogImage="images/hero-about.jpg"
+  preloadImage={{ href: 'images/hero-about.avif', srcset: `${r('images/hero-about-960.avif')} 960w, ${r('images/hero-about.avif')} 1920w`, type: 'image/avif' }}
+>
+  <PageHero
+    title="Contact Mianne"
+    sub="Call, write, or send the form. You'll get Tim."
+    image="hero-about"
+    alt="A New England woodshop with stacks of milled poplar and a workbench in warm light"
+  />
+
+  <section class="section">
+    <div class="wrap contact-grid">
+      <div class="contact-info">
+        <h2 class="reveal">Orders & layout help</h2>
+        <p class="phone-big reveal"><a href={`tel:${PHONE_TEL}`}>{PHONE}</a></p>
+        <p class="reveal">Monday to Friday, 8:00 to 4:30 Eastern · Fax {FAX} anytime</p>
+        <p class="reveal"><a href={`mailto:${EMAIL}`}>{EMAIL.toUpperCase()}</a></p>
+        <address class="reveal">Mianne Foley Woodworking Inc.<br />44A Union Street<br />Attleboro, MA 02703</address>
+
+        <h2 class="reveal contact-sub">Printable order form</h2>
+        <p class="reveal">Old school works here. <a href={r('pdfs/order-form.pdf')}>Print the order form</a> and mail or fax it in.</p>
+      </div>
+      <div class="contact-form-wrap reveal">
+        <h2>Or send this and we'll call you</h2>
+        <ContactForm />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .contact-grid { display: grid; gap: 56px; }
+  @media (min-width: 900px) { .contact-grid { grid-template-columns: 1fr 1.1fr; gap: 80px; } }
+  .contact-info .phone-big { color: var(--brick); margin-top: 8px; }
+  .contact-info address { font-style: normal; margin-top: 18px; line-height: 1.7; }
+  .contact-sub { margin-top: 48px; }
+  .contact-form-wrap { background: var(--cream-deep); padding: 32px 24px; border-radius: var(--radius); border-top: 3px solid var(--brass); }
+  @media (min-width: 768px) { .contact-form-wrap { padding: 40px; } }
+  .contact-form-wrap h2 { font-size: 26px; }
+</style>

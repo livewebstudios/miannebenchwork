@@ -1,0 +1,91 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Testimonial from '../../components/Testimonial.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import TrainRule from '../../components/TrainRule.astro';
+import { rel } from '../../lib/rel';
+
+const r = (p: string) => rel(Astro.url, p);
+const reprints = [
+  {
+    href: 'reviews/railroad-model-craftsman-1997/',
+    mag: 'RAILROAD MODEL CRAFTSMAN · NOVEMBER 1997',
+    title: 'Benchwork Sections: All Scales',
+    by: 'Bill Schaumburg',
+    blurb: 'The first magazine review, the year Mianne launched. Includes the sag test: a length of rail across the I-beams, and the I-beams win.',
+  },
+  {
+    href: 'reviews/benchwork-can-be-fun/',
+    mag: 'O GAUGE RAILROADING',
+    title: 'Benchwork Can Be Fun',
+    by: 'Barry Lewis',
+    blurb: 'A 4x8 L-shaped test section assembled in under two and a half hours, then left in an unheated garage through months of weather.',
+  },
+];
+---
+<Base
+  title="Reviews & Press | Mianne Benchwork"
+  description="Railroad Model Craftsman and O Gauge Railroading reviews of Mianne benchwork, plus customer letters."
+  ogImage="images/hero-assembly.jpg"
+  preloadImage={{ href: 'images/hero-assembly.avif', srcset: `${r('images/hero-assembly-960.avif')} 960w, ${r('images/hero-assembly.avif')} 1920w`, type: 'image/avif' }}
+>
+  <PageHero
+    title="Reviews & Press"
+    sub="What the magazines and the customers say."
+    image="hero-assembly"
+    alt="Close-up of a Mianne cam lock joining a hardwood I-beam to a leg"
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="reveal">In the magazines</h2>
+        <p class="reveal">Mianne has been reviewed in the hobby's major magazines and talked up on its forums for nearly three decades. The full reprints are below, with permission.</p>
+      </div>
+      <div class="reprints">
+        {reprints.map((x) => (
+          <a class="reprint reveal" href={r(x.href)}>
+            <span class="kicker">{x.mag}</span>
+            <h3>{x.title}</h3>
+            <p class="reprint__by">By {x.by}</p>
+            <p>{x.blurb}</p>
+            <span class="reprint__go">READ THE FULL REVIEW</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--band">
+    <div class="wrap narrow">
+      <h2 class="reveal">From the mailbag</h2>
+      <Testimonial
+        quote="I was able to change the configuration of the layout in minutes, making better use of the space in the room (my wife thanks you). Me? I get to try out another track plan. Great product."
+        cite="Steve R."
+      />
+      <Testimonial
+        quote="With easy to follow color coded diagrams, assembly was very enjoyable. The hardware was top notch. About 12 hours later, we had the 28'x20' layout complete and level. Every stick was perfect out of the box and the fit was exact."
+        cite="Al Z."
+      />
+      <TrainRule />
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>
+
+<style>
+  .reprints { display: grid; gap: 24px; }
+  @media (min-width: 800px) { .reprints { grid-template-columns: 1fr 1fr; gap: 32px; } }
+  .reprint {
+    display: flex; flex-direction: column; padding: 32px 28px;
+    background: var(--cream-deep); border-radius: var(--radius); border-top: 3px solid var(--brass);
+    color: var(--ink); text-decoration: none;
+    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  }
+  .reprint:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); color: var(--ink); }
+  .reprint h3 { font-family: var(--font-display); font-size: 26px; font-weight: 600; margin-bottom: 4px; }
+  .reprint__by { font-weight: 600; color: var(--brown-light); }
+  .reprint__go { margin-top: auto; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; color: var(--brown); }
+</style>

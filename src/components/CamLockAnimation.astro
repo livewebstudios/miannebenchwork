@@ -1,0 +1,185 @@
+---
+// Diagrammatic cam-lock sequence (design.md §6.1, build-plan.md):
+// 0.0-1.2s beam slides to leg, 1.2-2.6s cam turns 180 and the leg cinches 4px,
+// 2.6-3.2s joint flashes brass and the LOCKED tick draws, 3.2-4.5s level bubble settles.
+// Plays on scroll into view; click or REPLAY to run it again. Reduced motion shows the final frame.
+---
+<figure class="camlock" data-camlock>
+  <button class="camlock__stage" type="button" aria-label="Replay the cam-lock animation">
+    <svg viewBox="0 0 640 400" role="img" aria-labelledby="camlock-title camlock-desc" focusable="false">
+      <title id="camlock-title">How a Mianne cam lock joins an I-beam to a leg</title>
+      <desc id="camlock-desc">The I-beam slides against the hardwood leg, the cam in the beam turns half a turn and grabs the dowel on the leg, the joint locks, and the level on top settles to center.</desc>
+
+      <!-- floor -->
+      <line class="cl-floor" x1="20" y1="372" x2="620" y2="372" />
+
+      <!-- leg (cinches 4px toward the beam) -->
+      <g class="cl-leg">
+        <rect class="cl-dowel" x="362" y="185" width="40" height="10" rx="2" />
+        <circle class="cl-dowel" cx="364" cy="190" r="8" />
+        <rect class="cl-pin" x="378" y="160" width="24" height="5" rx="2.5" />
+        <rect class="cl-pin" x="378" y="215" width="24" height="5" rx="2.5" />
+        <polygon class="cl-wood" points="402,72 412,60 444,60 454,72" />
+        <rect class="cl-wood" x="402" y="72" width="52" height="276" />
+        <line class="cl-grain" x1="418" y1="90" x2="418" y2="330" />
+        <line class="cl-grain" x1="436" y1="110" x2="436" y2="300" />
+        <rect class="cl-steel" x="420" y="348" width="16" height="10" />
+        <rect class="cl-steel cl-foot" x="408" y="358" width="40" height="14" rx="2" />
+      </g>
+
+      <!-- I-beam with cam and level (slides in from the left) -->
+      <g class="cl-beam">
+        <rect class="cl-wood" x="60" y="140" width="340" height="16" />
+        <rect class="cl-wood" x="60" y="224" width="340" height="16" />
+        <rect class="cl-web" x="84" y="156" width="260" height="68" />
+        <rect class="cl-wood" x="60" y="140" width="26" height="100" />
+        <rect class="cl-wood" x="342" y="140" width="58" height="100" />
+        <line class="cl-grain" x1="96" y1="148" x2="330" y2="148" />
+        <line class="cl-grain" x1="110" y1="232" x2="320" y2="232" />
+
+        <!-- spirit level resting on the beam -->
+        <g class="cl-level">
+          <rect class="cl-level-body" x="150" y="112" width="170" height="28" rx="4" />
+          <rect class="cl-vial" x="205" y="118" width="60" height="16" rx="8" />
+          <line class="cl-mark" x1="227" y1="118" x2="227" y2="134" />
+          <line class="cl-mark" x1="243" y1="118" x2="243" y2="134" />
+          <ellipse class="cl-bubble" cx="235" cy="126" rx="7" ry="5" />
+        </g>
+
+        <!-- cam (rotates 180) -->
+        <g class="cl-cam">
+          <circle class="cl-cam-body" cx="371" cy="190" r="21" />
+          <circle class="cl-cam-ring" cx="371" cy="190" r="14" />
+          <line class="cl-slot" x1="363" y1="190" x2="379" y2="190" />
+          <line class="cl-slot" x1="371" y1="182" x2="371" y2="198" />
+          <path class="cl-cam-mark" d="M371 170 l-5 -7 h10 z" />
+        </g>
+      </g>
+
+      <!-- turn arrow around the cam -->
+      <path class="cl-turn" d="M343 172 A33 33 0 0 1 399 172" />
+      <path class="cl-turn-head" d="M399 172 l-10 -1 l6 -8 z" />
+
+      <!-- joint flash -->
+      <rect class="cl-flash" x="392" y="140" width="14" height="100" rx="2" />
+
+      <!-- locked tick -->
+      <g class="cl-lock">
+        <circle class="cl-lock-ring" cx="534" cy="190" r="24" />
+        <path class="cl-tick" d="M522 191 l8 8 l15 -17" />
+        <text class="cl-label cl-label--lock" x="534" y="238" text-anchor="middle">LOCKED</text>
+      </g>
+
+      <!-- labels -->
+      <text class="cl-label" x="190" y="268" text-anchor="middle">I-BEAM</text>
+      <line class="cl-leader" x1="371" y1="256" x2="371" y2="244" />
+      <text class="cl-label" x="371" y="276" text-anchor="middle">CAM LOCK</text>
+      <text class="cl-label" x="472" y="80">LEG</text>
+    </svg>
+  </button>
+  <figcaption class="camlock__caption">
+    <span>Beam to leg. Half a turn. Locked and level.</span>
+    <button class="btn btn-ghost camlock__replay" type="button">REPLAY</button>
+  </figcaption>
+</figure>
+
+<style>
+  .camlock { margin: 40px 0 0; }
+  .camlock__stage {
+    display: block; width: 100%; padding: 0; border: 1px solid var(--brass-soft);
+    border-radius: var(--radius); background: var(--cream); cursor: pointer;
+  }
+  .camlock__stage svg { width: 100%; height: auto; }
+  .camlock__caption {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;
+    margin-top: 14px; color: var(--brown-light); font-size: 15px;
+  }
+
+  .camlock :global(svg *) { vector-effect: non-scaling-stroke; }
+  .cl-floor { stroke: var(--brass); stroke-width: 2; stroke-dasharray: 6 6; }
+  .cl-wood { fill: #f2e6cf; stroke: var(--brown); stroke-width: 2.5; stroke-linejoin: round; }
+  .cl-web { fill: #dcc7a2; stroke: var(--brown); stroke-width: 1.5; }
+  .cl-grain { stroke: var(--brass); stroke-width: 1; opacity: 0.55; }
+  .cl-steel { fill: #c9c4bb; stroke: var(--brown); stroke-width: 2; }
+  .cl-dowel { fill: #d6d1c8; stroke: var(--brown); stroke-width: 2; }
+  .cl-pin { fill: #e7e3dc; stroke: var(--brown); stroke-width: 1.5; }
+  .cl-level-body { fill: var(--brown); }
+  .cl-vial { fill: #e9edc9; stroke: var(--cream); stroke-width: 1.5; }
+  .cl-mark { stroke: var(--brown); stroke-width: 1.5; }
+  .cl-bubble { fill: var(--white); stroke: var(--brown-light); stroke-width: 1; }
+  .cl-cam-body { fill: #cfc9bf; stroke: var(--brown); stroke-width: 2.5; }
+  .cl-cam-ring { fill: none; stroke: var(--brown); stroke-width: 1.5; }
+  .cl-slot { stroke: var(--brown); stroke-width: 3; stroke-linecap: round; }
+  .cl-cam-mark { fill: var(--brick); }
+  .cl-turn { fill: none; stroke: var(--brick); stroke-width: 2.5; stroke-linecap: round; opacity: 0; }
+  .cl-turn-head { fill: var(--brick); opacity: 0; }
+  .cl-flash { fill: var(--brass); opacity: 0; }
+  .cl-lock-ring { fill: none; stroke: var(--brass); stroke-width: 2.5; }
+  .cl-tick { fill: none; stroke: var(--brown); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 40; stroke-dashoffset: 0; }
+  .cl-label { font-family: var(--font-spec); font-weight: 500; font-size: 15px; letter-spacing: 0.12em; fill: var(--brown); }
+  .cl-label--lock { fill: var(--brick); }
+  .cl-leader { stroke: var(--brown); stroke-width: 1.5; }
+
+  .cl-cam, .cl-bubble { transform-box: fill-box; transform-origin: center; }
+  .cl-cam { transform: rotate(180deg); }
+  .cl-leg { transform: translateX(-4px); }
+
+  /* Armed: JS is running and motion is allowed; hold the opening frame until it plays. */
+  .camlock.is-armed:not(.is-playing) .cl-beam { transform: translateX(-90px); }
+  .camlock.is-armed:not(.is-playing) .cl-cam { transform: rotate(0deg); }
+  .camlock.is-armed:not(.is-playing) .cl-leg { transform: none; }
+  .camlock.is-armed:not(.is-playing) .cl-bubble { transform: translateX(22px); }
+  .camlock.is-armed:not(.is-playing) .cl-lock { opacity: 0; }
+  .camlock.is-armed:not(.is-playing) .cl-tick { stroke-dashoffset: 40; }
+
+  .camlock.is-playing .cl-beam { animation: cl-slide 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .camlock.is-playing .cl-cam { animation: cl-turn 1.4s cubic-bezier(0.55, 0, 0.3, 1) 1.2s both; }
+  .camlock.is-playing .cl-turn,
+  .camlock.is-playing .cl-turn-head { animation: cl-arrow 1.4s ease 1.2s both; }
+  .camlock.is-playing .cl-leg { animation: cl-cinch 0.4s ease-in 2.2s both; }
+  .camlock.is-playing .cl-flash { animation: cl-flash 0.6s ease 2.6s both; }
+  .camlock.is-playing .cl-lock { animation: cl-fade 0.3s ease 2.6s both; }
+  .camlock.is-playing .cl-tick { animation: cl-draw 0.45s ease-out 2.75s both; }
+  .camlock.is-playing .cl-bubble { animation: cl-settle 1.3s linear 3.2s both; }
+
+  @keyframes cl-slide { from { transform: translateX(-90px); } to { transform: none; } }
+  @keyframes cl-turn { from { transform: rotate(0deg); } to { transform: rotate(180deg); } }
+  @keyframes cl-arrow { 0% { opacity: 0; } 25%, 70% { opacity: 1; } 100% { opacity: 0; } }
+  @keyframes cl-cinch { from { transform: none; } to { transform: translateX(-4px); } }
+  @keyframes cl-flash { 0% { opacity: 0; } 35% { opacity: 0.9; } 100% { opacity: 0; } }
+  @keyframes cl-fade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes cl-draw { from { stroke-dashoffset: 40; } to { stroke-dashoffset: 0; } }
+  @keyframes cl-settle {
+    0% { transform: translateX(22px); animation-timing-function: ease-in-out; }
+    35% { transform: translateX(-9px); animation-timing-function: ease-in-out; }
+    60% { transform: translateX(4px); animation-timing-function: ease-in-out; }
+    80% { transform: translateX(-1.5px); animation-timing-function: ease-in-out; }
+    100% { transform: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .camlock__replay { display: none; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var figs = document.querySelectorAll('[data-camlock]');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    figs.forEach(function (fig) {
+      fig.classList.add('is-armed');
+      function play() {
+        fig.classList.remove('is-playing');
+        void fig.offsetWidth;
+        fig.classList.add('is-playing');
+      }
+      fig.querySelector('.camlock__stage').addEventListener('click', play);
+      fig.querySelector('.camlock__replay').addEventListener('click', play);
+      if (!('IntersectionObserver' in window)) { play(); return; }
+      var io = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { play(); io.disconnect(); }
+      }, { threshold: 0.45 });
+      io.observe(fig);
+    });
+  })();
+</script>

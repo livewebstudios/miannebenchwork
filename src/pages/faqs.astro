@@ -1,0 +1,127 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import TrainRule from '../components/TrainRule.astro';
+import { rel } from '../lib/rel';
+
+const r = (p: string) => rel(Astro.url, p);
+
+// Answers as plain text for schema; html for the page where a link helps.
+const faqs: { q: string; a: string; html?: string }[] = [
+  {
+    q: "Can I order online?",
+    a: "Orders are by phone, 508.226.1600, Monday to Friday 8 to 4:30 Eastern. You'll talk to a person who can answer anything about your layout before you spend a dime. There's also a printable order form if you'd rather mail or fax it.",
+    html: `Orders are by phone, <a href="tel:+15082261600">508.226.1600</a>, Monday to Friday 8 to 4:30 Eastern. You'll talk to a person who can answer anything about your layout before you spend a dime. There's also a <a href="${r('pdfs/order-form.pdf')}">printable order form</a> if you'd rather mail or fax it.`,
+  },
+  {
+    q: "There doesn't seem to be a kit for the layout I want to build. What should I do?",
+    a: "Call us. Mianne Benchwork can be configured to fit just about anywhere, and our design service is free with no obligation. Send a track plan, your room dimensions, or the layout dimensions you have in mind. We'll design a kit that works and quote you a price. Every kit, stock or custom, comes with a detailed color-coded assembly plan.",
+  },
+  {
+    q: "How is Mianne shipped, and what does shipping cost?",
+    a: "Factory direct by UPS Ground. The largest box is 8\" x 8\" x 48\" and the average box weighs under 50 lbs. Shipping is 12.5% of the order on orders of $200 and up, and 18% on orders under $200 ($20 minimum). That covers the continental US. For Alaska, Hawaii, and Canada, call for a quote.",
+  },
+  {
+    q: "How do I pay?",
+    a: "MasterCard, Visa, AMEX, Discover, or a check made out to Mianne Foley Woodworking. Sales tax of 6.25% applies to Massachusetts orders only.",
+  },
+  {
+    q: "Can I get a height other than the standard 40 inches?",
+    a: "Yes. Standard is 40\". Legs come in 42\" to 48\" in 2\" steps, and 58\" for second levels. Any custom height is available at no extra charge. Just tell us when you order. Legs over 46\" carry a shipping surcharge because they need longer boxes.",
+  },
+  {
+    q: "How do I attach the layout to the benchwork?",
+    a: "We suggest a plywood base attached with the hardware included in your kit. That way the layout lifts off the benchwork whenever you need it to. Anyone who has ever changed or moved a layout will appreciate it.",
+  },
+  {
+    q: "Does Mianne sell the plywood for the top?",
+    a: "No. Buy plywood locally from a building supplier. We recommend 1/2\" interior plywood as a base. Go thicker (3/4\") if you want to overhang the benchwork by a few inches. Pick something flat, and stay away from exterior grades. They're rarely flat or stable.",
+  },
+  {
+    q: "How do I attach risers for different track elevations?",
+    a: "Once the plywood base is on, add risers to the plywood wherever you need to raise the track.",
+  },
+  {
+    q: "What are connector blocks and adapter blocks?",
+    a: "Connectors attach I-beams to other I-beams, in three directions. Adapters are fillers for attaching crosspieces. The assembly instructions show both in the diagrams.",
+  },
+  {
+    q: "Can I buy one section and add to it later?",
+    a: "Yes. Don't think of Mianne as modules. Think of it as legs and I-beams that connect into one unitized structure. For a 2' x 4' section you'd buy a 24B expansion section and a 24LS leg set. For a 2' x 8' section you'd buy two 24B sections but still only one 24LS. That benchwork has six legs total.",
+  },
+  {
+    q: "What's the difference between the 24, 30, and 36 series?",
+    a: "The width of the straight sections. Series 24 kits have 24\" wide sections, series 30 have 30\", and series 36 have 36\". Narrower keeps everything in reach. Wider gives you room for deeper scenery and broader curves.",
+  },
+  {
+    q: "Why use I-beams instead of solid wood?",
+    a: "Three reasons. Stability: every piece of solid wood moves differently with the seasons. Our I-beams have an engineered core with a hardwood frame, so every piece moves the same way, and that means more reliable track. Consistency: the I-beams are made on dedicated machines, so the tolerances are the same every time and assembly is easy. Weight: they're strong without being heavy, which makes building easier and keeps shipping costs down.",
+  },
+  {
+    q: "How much weight can Mianne support?",
+    a: "Any scale, plus all the scenery you want to put on it. With the plywood top attached, Mianne easily supports the weight of an average adult.",
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+<Base
+  title="Benchwork Questions Answered | Mianne Benchwork"
+  description="Sizes, heights, shipping, payment and assembly questions about Mianne model railroad benchwork."
+  ogImage="images/hero-about.jpg"
+  schema={[faqSchema]}
+  preloadImage={{ href: 'images/hero-about.avif', srcset: `${r('images/hero-about-960.avif')} 960w, ${r('images/hero-about.avif')} 1920w`, type: 'image/avif' }}
+>
+  <PageHero
+    title="Frequently Asked Questions"
+    sub="Straight answers about sizes, heights, shipping, and ordering Mianne benchwork."
+    image="hero-about"
+    alt="A New England woodshop with stacks of milled poplar and a workbench in warm light"
+  />
+
+  <section class="section">
+    <div class="wrap narrow">
+      <h2 class="reveal">Model railroad benchwork questions</h2>
+      <p class="reveal">If your question isn't here, call 508.226.1600. You'll get Tim.</p>
+      <div class="faq">
+        {faqs.map((f, i) => (
+          <details class="faq__item reveal" open={i === 0}>
+            <summary><h3>{f.q}</h3></summary>
+            <div class="faq__a"><p set:html={f.html ?? f.a} /></div>
+          </details>
+        ))}
+      </div>
+      <TrainRule />
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>
+
+<style>
+  .faq { margin-top: 32px; border-top: 1px solid var(--brass-soft); }
+  .faq__item { border-bottom: 1px solid var(--brass-soft); }
+  .faq__item summary {
+    list-style: none; cursor: pointer; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
+    padding: 20px 0; min-height: 48px;
+  }
+  .faq__item summary::-webkit-details-marker { display: none; }
+  .faq__item summary h3 { margin: 0; font-size: 18px; line-height: 1.4; color: var(--brown); }
+  .faq__item summary::after {
+    content: '+'; flex: 0 0 auto; font: 500 26px/1 var(--font-spec); color: var(--brass);
+    transition: transform 0.25s var(--ease);
+  }
+  .faq__item[open] summary::after { transform: rotate(45deg); }
+  .faq__item summary:hover h3 { color: var(--brown-light); }
+  .faq__a { padding: 0 0 20px; }
+  .faq__a p { margin: 0; }
+</style>

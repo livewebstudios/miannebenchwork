@@ -1,0 +1,54 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from './PageHero.astro';
+import CtaBand from './CtaBand.astro';
+import { rel, SITE, canonical } from '../lib/rel';
+interface Props {
+  title: string;
+  seoTitle: string;
+  description: string;
+  magazine: string;
+  author: string;
+  date?: string;
+  image: string;
+  alt: string;
+}
+const { title, seoTitle, description, magazine, author, date, image, alt } = Astro.props;
+const r = (p: string) => rel(Astro.url, p);
+const article: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  author: { '@type': 'Person', name: author },
+  publisher: { '@type': 'Organization', name: magazine },
+  about: { '@id': `${SITE}/#business` },
+  url: canonical(Astro.url),
+  image: `${SITE}/images/${image}.jpg`,
+};
+if (date) article.datePublished = date;
+---
+<Base
+  title={seoTitle}
+  description={description}
+  ogImage={`images/${image}.jpg`}
+  ogType="article"
+  schema={[article]}
+  preloadImage={{ href: `images/${image}.avif`, srcset: `${r(`images/${image}-960.avif`)} 960w, ${r(`images/${image}.avif`)} 1920w`, type: 'image/avif' }}
+>
+  <PageHero title={title} sub={`By ${author}, ${magazine}`} image={image} alt={alt} kicker="REVIEW REPRINT" />
+  <article class="section">
+    <div class="wrap narrow prose reprint-body">
+      <slot />
+      <p class="reprint-note">Reprinted with permission. <a href={r('reviews/')}>Back to all reviews</a>.</p>
+    </div>
+  </article>
+  <CtaBand />
+</Base>
+<style>
+  .reprint-body :global(p:first-of-type)::first-letter {
+    float: left; font-family: var(--font-display); font-weight: 700; font-size: 3.6em; line-height: 0.85;
+    margin: 0.06em 0.1em 0 0; color: var(--brown);
+  }
+  .reprint-note { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--brass-soft); font-size: 15px; color: var(--brown-light); }
+  .reprint-note::first-letter { all: unset; }
+</style>

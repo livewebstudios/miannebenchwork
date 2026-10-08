@@ -1,0 +1,116 @@
+---
+import Base from '../layouts/Base.astro';
+import VideoHero from '../components/VideoHero.astro';
+import CategoryTile from '../components/CategoryTile.astro';
+import CtaBand from '../components/CtaBand.astro';
+import TrainRule from '../components/TrainRule.astro';
+import Testimonial from '../components/Testimonial.astro';
+import { minPrice, productsIn } from '../lib/catalog';
+import { rel } from '../lib/rel';
+
+const r = (p: string) => rel(Astro.url, p);
+const teasers = [
+  { label: 'STARTER KITS', sub: 'Rectangular tables, 2x6 to 8x8', href: 'catalog/starter-kits/', image: 'hero-starter', slug: 'starter-kits' },
+  { label: 'CLASSIC LAYOUTS', sub: 'L-shapes and long runs, 24", 30", 36"', href: 'catalog/24-series/', image: 'hero-classic', slug: '24-series' },
+  { label: 'AROUND THE ROOM', sub: 'Continuous running, wall to wall', href: 'catalog/around-the-room/', image: 'hero-around', slug: 'around-the-room' },
+  { label: 'WALK-THROUGH', sub: 'No duck-under, walk right in', href: 'catalog/walk-through/', image: 'hero-walkthrough', slug: 'walk-through' },
+  { label: 'EXPANSION SECTIONS', sub: "Grow what you've got", href: 'catalog/expansion/', image: 'hero-expansion', slug: 'expansion' },
+  { label: 'PARTS & ACCESSORIES', sub: 'Beams, legs, cams, casters', href: 'catalog/parts/', image: 'hero-parts', slug: 'parts' },
+];
+const classicCount = ['24-series', '30-series', '36-series'].reduce((n, s) => n + productsIn(s).length, 0);
+---
+<Base
+  title="Mianne Benchwork | The Fast Track to Layout Construction"
+  description="Solid hardwood model train benchwork that assembles in an evening with a screwdriver. Kits from 2x6 to basement-sized. Made in the USA since 1997."
+  preloadImage={{ href: 'images/hero-home-poster.avif', srcset: `${r('images/hero-home-poster-960.avif')} 960w, ${r('images/hero-home-poster.avif')} 1920w`, type: 'image/avif' }}
+>
+  <script is:inline slot="head">
+    // Netlify Identity invite / recovery links land on the homepage; hand them to the CMS.
+    if (/(invite|recovery|confirmation|email_change)_token=/.test(location.hash)) location.replace('admin/' + location.hash);
+  </script>
+  <VideoHero>
+    <p class="kicker fade-up">MIANNE BENCHWORK · ATTLEBORO, MASS. · SINCE 1997</p>
+    <h1 class="fade-up d1">The Fast Track to Layout Construction</h1>
+    <p class="fade-up d2">Solid hardwood benchwork that assembles in an evening with a screwdriver. Your dream layout, up and level, before the weekend's over.</p>
+    <div class="btn-row fade-up d3">
+      <a href={r('catalog/')} class="btn btn-cream">SEE THE KITS</a>
+      <a href={r('assembly/')} class="btn btn-ghost-light">WATCH IT GO TOGETHER</a>
+    </div>
+  </VideoHero>
+
+  <section class="section">
+    <div class="wrap split">
+      <div>
+        <p class="kicker reveal">MODEL RAILROAD BENCHWORK, READY TO GO</p>
+        <h2 class="reveal">Imagine your layout already built</h2>
+        <p class="reveal">Most benchwork starts with a lumber run, a saw, and a lost month of weekends. Mianne starts with a box at your door. Pre-fabricated hardwood I-beams lock to solid poplar legs with a half turn of a screwdriver. No cutting. No power tools. No sawdust in the basement.</p>
+        <p class="reveal">Even a big, complicated layout goes together in less than an evening. And when you want to change it... you just do. Take it apart, reconfigure, add a section. Nothing gets thrown away.</p>
+      </div>
+      <figure class="reveal">
+        <picture>
+          <source type="image/webp" srcset={r('images/photos/dsc_1546.webp')} />
+          <img src={r('images/photos/dsc_1546.jpg')} alt="A customer's model railroad layout built on Mianne benchwork" width="1000" height="664" loading="lazy" decoding="async" />
+        </picture>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section--band">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="reveal">Built for every room and every plan</h2>
+        <p class="reveal">From a 2x6 shelf layout to a basement empire. Pick a kit, or tell us your room and we'll design it with you at no charge. Almost half of what we build is custom.</p>
+      </div>
+      <div class="tiles">
+        {teasers.map((t) => (
+          <CategoryTile
+            href={t.href}
+            image={t.image}
+            label={t.label}
+            sub={t.sub}
+            from={minPrice(t.slug)}
+            count={t.slug === '24-series' ? classicCount : productsIn(t.slug).length}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split split--reverse">
+      <div>
+        <h2 class="reveal">One screwdriver. Half a turn. Done.</h2>
+        <p class="reveal">Mianne is an open grid system: kiln-dried poplar legs with built-in leveling feet, joined by hardwood I-beams with furniture-grade cam locks. The beams lock to the legs with a half turn. The whole layout levels in minutes.</p>
+        <p class="reveal">It's not a modular system with fixed shapes. It's a set of pieces that combine any way your room and your track plan demand. Six-inch increments, any height, custom sizes at no extra charge.</p>
+        <div class="btn-row reveal">
+          <a href={r('assembly/')} class="btn">SEE HOW IT WORKS</a>
+        </div>
+      </div>
+      <figure class="reveal">
+        <picture>
+          <source type="image/avif" srcset={r('images/hero-assembly-960.avif')} />
+          <source type="image/webp" srcset={r('images/hero-assembly-960.webp')} />
+          <img src={r('images/hero-assembly-960.jpg')} alt="Close-up of a Mianne cam lock joining a hardwood I-beam to a leg, screwdriver alongside" width="960" height="536" loading="lazy" decoding="async" />
+        </picture>
+      </figure>
+    </div>
+  </section>
+
+  <div class="wrap"><TrainRule /></div>
+
+  <section class="section">
+    <div class="wrap narrow">
+      <h2 class="reveal">Twenty-eight years of layouts</h2>
+      <p class="reveal">Mianne has been shipping benchwork from Attleboro, Massachusetts since 1997. Reviewed in Railroad Model Craftsman and O Gauge Railroading. Built in the USA, shipped factory direct, backed by a guy who answers his own phone.</p>
+      <Testimonial
+        quote="About 12 hours later, we had the 28'x20' layout complete and level. Every stick was perfect out of the box and the fit was exact."
+        cite="Al Z., Mianne customer"
+      />
+      <div class="btn-row reveal">
+        <a href={r('reviews/')} class="btn btn-ghost">READ THE REVIEWS</a>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>
