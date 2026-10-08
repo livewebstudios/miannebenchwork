@@ -1,0 +1,1988 @@
+{
+  "generated": "2026-10-08",
+  "source": "research/products.md (site + 2024 catalog; site price wins conflicts)",
+  "categories": [
+    {
+      "slug": "starter-kits",
+      "name": "Starter Kits",
+      "nav": "STARTER KITS",
+      "sort": 1,
+      "intro": "One rectangular table, everything in the box, up in about an hour.",
+      "hero": "images/hero-starter.jpg"
+    },
+    {
+      "slug": "24-series",
+      "name": "24 Series Classic Layouts",
+      "nav": "24 SERIES",
+      "sort": 2,
+      "intro": "Shaped layouts built from 24 inch wide sections.",
+      "hero": "images/hero-classic.jpg"
+    },
+    {
+      "slug": "30-series",
+      "name": "30 Series Classic Layouts",
+      "nav": "30 SERIES",
+      "sort": 3,
+      "intro": "The same classic shapes with 30 inch wide sections.",
+      "hero": "images/hero-classic.jpg"
+    },
+    {
+      "slug": "36-series",
+      "name": "36 Series Classic Layouts",
+      "nav": "36 SERIES",
+      "sort": 4,
+      "intro": "Classic shapes with a full 36 inches of depth.",
+      "hero": "images/hero-classic.jpg"
+    },
+    {
+      "slug": "around-the-room",
+      "name": "Around the Room Kits",
+      "nav": "AROUND THE ROOM",
+      "sort": 5,
+      "intro": "Benchwork that follows your walls so your trains never stop running.",
+      "hero": "images/hero-around.jpg"
+    },
+    {
+      "slug": "walk-through",
+      "name": "Walk-Through Kits",
+      "nav": "WALK-THROUGH",
+      "sort": 6,
+      "intro": "Continuous running with a real opening to walk through.",
+      "hero": "images/hero-walkthrough.jpg"
+    },
+    {
+      "slug": "expansion",
+      "name": "Expansion Sections",
+      "nav": "EXPANSION",
+      "sort": 7,
+      "intro": "Straight and corner sections that grow any Mianne layout.",
+      "hero": "images/hero-expansion.jpg"
+    },
+    {
+      "slug": "parts",
+      "name": "Parts & Accessories",
+      "nav": "PARTS",
+      "sort": 8,
+      "intro": "Every beam, leg, cam and caster in the system, sold individually.",
+      "hero": "images/hero-parts.jpg"
+    },
+    {
+      "slug": "accessories",
+      "name": "Lift-Gates, Multi-Deck & More",
+      "nav": "ACCESSORIES",
+      "sort": 9,
+      "intro": "Lift-Gates, second decks, transformer shelves and rollaway carts.",
+      "hero": "images/hero-accessories.jpg"
+    }
+  ],
+  "products": [
+    {
+      "model": "ST-2x6TSR",
+      "category": "starter-kits",
+      "name": "2' x 6' Starter Table",
+      "dimensions": "2' x 6' x 40\" high",
+      "widthSeries": null,
+      "price": 295,
+      "priceNote": null,
+      "useCase": "A shelf-depth switching layout for a hallway, office wall, or a kid's first railroad.",
+      "image": "images/products/st-2x6tsr.jpg",
+      "flags": [
+        "catalog-only"
+      ]
+    },
+    {
+      "model": "ST-2x8TSR",
+      "category": "starter-kits",
+      "name": "2' x 8' Starter Table",
+      "dimensions": "2' x 8' x 40\" high",
+      "widthSeries": null,
+      "price": 419,
+      "priceNote": null,
+      "useCase": "Eight feet of wall-hugging mainline. Perfect where floor space is spoken for but a wall isn't.",
+      "image": "images/products/st-2x8tsr.jpg",
+      "flags": [
+        "photo-missing"
+      ]
+    },
+    {
+      "model": "ST-3x8TSR",
+      "category": "starter-kits",
+      "name": "3' x 8' Starter Table",
+      "dimensions": "3' x 8' x 40\" high",
+      "widthSeries": null,
+      "price": 445,
+      "priceNote": null,
+      "useCase": "Enough depth for a passing siding and a small town, still slim enough for a spare bedroom.",
+      "image": "images/products/st-3x8tsr.jpg",
+      "flags": []
+    },
+    {
+      "model": "ST-3x10TSR",
+      "category": "starter-kits",
+      "name": "3' x 10' Starter Table",
+      "dimensions": "3' x 10' x 40\" high",
+      "widthSeries": null,
+      "price": 499,
+      "priceNote": null,
+      "useCase": "A long shelf-style run for point-to-point HO operation along one wall.",
+      "image": "images/products/st-3x10tsr.jpg",
+      "flags": []
+    },
+    {
+      "model": "ST-3x12TSR",
+      "category": "starter-kits",
+      "name": "3' x 12' Starter Table",
+      "dimensions": "3' x 12' x 40\" high",
+      "widthSeries": null,
+      "price": 519,
+      "priceNote": null,
+      "useCase": "Twelve feet of railroad on a three foot shelf. Made for the long, narrow basement.",
+      "image": "images/products/st-3x12tsr.jpg",
+      "flags": []
+    },
+    {
+      "model": "ST-4x6TSR",
+      "category": "starter-kits",
+      "name": "4' x 6' Starter Table",
+      "dimensions": "4' x 6' x 40\" high",
+      "widthSeries": null,
+      "price": 399,
+      "priceNote": null,
+      "useCase": "The compact classic. Fits a one-car garage corner and still runs a full HO loop.",
+      "image": "images/products/st-4x6tsr.jpg",
+      "flags": []
+    },
+    {
+      "model": "ST-4x8TSR",
+      "category": "starter-kits",
+      "name": "4' x 8' Starter Table",
+      "dimensions": "4' x 8' x 40\" high",
+      "widthSeries": null,
+      "price": 519,
+      "priceNote": null,
+      "useCase": "The legendary 4x8, minus the plywood and the sawdust. Our most popular first table.",
+      "image": "images/products/st-4x8tsr.jpg",
+      "flags": [
+        "featured"
+      ]
+    },
+    {
+      "model": "ST-4x9TSR",
+      "category": "starter-kits",
+      "name": "4' x 9' Starter Table",
+      "dimensions": "4' x 9' x 40\" high",
+      "widthSeries": null,
+      "price": 549,
+      "priceNote": null,
+      "useCase": "One extra foot over the 4x8 buys gentler curves and a longer yard.",
+      "image": "images/products/st-4x9tsr.jpg",
+      "flags": [
+        "catalog-only"
+      ]
+    },
+    {
+      "model": "ST-4x10TSR",
+      "category": "starter-kits",
+      "name": "4' x 10' Starter Table",
+      "dimensions": "4' x 10' x 40\" high",
+      "widthSeries": null,
+      "price": 579,
+      "priceNote": null,
+      "useCase": "Room for O-36 curves or a roomier HO plan without taking over the room.",
+      "image": "images/products/st-4x10tsr.jpg",
+      "flags": []
+    },
+    {
+      "model": "ST-4x12TSR",
+      "category": "starter-kits",
+      "name": "4' x 12' Starter Table",
+      "dimensions": "4' x 12' x 40\" high",
+      "widthSeries": null,
+      "price": 729,
+      "priceNote": null,
+      "useCase": "A serious single-table railroad for a garage bay or a basement alcove.",
+      "image": "images/products/st-4x12tsr.jpg",
+      "flags": []
+    },
+    {
+      "model": "ST-4x16TSR",
+      "category": "starter-kits",
+      "name": "4' x 16' Starter Table",
+      "dimensions": "4' x 16' x 40\" high",
+      "widthSeries": null,
+      "price": 919,
+      "priceNote": null,
+      "useCase": "Sixteen feet of mainline down one wall. Built for the long basement.",
+      "image": "images/products/st-4x16tsr.jpg",
+      "flags": []
+    },
+    {
+      "model": "ST-5x8TSR",
+      "category": "starter-kits",
+      "name": "5' x 8' Starter Table",
+      "dimensions": "5' x 8' x 40\" high",
+      "widthSeries": null,
+      "price": 569,
+      "priceNote": null,
+      "useCase": "The extra foot of width opens up broader curves, a natural step up for O gauge.",
+      "image": "images/products/st-5x8tsr.jpg",
+      "flags": []
+    },
+    {
+      "model": "ST-5x9TSR",
+      "category": "starter-kits",
+      "name": "5' x 9' Starter Table",
+      "dimensions": "5' x 9' x 40\" high",
+      "widthSeries": null,
+      "price": 719,
+      "priceNote": null,
+      "useCase": "A near-square island with the depth for layered scenery front to back.",
+      "image": "images/products/st-5x9tsr.jpg",
+      "flags": []
+    },
+    {
+      "model": "ST-5x10TSR",
+      "category": "starter-kits",
+      "name": "5' x 10' Starter Table",
+      "dimensions": "5' x 10' x 40\" high",
+      "widthSeries": null,
+      "price": 749,
+      "priceNote": null,
+      "useCase": "Big enough for O-54 curves, small enough to walk around in a two-car garage.",
+      "image": "images/products/st-5x10tsr.jpg",
+      "flags": []
+    },
+    {
+      "model": "ST-5x12TSR",
+      "category": "starter-kits",
+      "name": "5' x 12' Starter Table",
+      "dimensions": "5' x 12' x 40\" high",
+      "widthSeries": null,
+      "price": 799,
+      "priceNote": null,
+      "useCase": "A full walk-around island for a generous basement or garage.",
+      "image": "images/products/st-5x12tsr.jpg",
+      "flags": []
+    },
+    {
+      "model": "ST-5x16TSR",
+      "category": "starter-kits",
+      "name": "5' x 16' Starter Table",
+      "dimensions": "5' x 16' x 40\" high",
+      "widthSeries": null,
+      "price": 999,
+      "priceNote": null,
+      "useCase": "Sixteen feet with real depth. A mainline runner's table.",
+      "image": "images/products/st-5x16tsr.jpg",
+      "flags": []
+    },
+    {
+      "model": "ST-6x8TSR",
+      "category": "starter-kits",
+      "name": "6' x 8' Starter Table",
+      "dimensions": "6' x 8' x 40\" high",
+      "widthSeries": null,
+      "price": 669,
+      "priceNote": null,
+      "useCase": "Six feet of depth for big O gauge curves. Plan access from both sides.",
+      "image": "images/products/st-6x8tsr.jpg",
+      "flags": []
+    },
+    {
+      "model": "ST-6x9TSR",
+      "category": "starter-kits",
+      "name": "6' x 9' Starter Table",
+      "dimensions": "6' x 9' x 40\" high",
+      "widthSeries": null,
+      "price": 739,
+      "priceNote": null,
+      "useCase": "A broad island with room for a double mainline and a mountain between them.",
+      "image": "images/products/st-6x9tsr.jpg",
+      "flags": []
+    },
+    {
+      "model": "ST-6x10TSR",
+      "category": "starter-kits",
+      "name": "6' x 10' Starter Table",
+      "dimensions": "6' x 10' x 40\" high",
+      "widthSeries": null,
+      "price": 849,
+      "priceNote": null,
+      "useCase": "Club-scale presence in a home-scale footprint.",
+      "image": "images/products/st-6x10tsr.jpg",
+      "flags": []
+    },
+    {
+      "model": "ST-6x12TSR",
+      "category": "starter-kits",
+      "name": "6' x 12' Starter Table",
+      "dimensions": "6' x 12' x 40\" high",
+      "widthSeries": null,
+      "price": 939,
+      "priceNote": null,
+      "useCase": "The family-room centerpiece. Trains on the outside, scenery stacked deep inside.",
+      "image": "images/products/st-6x12tsr.jpg",
+      "flags": []
+    },
+    {
+      "model": "ST-6x16TSR",
+      "category": "starter-kits",
+      "name": "6' x 16' Starter Table",
+      "dimensions": "6' x 16' x 40\" high",
+      "widthSeries": null,
+      "price": 1259,
+      "priceNote": null,
+      "useCase": "Our longest and deepest table. A hobby shop display or a lifetime home layout.",
+      "image": "images/products/st-6x16tsr.jpg",
+      "flags": []
+    },
+    {
+      "model": "ST-8x8TSR",
+      "category": "starter-kits",
+      "name": "8' x 8' Starter Table",
+      "dimensions": "8' x 8' x 40\" high",
+      "widthSeries": null,
+      "price": 889,
+      "priceNote": null,
+      "useCase": "A big square island with sweeping curves. Best in a room you can circle completely.",
+      "image": "images/products/st-8x8tsr.jpg",
+      "flags": []
+    },
+    {
+      "model": "CL02-24",
+      "category": "24-series",
+      "name": "CL02 Classic Layout, 24\" sections",
+      "dimensions": "4' x 12' x 40\" high",
+      "widthSeries": "24",
+      "price": 569,
+      "priceNote": null,
+      "useCase": "A long twelve foot run that lives happily against one wall. The 24 inch sections keep every rail within arm's reach.",
+      "image": "images/products/cl02-24.jpg",
+      "flags": []
+    },
+    {
+      "model": "CL02-30",
+      "category": "30-series",
+      "name": "CL02 Classic Layout, 30\" sections",
+      "dimensions": "4' x 12' x 40\" high",
+      "widthSeries": "30",
+      "price": 589,
+      "priceNote": null,
+      "useCase": "A long twelve foot run that lives happily against one wall. The 30 inch sections balance reach with room for real scenery.",
+      "image": "images/products/cl02-30.jpg",
+      "flags": []
+    },
+    {
+      "model": "CL02-36",
+      "category": "36-series",
+      "name": "CL02 Classic Layout, 36\" sections",
+      "dimensions": "4' x 12' x 40\" high",
+      "widthSeries": "36",
+      "price": 609,
+      "priceNote": null,
+      "useCase": "A long twelve foot run that lives happily against one wall. The 36 inch sections give you broad curves and deep scenery on the long sides.",
+      "image": "images/products/cl02-36.jpg",
+      "flags": []
+    },
+    {
+      "model": "CL04-24",
+      "category": "24-series",
+      "name": "CL04 Classic Layout, 24\" sections",
+      "dimensions": "4' x 12' L x 40\" high",
+      "widthSeries": "24",
+      "price": 689,
+      "priceNote": null,
+      "useCase": "An L that tucks into a corner and keeps both legs workable. The 24 inch sections keep every rail within arm's reach.",
+      "image": "images/products/cl04-24.jpg",
+      "flags": [
+        "shape-verify"
+      ]
+    },
+    {
+      "model": "CL04-30",
+      "category": "30-series",
+      "name": "CL04 Classic Layout, 30\" sections",
+      "dimensions": "4' x 12' L x 40\" high",
+      "widthSeries": "30",
+      "price": 709,
+      "priceNote": null,
+      "useCase": "An L that tucks into a corner and keeps both legs workable. The 30 inch sections balance reach with room for real scenery.",
+      "image": "images/products/cl04-30.jpg",
+      "flags": [
+        "shape-verify"
+      ]
+    },
+    {
+      "model": "CL04-36",
+      "category": "36-series",
+      "name": "CL04 Classic Layout, 36\" sections",
+      "dimensions": "4' x 12' L x 40\" high",
+      "widthSeries": "36",
+      "price": 729,
+      "priceNote": null,
+      "useCase": "An L that tucks into a corner and keeps both legs workable. The 36 inch sections give you broad curves and deep scenery on the long sides.",
+      "image": "images/products/cl04-36.jpg",
+      "flags": [
+        "shape-verify"
+      ]
+    },
+    {
+      "model": "CL06-24",
+      "category": "24-series",
+      "name": "CL06 Classic Layout, 24\" sections",
+      "dimensions": "4' x 12' x 16' x 40\" high",
+      "widthSeries": "24",
+      "price": 1199,
+      "priceNote": null,
+      "useCase": "An L along two walls, twelve feet one way and sixteen the other. The 24 inch sections keep every rail within arm's reach.",
+      "image": "images/products/cl06-24.jpg",
+      "flags": []
+    },
+    {
+      "model": "CL06-30",
+      "category": "30-series",
+      "name": "CL06 Classic Layout, 30\" sections",
+      "dimensions": "4' x 12' x 16' x 40\" high",
+      "widthSeries": "30",
+      "price": 1219,
+      "priceNote": null,
+      "useCase": "An L along two walls, twelve feet one way and sixteen the other. The 30 inch sections balance reach with room for real scenery.",
+      "image": "images/products/cl06-30.jpg",
+      "flags": []
+    },
+    {
+      "model": "CL06-36",
+      "category": "36-series",
+      "name": "CL06 Classic Layout, 36\" sections",
+      "dimensions": "4' x 12' x 16' x 40\" high",
+      "widthSeries": "36",
+      "price": 1259,
+      "priceNote": null,
+      "useCase": "An L along two walls, twelve feet one way and sixteen the other. The 36 inch sections give you broad curves and deep scenery on the long sides.",
+      "image": "images/products/cl06-36.jpg",
+      "flags": []
+    },
+    {
+      "model": "CL08-24",
+      "category": "24-series",
+      "name": "CL08 Classic Layout, 24\" sections",
+      "dimensions": "4' x 12' x 16' x 40\" high",
+      "widthSeries": "24",
+      "price": 1579,
+      "priceNote": null,
+      "useCase": "Covers the same two walls as the CL06 with substantially more benchwork and operating room. The 24 inch sections keep every rail within arm's reach.",
+      "image": "images/products/cl08-24.jpg",
+      "flags": [
+        "diagram-verify"
+      ]
+    },
+    {
+      "model": "CL08-30",
+      "category": "30-series",
+      "name": "CL08 Classic Layout, 30\" sections",
+      "dimensions": "4' x 12' x 16' x 40\" high",
+      "widthSeries": "30",
+      "price": 1599,
+      "priceNote": null,
+      "useCase": "Covers the same two walls as the CL06 with substantially more benchwork and operating room. The 30 inch sections balance reach with room for real scenery.",
+      "image": "images/products/cl08-30.jpg",
+      "flags": [
+        "diagram-verify"
+      ]
+    },
+    {
+      "model": "CL08-36",
+      "category": "36-series",
+      "name": "CL08 Classic Layout, 36\" sections",
+      "dimensions": "4' x 12' x 16' x 40\" high",
+      "widthSeries": "36",
+      "price": 1659,
+      "priceNote": null,
+      "useCase": "Covers the same two walls as the CL06 with substantially more benchwork and operating room. The 36 inch sections give you broad curves and deep scenery on the long sides.",
+      "image": "images/products/cl08-36.jpg",
+      "flags": [
+        "diagram-verify"
+      ]
+    },
+    {
+      "model": "CL09-24",
+      "category": "24-series",
+      "name": "CL09 Classic Layout, 24\" sections",
+      "dimensions": "4' x 16' x 40\" high",
+      "widthSeries": "24",
+      "price": 819,
+      "priceNote": null,
+      "useCase": "Sixteen straight feet of railroad. The point-to-point operator's pick. The 24 inch sections keep every rail within arm's reach.",
+      "image": "images/products/cl09-24.jpg",
+      "flags": []
+    },
+    {
+      "model": "CL09-30",
+      "category": "30-series",
+      "name": "CL09 Classic Layout, 30\" sections",
+      "dimensions": "4' x 16' x 40\" high",
+      "widthSeries": "30",
+      "price": 839,
+      "priceNote": null,
+      "useCase": "Sixteen straight feet of railroad. The point-to-point operator's pick. The 30 inch sections balance reach with room for real scenery.",
+      "image": "images/products/cl09-30.jpg",
+      "flags": []
+    },
+    {
+      "model": "CL09-36",
+      "category": "36-series",
+      "name": "CL09 Classic Layout, 36\" sections",
+      "dimensions": "4' x 16' x 40\" high",
+      "widthSeries": "36",
+      "price": 869,
+      "priceNote": null,
+      "useCase": "Sixteen straight feet of railroad. The point-to-point operator's pick. The 36 inch sections give you broad curves and deep scenery on the long sides.",
+      "image": "images/products/cl09-36.jpg",
+      "flags": []
+    },
+    {
+      "model": "CL10-24",
+      "category": "24-series",
+      "name": "CL10 Classic Layout, 24\" sections",
+      "dimensions": "4' x 12' x 12' x 40\" high",
+      "widthSeries": "24",
+      "price": 1069,
+      "priceNote": null,
+      "useCase": "Wraps a corner evenly, twelve feet in each direction. The 24 inch sections keep every rail within arm's reach.",
+      "image": "images/products/cl10-24.jpg",
+      "flags": []
+    },
+    {
+      "model": "CL10-30",
+      "category": "30-series",
+      "name": "CL10 Classic Layout, 30\" sections",
+      "dimensions": "4' x 12' x 12' x 40\" high",
+      "widthSeries": "30",
+      "price": 1089,
+      "priceNote": null,
+      "useCase": "Wraps a corner evenly, twelve feet in each direction. The 30 inch sections balance reach with room for real scenery.",
+      "image": "images/products/cl10-30.jpg",
+      "flags": []
+    },
+    {
+      "model": "CL10-36",
+      "category": "36-series",
+      "name": "CL10 Classic Layout, 36\" sections",
+      "dimensions": "4' x 12' x 12' x 40\" high",
+      "widthSeries": "36",
+      "price": 1119,
+      "priceNote": null,
+      "useCase": "Wraps a corner evenly, twelve feet in each direction. The 36 inch sections give you broad curves and deep scenery on the long sides.",
+      "image": "images/products/cl10-36.jpg",
+      "flags": []
+    },
+    {
+      "model": "CL11-24",
+      "category": "24-series",
+      "name": "CL11 Classic Layout, 24\" sections",
+      "dimensions": "4' x 12' x 12' x 40\" high",
+      "widthSeries": "24",
+      "price": 1439,
+      "priceNote": null,
+      "useCase": "A fuller build around the same corner footprint as the CL10, with more deck for yards and towns. The 24 inch sections keep every rail within arm's reach.",
+      "image": "images/products/cl11-24.jpg",
+      "flags": [
+        "diagram-verify"
+      ]
+    },
+    {
+      "model": "CL11-30",
+      "category": "30-series",
+      "name": "CL11 Classic Layout, 30\" sections",
+      "dimensions": "4' x 12' x 12' x 40\" high",
+      "widthSeries": "30",
+      "price": 1479,
+      "priceNote": null,
+      "useCase": "A fuller build around the same corner footprint as the CL10, with more deck for yards and towns. The 30 inch sections balance reach with room for real scenery.",
+      "image": "images/products/cl11-30.jpg",
+      "flags": [
+        "diagram-verify"
+      ]
+    },
+    {
+      "model": "CL11-36",
+      "category": "36-series",
+      "name": "CL11 Classic Layout, 36\" sections",
+      "dimensions": "4' x 12' x 12' x 40\" high",
+      "widthSeries": "36",
+      "price": 1519,
+      "priceNote": null,
+      "useCase": "A fuller build around the same corner footprint as the CL10, with more deck for yards and towns. The 36 inch sections give you broad curves and deep scenery on the long sides.",
+      "image": "images/products/cl11-36.jpg",
+      "flags": [
+        "diagram-verify"
+      ]
+    },
+    {
+      "model": "AR812-24",
+      "category": "around-the-room",
+      "name": "8' x 12' Around the Room",
+      "dimensions": "8' x 12' room footprint, 24\" sections, 40\" high",
+      "widthSeries": "24",
+      "price": 1249,
+      "priceNote": null,
+      "useCase": "Turns a small spare room into a continuous-running railroad. The 24 inch sections keep every rail within arm's reach.",
+      "image": "images/products/ar812-24.jpg",
+      "flags": []
+    },
+    {
+      "model": "AR812-30",
+      "category": "around-the-room",
+      "name": "8' x 12' Around the Room",
+      "dimensions": "8' x 12' room footprint, 30\" sections, 40\" high",
+      "widthSeries": "30",
+      "price": 1269,
+      "priceNote": null,
+      "useCase": "Turns a small spare room into a continuous-running railroad. The 30 inch sections balance reach with room for real scenery.",
+      "image": "images/products/ar812-30.jpg",
+      "flags": []
+    },
+    {
+      "model": "AR812-36",
+      "category": "around-the-room",
+      "name": "8' x 12' Around the Room",
+      "dimensions": "8' x 12' room footprint, 36\" sections, 40\" high",
+      "widthSeries": "36",
+      "price": 1299,
+      "priceNote": null,
+      "useCase": "Turns a small spare room into a continuous-running railroad. The 36 inch sections give you broad curves and deep scenery on the long sides.",
+      "image": "images/products/ar812-36.jpg",
+      "flags": []
+    },
+    {
+      "model": "AR816-24",
+      "category": "around-the-room",
+      "name": "8' x 16' Around the Room",
+      "dimensions": "8' x 16' room footprint, 24\" sections, 40\" high",
+      "widthSeries": "24",
+      "price": 1509,
+      "priceNote": null,
+      "useCase": "A full lap of a modest basement room with a straightaway worth watching. The 24 inch sections keep every rail within arm's reach.",
+      "image": "images/products/ar816-24.jpg",
+      "flags": []
+    },
+    {
+      "model": "AR816-30",
+      "category": "around-the-room",
+      "name": "8' x 16' Around the Room",
+      "dimensions": "8' x 16' room footprint, 30\" sections, 40\" high",
+      "widthSeries": "30",
+      "price": 1539,
+      "priceNote": null,
+      "useCase": "A full lap of a modest basement room with a straightaway worth watching. The 30 inch sections balance reach with room for real scenery.",
+      "image": "images/products/ar816-30.jpg",
+      "flags": []
+    },
+    {
+      "model": "AR816-36",
+      "category": "around-the-room",
+      "name": "8' x 16' Around the Room",
+      "dimensions": "8' x 16' room footprint, 36\" sections, 40\" high",
+      "widthSeries": "36",
+      "price": 1579,
+      "priceNote": null,
+      "useCase": "A full lap of a modest basement room with a straightaway worth watching. The 36 inch sections give you broad curves and deep scenery on the long sides.",
+      "image": "images/products/ar816-36.jpg",
+      "flags": []
+    },
+    {
+      "model": "AR820-24",
+      "category": "around-the-room",
+      "name": "8' x 20' Around the Room",
+      "dimensions": "8' x 20' room footprint, 24\" sections, 40\" high",
+      "widthSeries": "24",
+      "price": 1769,
+      "priceNote": null,
+      "useCase": "Twenty feet of mainline down each long wall of a narrow room. The 24 inch sections keep every rail within arm's reach.",
+      "image": "images/products/ar820-24.jpg",
+      "flags": [
+        "catalog-only"
+      ]
+    },
+    {
+      "model": "AR820-30",
+      "category": "around-the-room",
+      "name": "8' x 20' Around the Room",
+      "dimensions": "8' x 20' room footprint, 30\" sections, 40\" high",
+      "widthSeries": "30",
+      "price": 1799,
+      "priceNote": null,
+      "useCase": "Twenty feet of mainline down each long wall of a narrow room. The 30 inch sections balance reach with room for real scenery.",
+      "image": "images/products/ar820-30.jpg",
+      "flags": [
+        "catalog-only"
+      ]
+    },
+    {
+      "model": "AR820-36",
+      "category": "around-the-room",
+      "name": "8' x 20' Around the Room",
+      "dimensions": "8' x 20' room footprint, 36\" sections, 40\" high",
+      "widthSeries": "36",
+      "price": 1859,
+      "priceNote": null,
+      "useCase": "Twenty feet of mainline down each long wall of a narrow room. The 36 inch sections give you broad curves and deep scenery on the long sides.",
+      "image": "images/products/ar820-36.jpg",
+      "flags": [
+        "catalog-only"
+      ]
+    },
+    {
+      "model": "AR912-24",
+      "category": "around-the-room",
+      "name": "9' x 12' Around the Room",
+      "dimensions": "9' x 12' room footprint, 24\" sections, 40\" high",
+      "widthSeries": "24",
+      "price": 1419,
+      "priceNote": null,
+      "useCase": "A comfortable lap for a nine foot room with aisle space to spare. The 24 inch sections keep every rail within arm's reach.",
+      "image": "images/products/ar912-24.jpg",
+      "flags": []
+    },
+    {
+      "model": "AR912-30",
+      "category": "around-the-room",
+      "name": "9' x 12' Around the Room",
+      "dimensions": "9' x 12' room footprint, 30\" sections, 40\" high",
+      "widthSeries": "30",
+      "price": 1449,
+      "priceNote": null,
+      "useCase": "A comfortable lap for a nine foot room with aisle space to spare. The 30 inch sections balance reach with room for real scenery.",
+      "image": "images/products/ar912-30.jpg",
+      "flags": []
+    },
+    {
+      "model": "AR912-36",
+      "category": "around-the-room",
+      "name": "9' x 12' Around the Room",
+      "dimensions": "9' x 12' room footprint, 36\" sections, 40\" high",
+      "widthSeries": "36",
+      "price": 1489,
+      "priceNote": null,
+      "useCase": "A comfortable lap for a nine foot room with aisle space to spare. The 36 inch sections give you broad curves and deep scenery on the long sides.",
+      "image": "images/products/ar912-36.jpg",
+      "flags": []
+    },
+    {
+      "model": "AR916-24",
+      "category": "around-the-room",
+      "name": "9' x 16' Around the Room",
+      "dimensions": "9' x 16' room footprint, 24\" sections, 40\" high",
+      "widthSeries": "24",
+      "price": 1679,
+      "priceNote": null,
+      "useCase": "The classic one-car-garage perimeter. Long runs, easy center aisle. The 24 inch sections keep every rail within arm's reach.",
+      "image": "images/products/ar916-24.jpg",
+      "flags": []
+    },
+    {
+      "model": "AR916-30",
+      "category": "around-the-room",
+      "name": "9' x 16' Around the Room",
+      "dimensions": "9' x 16' room footprint, 30\" sections, 40\" high",
+      "widthSeries": "30",
+      "price": 1719,
+      "priceNote": null,
+      "useCase": "The classic one-car-garage perimeter. Long runs, easy center aisle. The 30 inch sections balance reach with room for real scenery.",
+      "image": "images/products/ar916-30.jpg",
+      "flags": []
+    },
+    {
+      "model": "AR916-36",
+      "category": "around-the-room",
+      "name": "9' x 16' Around the Room",
+      "dimensions": "9' x 16' room footprint, 36\" sections, 40\" high",
+      "widthSeries": "36",
+      "price": 1769,
+      "priceNote": null,
+      "useCase": "The classic one-car-garage perimeter. Long runs, easy center aisle. The 36 inch sections give you broad curves and deep scenery on the long sides.",
+      "image": "images/products/ar916-36.jpg",
+      "flags": []
+    },
+    {
+      "model": "AR1012-24",
+      "category": "around-the-room",
+      "name": "10' x 12' Around the Room",
+      "dimensions": "10' x 12' room footprint, 24\" sections, 40\" high",
+      "widthSeries": "24",
+      "price": 1439,
+      "priceNote": null,
+      "useCase": "Fills a ten foot room edge to edge with trains always in motion. The 24 inch sections keep every rail within arm's reach.",
+      "image": "images/products/ar1012-24.jpg",
+      "flags": []
+    },
+    {
+      "model": "AR1012-30",
+      "category": "around-the-room",
+      "name": "10' x 12' Around the Room",
+      "dimensions": "10' x 12' room footprint, 30\" sections, 40\" high",
+      "widthSeries": "30",
+      "price": 1469,
+      "priceNote": null,
+      "useCase": "Fills a ten foot room edge to edge with trains always in motion. The 30 inch sections balance reach with room for real scenery.",
+      "image": "images/products/ar1012-30.jpg",
+      "flags": []
+    },
+    {
+      "model": "AR1012-36",
+      "category": "around-the-room",
+      "name": "10' x 12' Around the Room",
+      "dimensions": "10' x 12' room footprint, 36\" sections, 40\" high",
+      "widthSeries": "36",
+      "price": 1499,
+      "priceNote": null,
+      "useCase": "Fills a ten foot room edge to edge with trains always in motion. The 36 inch sections give you broad curves and deep scenery on the long sides.",
+      "image": "images/products/ar1012-36.jpg",
+      "flags": []
+    },
+    {
+      "model": "AR1016-24",
+      "category": "around-the-room",
+      "name": "10' x 16' Around the Room",
+      "dimensions": "10' x 16' room footprint, 24\" sections, 40\" high",
+      "widthSeries": "24",
+      "price": 1699,
+      "priceNote": null,
+      "useCase": "A proper basement railroad with room for towns on every wall. The 24 inch sections keep every rail within arm's reach.",
+      "image": "images/products/ar1016-24.jpg",
+      "flags": []
+    },
+    {
+      "model": "AR1016-30",
+      "category": "around-the-room",
+      "name": "10' x 16' Around the Room",
+      "dimensions": "10' x 16' room footprint, 30\" sections, 40\" high",
+      "widthSeries": "30",
+      "price": 1739,
+      "priceNote": null,
+      "useCase": "A proper basement railroad with room for towns on every wall. The 30 inch sections balance reach with room for real scenery.",
+      "image": "images/products/ar1016-30.jpg",
+      "flags": []
+    },
+    {
+      "model": "AR1016-36",
+      "category": "around-the-room",
+      "name": "10' x 16' Around the Room",
+      "dimensions": "10' x 16' room footprint, 36\" sections, 40\" high",
+      "widthSeries": "36",
+      "price": 1789,
+      "priceNote": null,
+      "useCase": "A proper basement railroad with room for towns on every wall. The 36 inch sections give you broad curves and deep scenery on the long sides.",
+      "image": "images/products/ar1016-36.jpg",
+      "flags": []
+    },
+    {
+      "model": "AR1020-24",
+      "category": "around-the-room",
+      "name": "10' x 20' Around the Room",
+      "dimensions": "10' x 20' room footprint, 24\" sections, 40\" high",
+      "widthSeries": "24",
+      "price": 1959,
+      "priceNote": null,
+      "useCase": "Twenty feet of scenery per side. A railfan's dream lap. The 24 inch sections keep every rail within arm's reach.",
+      "image": "images/products/ar1020-24.jpg",
+      "flags": [
+        "catalog-only"
+      ]
+    },
+    {
+      "model": "AR1020-30",
+      "category": "around-the-room",
+      "name": "10' x 20' Around the Room",
+      "dimensions": "10' x 20' room footprint, 30\" sections, 40\" high",
+      "widthSeries": "30",
+      "price": 1999,
+      "priceNote": null,
+      "useCase": "Twenty feet of scenery per side. A railfan's dream lap. The 30 inch sections balance reach with room for real scenery.",
+      "image": "images/products/ar1020-30.jpg",
+      "flags": [
+        "catalog-only"
+      ]
+    },
+    {
+      "model": "AR1020-36",
+      "category": "around-the-room",
+      "name": "10' x 20' Around the Room",
+      "dimensions": "10' x 20' room footprint, 36\" sections, 40\" high",
+      "widthSeries": "36",
+      "price": 2069,
+      "priceNote": null,
+      "useCase": "Twenty feet of scenery per side. A railfan's dream lap. The 36 inch sections give you broad curves and deep scenery on the long sides.",
+      "image": "images/products/ar1020-36.jpg",
+      "flags": [
+        "catalog-only"
+      ]
+    },
+    {
+      "model": "AR1024-24",
+      "category": "around-the-room",
+      "name": "10' x 24' Around the Room",
+      "dimensions": "10' x 24' room footprint, 24\" sections, 40\" high",
+      "widthSeries": "24",
+      "price": 2219,
+      "priceNote": null,
+      "useCase": "Twenty-four feet of mainline per wall. Serious real estate. The 24 inch sections keep every rail within arm's reach.",
+      "image": "images/products/ar1024-24.jpg",
+      "flags": [
+        "catalog-only"
+      ]
+    },
+    {
+      "model": "AR1024-30",
+      "category": "around-the-room",
+      "name": "10' x 24' Around the Room",
+      "dimensions": "10' x 24' room footprint, 30\" sections, 40\" high",
+      "widthSeries": "30",
+      "price": 2269,
+      "priceNote": null,
+      "useCase": "Twenty-four feet of mainline per wall. Serious real estate. The 30 inch sections balance reach with room for real scenery.",
+      "image": "images/products/ar1024-30.jpg",
+      "flags": [
+        "catalog-only"
+      ]
+    },
+    {
+      "model": "AR1024-36",
+      "category": "around-the-room",
+      "name": "10' x 24' Around the Room",
+      "dimensions": "10' x 24' room footprint, 36\" sections, 40\" high",
+      "widthSeries": "36",
+      "price": 2349,
+      "priceNote": null,
+      "useCase": "Twenty-four feet of mainline per wall. Serious real estate. The 36 inch sections give you broad curves and deep scenery on the long sides.",
+      "image": "images/products/ar1024-36.jpg",
+      "flags": [
+        "catalog-only"
+      ]
+    },
+    {
+      "model": "AR1212-24",
+      "category": "around-the-room",
+      "name": "12' x 12' Around the Room",
+      "dimensions": "12' x 12' room footprint, 24\" sections, 40\" high",
+      "widthSeries": "24",
+      "price": 1509,
+      "priceNote": null,
+      "useCase": "A square room, fully laced. Even laps, generous center workspace. The 24 inch sections keep every rail within arm's reach.",
+      "image": "images/products/ar1212-24.jpg",
+      "flags": []
+    },
+    {
+      "model": "AR1212-30",
+      "category": "around-the-room",
+      "name": "12' x 12' Around the Room",
+      "dimensions": "12' x 12' room footprint, 30\" sections, 40\" high",
+      "widthSeries": "30",
+      "price": 1539,
+      "priceNote": null,
+      "useCase": "A square room, fully laced. Even laps, generous center workspace. The 30 inch sections balance reach with room for real scenery.",
+      "image": "images/products/ar1212-30.jpg",
+      "flags": []
+    },
+    {
+      "model": "AR1212-36",
+      "category": "around-the-room",
+      "name": "12' x 12' Around the Room",
+      "dimensions": "12' x 12' room footprint, 36\" sections, 40\" high",
+      "widthSeries": "36",
+      "price": 1579,
+      "priceNote": null,
+      "useCase": "A square room, fully laced. Even laps, generous center workspace. The 36 inch sections give you broad curves and deep scenery on the long sides.",
+      "image": "images/products/ar1212-36.jpg",
+      "flags": []
+    },
+    {
+      "model": "AR1216-24",
+      "category": "around-the-room",
+      "name": "12' x 16' Around the Room",
+      "dimensions": "12' x 16' room footprint, 24\" sections, 40\" high",
+      "widthSeries": "24",
+      "price": 1769,
+      "priceNote": null,
+      "useCase": "The big family-basement perimeter. Continuous running with presence. The 24 inch sections keep every rail within arm's reach.",
+      "image": "images/products/ar1216-24.jpg",
+      "flags": []
+    },
+    {
+      "model": "AR1216-30",
+      "category": "around-the-room",
+      "name": "12' x 16' Around the Room",
+      "dimensions": "12' x 16' room footprint, 30\" sections, 40\" high",
+      "widthSeries": "30",
+      "price": 1799,
+      "priceNote": null,
+      "useCase": "The big family-basement perimeter. Continuous running with presence. The 30 inch sections balance reach with room for real scenery.",
+      "image": "images/products/ar1216-30.jpg",
+      "flags": []
+    },
+    {
+      "model": "AR1216-36",
+      "category": "around-the-room",
+      "name": "12' x 16' Around the Room",
+      "dimensions": "12' x 16' room footprint, 36\" sections, 40\" high",
+      "widthSeries": "36",
+      "price": 1859,
+      "priceNote": null,
+      "useCase": "The big family-basement perimeter. Continuous running with presence. The 36 inch sections give you broad curves and deep scenery on the long sides.",
+      "image": "images/products/ar1216-36.jpg",
+      "flags": []
+    },
+    {
+      "model": "AR1220-24",
+      "category": "around-the-room",
+      "name": "12' x 20' Around the Room",
+      "dimensions": "12' x 20' room footprint, 24\" sections, 40\" high",
+      "widthSeries": "24",
+      "price": 2029,
+      "priceNote": null,
+      "useCase": "Club-scale laps at home. Twelve by twenty of wall-hugging railroad. The 24 inch sections keep every rail within arm's reach.",
+      "image": "images/products/ar1220-24.jpg",
+      "flags": [
+        "catalog-only"
+      ]
+    },
+    {
+      "model": "AR1220-30",
+      "category": "around-the-room",
+      "name": "12' x 20' Around the Room",
+      "dimensions": "12' x 20' room footprint, 30\" sections, 40\" high",
+      "widthSeries": "30",
+      "price": 2069,
+      "priceNote": null,
+      "useCase": "Club-scale laps at home. Twelve by twenty of wall-hugging railroad. The 30 inch sections balance reach with room for real scenery.",
+      "image": "images/products/ar1220-30.jpg",
+      "flags": [
+        "catalog-only"
+      ]
+    },
+    {
+      "model": "AR1220-36",
+      "category": "around-the-room",
+      "name": "12' x 20' Around the Room",
+      "dimensions": "12' x 20' room footprint, 36\" sections, 40\" high",
+      "widthSeries": "36",
+      "price": 2149,
+      "priceNote": null,
+      "useCase": "Club-scale laps at home. Twelve by twenty of wall-hugging railroad. The 36 inch sections give you broad curves and deep scenery on the long sides.",
+      "image": "images/products/ar1220-36.jpg",
+      "flags": [
+        "catalog-only"
+      ]
+    },
+    {
+      "model": "AR1224-24",
+      "category": "around-the-room",
+      "name": "12' x 24' Around the Room",
+      "dimensions": "12' x 24' room footprint, 24\" sections, 40\" high",
+      "widthSeries": "24",
+      "price": 2289,
+      "priceNote": null,
+      "useCase": "Our largest around-the-room footprint. A basement empire, boxed. The 24 inch sections keep every rail within arm's reach.",
+      "image": "images/products/ar1224-24.jpg",
+      "flags": [
+        "catalog-only"
+      ]
+    },
+    {
+      "model": "AR1224-30",
+      "category": "around-the-room",
+      "name": "12' x 24' Around the Room",
+      "dimensions": "12' x 24' room footprint, 30\" sections, 40\" high",
+      "widthSeries": "30",
+      "price": 2329,
+      "priceNote": null,
+      "useCase": "Our largest around-the-room footprint. A basement empire, boxed. The 30 inch sections balance reach with room for real scenery.",
+      "image": "images/products/ar1224-30.jpg",
+      "flags": [
+        "catalog-only"
+      ]
+    },
+    {
+      "model": "AR1224-36",
+      "category": "around-the-room",
+      "name": "12' x 24' Around the Room",
+      "dimensions": "12' x 24' room footprint, 36\" sections, 40\" high",
+      "widthSeries": "36",
+      "price": 2429,
+      "priceNote": null,
+      "useCase": "Our largest around-the-room footprint. A basement empire, boxed. The 36 inch sections give you broad curves and deep scenery on the long sides.",
+      "image": "images/products/ar1224-36.jpg",
+      "flags": [
+        "catalog-only"
+      ]
+    },
+    {
+      "model": "WT1016-24",
+      "category": "walk-through",
+      "name": "WT1016 Walk-Through, 24\" sections",
+      "dimensions": "4' x 10' x 16' x 40\" high",
+      "widthSeries": "24",
+      "price": 1795,
+      "priceNote": null,
+      "useCase": "Walk straight into a ten by sixteen perimeter. No duck-under, no crawling. The 24 inch sections keep every rail within arm's reach.",
+      "image": "images/products/wt1016-24.jpg",
+      "flags": [
+        "price-verify"
+      ]
+    },
+    {
+      "model": "WT1016-30",
+      "category": "walk-through",
+      "name": "WT1016 Walk-Through, 30\" sections",
+      "dimensions": "4' x 10' x 16' x 40\" high",
+      "widthSeries": "30",
+      "price": 1829,
+      "priceNote": null,
+      "useCase": "Walk straight into a ten by sixteen perimeter. No duck-under, no crawling. The 30 inch sections balance reach with room for real scenery.",
+      "image": "images/products/wt1016-30.jpg",
+      "flags": []
+    },
+    {
+      "model": "WT1016-36",
+      "category": "walk-through",
+      "name": "WT1016 Walk-Through, 36\" sections",
+      "dimensions": "4' x 10' x 16' x 40\" high",
+      "widthSeries": "36",
+      "price": 1899,
+      "priceNote": null,
+      "useCase": "Walk straight into a ten by sixteen perimeter. No duck-under, no crawling. The 36 inch sections give you broad curves and deep scenery on the long sides.",
+      "image": "images/products/wt1016-36.jpg",
+      "flags": []
+    },
+    {
+      "model": "WT1216-24",
+      "category": "walk-through",
+      "name": "WT1216 Walk-Through, 24\" sections",
+      "dimensions": "4' x 12' x 16' x 40\" high",
+      "widthSeries": "24",
+      "price": 1989,
+      "priceNote": null,
+      "useCase": "A twelve by sixteen lap with a true walk-through entry. Your knees retire. The 24 inch sections keep every rail within arm's reach.",
+      "image": "images/products/wt1216-24.jpg",
+      "flags": []
+    },
+    {
+      "model": "WT1216-30",
+      "category": "walk-through",
+      "name": "WT1216 Walk-Through, 30\" sections",
+      "dimensions": "4' x 12' x 16' x 40\" high",
+      "widthSeries": "30",
+      "price": 1999,
+      "priceNote": null,
+      "useCase": "A twelve by sixteen lap with a true walk-through entry. Your knees retire. The 30 inch sections balance reach with room for real scenery.",
+      "image": "images/products/wt1216-30.jpg",
+      "flags": []
+    },
+    {
+      "model": "WT1216-36",
+      "category": "walk-through",
+      "name": "WT1216 Walk-Through, 36\" sections",
+      "dimensions": "4' x 12' x 16' x 40\" high",
+      "widthSeries": "36",
+      "price": 2019,
+      "priceNote": null,
+      "useCase": "A twelve by sixteen lap with a true walk-through entry. Your knees retire. The 36 inch sections give you broad curves and deep scenery on the long sides.",
+      "image": "images/products/wt1216-36.jpg",
+      "flags": []
+    },
+    {
+      "model": "WT1216B-24",
+      "category": "walk-through",
+      "name": "WT1216B Walk-Through, 24\" sections",
+      "dimensions": "4' x 12' x 16' x 40\" high",
+      "widthSeries": "24",
+      "price": 1869,
+      "priceNote": null,
+      "useCase": "The B configuration of the twelve by sixteen walk-through. Lift-Gate ready version available. The 24 inch sections keep every rail within arm's reach.",
+      "image": "images/products/wt1216b-24.jpg",
+      "flags": [
+        "config-verify"
+      ]
+    },
+    {
+      "model": "WT1216B-30",
+      "category": "walk-through",
+      "name": "WT1216B Walk-Through, 30\" sections",
+      "dimensions": "4' x 12' x 16' x 40\" high",
+      "widthSeries": "30",
+      "price": 1889,
+      "priceNote": null,
+      "useCase": "The B configuration of the twelve by sixteen walk-through. Lift-Gate ready version available. The 30 inch sections balance reach with room for real scenery.",
+      "image": "images/products/wt1216b-30.jpg",
+      "flags": [
+        "config-verify"
+      ]
+    },
+    {
+      "model": "WT1216B-36",
+      "category": "walk-through",
+      "name": "WT1216B Walk-Through, 36\" sections",
+      "dimensions": "4' x 12' x 16' x 40\" high",
+      "widthSeries": "36",
+      "price": 1899,
+      "priceNote": null,
+      "useCase": "The B configuration of the twelve by sixteen walk-through. Lift-Gate ready version available. The 36 inch sections give you broad curves and deep scenery on the long sides.",
+      "image": "images/products/wt1216b-36.jpg",
+      "flags": [
+        "config-verify"
+      ]
+    },
+    {
+      "model": "WT1220-24",
+      "category": "walk-through",
+      "name": "WT1220 Walk-Through, 24\" sections",
+      "dimensions": "12' x 20' x 40\" high",
+      "widthSeries": "24",
+      "price": 2129,
+      "priceNote": null,
+      "useCase": "Our biggest walk-through perimeter. Twenty foot straightaways and a doorway in. The 24 inch sections keep every rail within arm's reach.",
+      "image": "images/products/wt1220-24.jpg",
+      "flags": [
+        "web-only"
+      ]
+    },
+    {
+      "model": "WT1220-30",
+      "category": "walk-through",
+      "name": "WT1220 Walk-Through, 30\" sections",
+      "dimensions": "12' x 20' x 40\" high",
+      "widthSeries": "30",
+      "price": 2159,
+      "priceNote": null,
+      "useCase": "Our biggest walk-through perimeter. Twenty foot straightaways and a doorway in. The 30 inch sections balance reach with room for real scenery.",
+      "image": "images/products/wt1220-30.jpg",
+      "flags": [
+        "web-only"
+      ]
+    },
+    {
+      "model": "WT1220-36",
+      "category": "walk-through",
+      "name": "WT1220 Walk-Through, 36\" sections",
+      "dimensions": "12' x 20' x 40\" high",
+      "widthSeries": "36",
+      "price": 2199,
+      "priceNote": null,
+      "useCase": "Our biggest walk-through perimeter. Twenty foot straightaways and a doorway in. The 36 inch sections give you broad curves and deep scenery on the long sides.",
+      "image": "images/products/wt1220-36.jpg",
+      "flags": [
+        "web-only"
+      ]
+    },
+    {
+      "model": "WT1220B-24",
+      "category": "walk-through",
+      "name": "WT1220B Walk-Through, 24\" sections",
+      "dimensions": "12' x 20' x 40\" high",
+      "widthSeries": "24",
+      "price": 2179,
+      "priceNote": null,
+      "useCase": "The B configuration of the twelve by twenty walk-through. The 24 inch sections keep every rail within arm's reach.",
+      "image": "images/products/wt1220b-24.jpg",
+      "flags": [
+        "web-only",
+        "config-verify"
+      ]
+    },
+    {
+      "model": "WT1220B-30",
+      "category": "walk-through",
+      "name": "WT1220B Walk-Through, 30\" sections",
+      "dimensions": "12' x 20' x 40\" high",
+      "widthSeries": "30",
+      "price": 2199,
+      "priceNote": null,
+      "useCase": "The B configuration of the twelve by twenty walk-through. The 30 inch sections balance reach with room for real scenery.",
+      "image": "images/products/wt1220b-30.jpg",
+      "flags": [
+        "web-only",
+        "config-verify"
+      ]
+    },
+    {
+      "model": "WT1220B-36",
+      "category": "walk-through",
+      "name": "WT1220B Walk-Through, 36\" sections",
+      "dimensions": "12' x 20' x 40\" high",
+      "widthSeries": "36",
+      "price": 2219,
+      "priceNote": null,
+      "useCase": "The B configuration of the twelve by twenty walk-through. The 36 inch sections give you broad curves and deep scenery on the long sides.",
+      "image": "images/products/wt1220b-36.jpg",
+      "flags": [
+        "web-only",
+        "config-verify"
+      ]
+    },
+    {
+      "model": "24A",
+      "category": "expansion",
+      "name": "24\" Corner Section",
+      "dimensions": "24\" x 48\" x 48\" corner",
+      "widthSeries": "24",
+      "price": 249,
+      "priceNote": null,
+      "useCase": "Turns any 24 series run 90 degrees. Legs included.",
+      "image": "images/products/24a.jpg",
+      "flags": [
+        "price-verify"
+      ]
+    },
+    {
+      "model": "24B",
+      "category": "expansion",
+      "name": "24\" x 48\" Straight Section",
+      "dimensions": "24\" x 48\" straight",
+      "widthSeries": "24",
+      "price": 131,
+      "priceNote": null,
+      "useCase": "Adds 48 inches to any 24 series run. Legs included.",
+      "image": "images/products/24b.jpg",
+      "flags": []
+    },
+    {
+      "model": "24C",
+      "category": "expansion",
+      "name": "24\" x 42\" Straight Section",
+      "dimensions": "24\" x 42\" straight",
+      "widthSeries": "24",
+      "price": 129,
+      "priceNote": null,
+      "useCase": "Adds 42 inches to any 24 series run. Legs included.",
+      "image": "images/products/24c.jpg",
+      "flags": []
+    },
+    {
+      "model": "24D",
+      "category": "expansion",
+      "name": "24\" x 36\" Straight Section",
+      "dimensions": "24\" x 36\" straight",
+      "widthSeries": "24",
+      "price": 124,
+      "priceNote": null,
+      "useCase": "Adds 36 inches to any 24 series run. Legs included.",
+      "image": "images/products/24d.jpg",
+      "flags": []
+    },
+    {
+      "model": "24E",
+      "category": "expansion",
+      "name": "24\" x 30\" Straight Section",
+      "dimensions": "24\" x 30\" straight",
+      "widthSeries": "24",
+      "price": 97,
+      "priceNote": null,
+      "useCase": "Adds 30 inches to any 24 series run. Legs included.",
+      "image": "images/products/24e.jpg",
+      "flags": []
+    },
+    {
+      "model": "24F",
+      "category": "expansion",
+      "name": "24\" x 24\" Straight Section",
+      "dimensions": "24\" x 24\" straight",
+      "widthSeries": "24",
+      "price": 96,
+      "priceNote": null,
+      "useCase": "Adds 24 inches to any 24 series run. Legs included.",
+      "image": "images/products/24f.jpg",
+      "flags": []
+    },
+    {
+      "model": "24G",
+      "category": "expansion",
+      "name": "24\" x 18\" Straight Section",
+      "dimensions": "24\" x 18\" straight",
+      "widthSeries": "24",
+      "price": 89,
+      "priceNote": null,
+      "useCase": "Adds 18 inches to any 24 series run. Legs included.",
+      "image": "images/products/24g.jpg",
+      "flags": []
+    },
+    {
+      "model": "24H",
+      "category": "expansion",
+      "name": "24\" x 12\" Straight Section",
+      "dimensions": "24\" x 12\" straight",
+      "widthSeries": "24",
+      "price": 87,
+      "priceNote": null,
+      "useCase": "Adds 12 inches to any 24 series run. Legs included.",
+      "image": "images/products/24h.jpg",
+      "flags": []
+    },
+    {
+      "model": "24LS",
+      "category": "expansion",
+      "name": "24\" Leg Set",
+      "dimensions": "24\" leg set",
+      "widthSeries": "24",
+      "price": 70,
+      "priceNote": null,
+      "useCase": "Makes any 24 inch expansion section free-standing.",
+      "image": "images/products/24ls.jpg",
+      "flags": []
+    },
+    {
+      "model": "30A",
+      "category": "expansion",
+      "name": "30\" Corner Section",
+      "dimensions": "30\" x 48\" x 48\" corner",
+      "widthSeries": "30",
+      "price": 255,
+      "priceNote": null,
+      "useCase": "Turns any 30 series run 90 degrees. Legs included.",
+      "image": "images/products/30a.jpg",
+      "flags": [
+        "price-verify"
+      ]
+    },
+    {
+      "model": "30B",
+      "category": "expansion",
+      "name": "30\" x 48\" Straight Section",
+      "dimensions": "30\" x 48\" straight",
+      "widthSeries": "30",
+      "price": 135,
+      "priceNote": null,
+      "useCase": "Adds 48 inches to any 30 series run. Legs included.",
+      "image": "images/products/30b.jpg",
+      "flags": []
+    },
+    {
+      "model": "30C",
+      "category": "expansion",
+      "name": "30\" x 42\" Straight Section",
+      "dimensions": "30\" x 42\" straight",
+      "widthSeries": "30",
+      "price": 132,
+      "priceNote": null,
+      "useCase": "Adds 42 inches to any 30 series run. Legs included.",
+      "image": "images/products/30c.jpg",
+      "flags": []
+    },
+    {
+      "model": "30D",
+      "category": "expansion",
+      "name": "30\" x 36\" Straight Section",
+      "dimensions": "30\" x 36\" straight",
+      "widthSeries": "30",
+      "price": 126,
+      "priceNote": null,
+      "useCase": "Adds 36 inches to any 30 series run. Legs included.",
+      "image": "images/products/30d.jpg",
+      "flags": []
+    },
+    {
+      "model": "30E",
+      "category": "expansion",
+      "name": "30\" x 30\" Straight Section",
+      "dimensions": "30\" x 30\" straight",
+      "widthSeries": "30",
+      "price": 99,
+      "priceNote": null,
+      "useCase": "Adds 30 inches to any 30 series run. Legs included.",
+      "image": "images/products/30e.jpg",
+      "flags": []
+    },
+    {
+      "model": "30F",
+      "category": "expansion",
+      "name": "30\" x 24\" Straight Section",
+      "dimensions": "30\" x 24\" straight",
+      "widthSeries": "30",
+      "price": 96,
+      "priceNote": null,
+      "useCase": "Adds 24 inches to any 30 series run. Legs included.",
+      "image": "images/products/30f.jpg",
+      "flags": [
+        "price-verify"
+      ]
+    },
+    {
+      "model": "30G",
+      "category": "expansion",
+      "name": "30\" x 18\" Straight Section",
+      "dimensions": "30\" x 18\" straight",
+      "widthSeries": "30",
+      "price": 91,
+      "priceNote": null,
+      "useCase": "Adds 18 inches to any 30 series run. Legs included.",
+      "image": "images/products/30g.jpg",
+      "flags": []
+    },
+    {
+      "model": "30H",
+      "category": "expansion",
+      "name": "30\" x 12\" Straight Section",
+      "dimensions": "30\" x 12\" straight",
+      "widthSeries": "30",
+      "price": 89,
+      "priceNote": null,
+      "useCase": "Adds 12 inches to any 30 series run. Legs included.",
+      "image": "images/products/30h.jpg",
+      "flags": []
+    },
+    {
+      "model": "30LS",
+      "category": "expansion",
+      "name": "30\" Leg Set",
+      "dimensions": "30\" leg set",
+      "widthSeries": "30",
+      "price": 73,
+      "priceNote": null,
+      "useCase": "Makes any 30 inch expansion section free-standing.",
+      "image": "images/products/30ls.jpg",
+      "flags": []
+    },
+    {
+      "model": "36A",
+      "category": "expansion",
+      "name": "36\" Corner Section",
+      "dimensions": "36\" x 48\" x 48\" corner",
+      "widthSeries": "36",
+      "price": 259,
+      "priceNote": null,
+      "useCase": "Turns any 36 series run 90 degrees. Legs included.",
+      "image": "images/products/36a.jpg",
+      "flags": [
+        "desc-verify"
+      ]
+    },
+    {
+      "model": "36B",
+      "category": "expansion",
+      "name": "36\" x 48\" Straight Section",
+      "dimensions": "36\" x 48\" straight",
+      "widthSeries": "36",
+      "price": 145,
+      "priceNote": null,
+      "useCase": "Adds 48 inches to any 36 series run. Legs included.",
+      "image": "images/products/36b.jpg",
+      "flags": [
+        "desc-verify"
+      ]
+    },
+    {
+      "model": "36C",
+      "category": "expansion",
+      "name": "36\" x 42\" Straight Section",
+      "dimensions": "36\" x 42\" straight",
+      "widthSeries": "36",
+      "price": 141,
+      "priceNote": null,
+      "useCase": "Adds 42 inches to any 36 series run. Legs included.",
+      "image": "images/products/36c.jpg",
+      "flags": [
+        "desc-verify"
+      ]
+    },
+    {
+      "model": "36D",
+      "category": "expansion",
+      "name": "36\" x 36\" Straight Section",
+      "dimensions": "36\" x 36\" straight",
+      "widthSeries": "36",
+      "price": 139,
+      "priceNote": null,
+      "useCase": "Adds 36 inches to any 36 series run. Legs included.",
+      "image": "images/products/36d.jpg",
+      "flags": [
+        "desc-verify"
+      ]
+    },
+    {
+      "model": "36E",
+      "category": "expansion",
+      "name": "36\" x 30\" Straight Section",
+      "dimensions": "36\" x 30\" straight",
+      "widthSeries": "36",
+      "price": 135,
+      "priceNote": null,
+      "useCase": "Adds 30 inches to any 36 series run. Legs included.",
+      "image": "images/products/36e.jpg",
+      "flags": [
+        "desc-verify"
+      ]
+    },
+    {
+      "model": "36F",
+      "category": "expansion",
+      "name": "36\" x 24\" Straight Section",
+      "dimensions": "36\" x 24\" straight",
+      "widthSeries": "36",
+      "price": 104,
+      "priceNote": null,
+      "useCase": "Adds 24 inches to any 36 series run. Legs included.",
+      "image": "images/products/36f.jpg",
+      "flags": [
+        "desc-verify"
+      ]
+    },
+    {
+      "model": "36G",
+      "category": "expansion",
+      "name": "36\" x 18\" Straight Section",
+      "dimensions": "36\" x 18\" straight",
+      "widthSeries": "36",
+      "price": 97,
+      "priceNote": null,
+      "useCase": "Adds 18 inches to any 36 series run. Legs included.",
+      "image": "images/products/36g.jpg",
+      "flags": [
+        "desc-verify"
+      ]
+    },
+    {
+      "model": "36H",
+      "category": "expansion",
+      "name": "36\" x 12\" Straight Section",
+      "dimensions": "36\" x 12\" straight",
+      "widthSeries": "36",
+      "price": 95,
+      "priceNote": null,
+      "useCase": "Adds 12 inches to any 36 series run. Legs included.",
+      "image": "images/products/36h.jpg",
+      "flags": [
+        "desc-verify"
+      ]
+    },
+    {
+      "model": "36LS",
+      "category": "expansion",
+      "name": "36\" Leg Set",
+      "dimensions": "36\" leg set",
+      "widthSeries": "36",
+      "price": 76,
+      "priceNote": null,
+      "useCase": "Makes any 36 inch expansion section free-standing.",
+      "image": "images/products/36ls.jpg",
+      "flags": [
+        "desc-verify"
+      ]
+    },
+    {
+      "model": "0012",
+      "category": "parts",
+      "name": "12\" I-Beam",
+      "dimensions": "12\" I-Beam",
+      "widthSeries": null,
+      "price": 10.0,
+      "priceNote": null,
+      "useCase": "Custom lengths available on request.",
+      "image": "images/products/0012.jpg",
+      "flags": []
+    },
+    {
+      "model": "0018",
+      "category": "parts",
+      "name": "18\" I-Beam",
+      "dimensions": "18\" I-Beam",
+      "widthSeries": null,
+      "price": 11.0,
+      "priceNote": null,
+      "useCase": "Custom lengths available on request.",
+      "image": "images/products/0018.jpg",
+      "flags": []
+    },
+    {
+      "model": "0024",
+      "category": "parts",
+      "name": "24\" I-Beam",
+      "dimensions": "24\" I-Beam",
+      "widthSeries": null,
+      "price": 14.5,
+      "priceNote": null,
+      "useCase": "Custom lengths available on request.",
+      "image": "images/products/0024.jpg",
+      "flags": []
+    },
+    {
+      "model": "0030",
+      "category": "parts",
+      "name": "30\" I-Beam",
+      "dimensions": "30\" I-Beam",
+      "widthSeries": null,
+      "price": 15.5,
+      "priceNote": null,
+      "useCase": "Custom lengths available on request.",
+      "image": "images/products/0030.jpg",
+      "flags": []
+    },
+    {
+      "model": "0036",
+      "category": "parts",
+      "name": "36\" I-Beam",
+      "dimensions": "36\" I-Beam",
+      "widthSeries": null,
+      "price": 18.5,
+      "priceNote": null,
+      "useCase": "Custom lengths available on request.",
+      "image": "images/products/0036.jpg",
+      "flags": []
+    },
+    {
+      "model": "0042",
+      "category": "parts",
+      "name": "42\" I-Beam",
+      "dimensions": "42\" I-Beam",
+      "widthSeries": null,
+      "price": 21.25,
+      "priceNote": null,
+      "useCase": "Custom lengths available on request.",
+      "image": "images/products/0042.jpg",
+      "flags": []
+    },
+    {
+      "model": "0048",
+      "category": "parts",
+      "name": "48\" I-Beam",
+      "dimensions": "48\" I-Beam",
+      "widthSeries": null,
+      "price": 22.0,
+      "priceNote": null,
+      "useCase": "Custom lengths available on request.",
+      "image": "images/products/0048.jpg",
+      "flags": []
+    },
+    {
+      "model": "1245",
+      "category": "parts",
+      "name": "17\" 45\u00b0 I-Beam",
+      "dimensions": "17\" 45\u00b0 I-Beam",
+      "widthSeries": null,
+      "price": 11.0,
+      "priceNote": null,
+      "useCase": "Custom lengths available on request.",
+      "image": "images/products/1245.jpg",
+      "flags": []
+    },
+    {
+      "model": "1845",
+      "category": "parts",
+      "name": "25\" 45\u00b0 I-Beam",
+      "dimensions": "25\" 45\u00b0 I-Beam",
+      "widthSeries": null,
+      "price": 14.5,
+      "priceNote": null,
+      "useCase": "Custom lengths available on request.",
+      "image": "images/products/1845.jpg",
+      "flags": []
+    },
+    {
+      "model": "2445",
+      "category": "parts",
+      "name": "34\" 45\u00b0 I-Beam",
+      "dimensions": "34\" 45\u00b0 I-Beam",
+      "widthSeries": null,
+      "price": 19.0,
+      "priceNote": null,
+      "useCase": "Custom lengths available on request.",
+      "image": "images/products/2445.jpg",
+      "flags": []
+    },
+    {
+      "model": "3045",
+      "category": "parts",
+      "name": "42\" 45\u00b0 I-Beam",
+      "dimensions": "42\" 45\u00b0 I-Beam",
+      "widthSeries": null,
+      "price": 21.5,
+      "priceNote": null,
+      "useCase": "Custom lengths available on request.",
+      "image": "images/products/3045.jpg",
+      "flags": []
+    },
+    {
+      "model": "1005",
+      "category": "parts",
+      "name": "Connector Blocks",
+      "dimensions": "Connector Blocks",
+      "widthSeries": null,
+      "price": 3.25,
+      "priceNote": null,
+      "useCase": "Fits every kit in the system.",
+      "image": "images/products/1005.jpg",
+      "flags": [
+        "price-verify"
+      ]
+    },
+    {
+      "model": "1010",
+      "category": "parts",
+      "name": "Full Connector",
+      "dimensions": "Full Connector",
+      "widthSeries": null,
+      "price": 5.75,
+      "priceNote": null,
+      "useCase": "Fits every kit in the system.",
+      "image": "images/products/1010.jpg",
+      "flags": []
+    },
+    {
+      "model": "2001",
+      "category": "parts",
+      "name": "Adapter Blocks",
+      "dimensions": "Adapter Blocks",
+      "widthSeries": null,
+      "price": 3.25,
+      "priceNote": null,
+      "useCase": "Fits every kit in the system.",
+      "image": "images/products/2001.jpg",
+      "flags": []
+    },
+    {
+      "model": "2002",
+      "category": "parts",
+      "name": "Double Adapter Assembly",
+      "dimensions": "Double Adapter Assembly",
+      "widthSeries": null,
+      "price": 5.75,
+      "priceNote": null,
+      "useCase": "Fits every kit in the system.",
+      "image": "images/products/2002.jpg",
+      "flags": []
+    },
+    {
+      "model": "3001",
+      "category": "parts",
+      "name": "Top Attachment Block with screws",
+      "dimensions": "Top Attachment Block with screws",
+      "widthSeries": null,
+      "price": 0.65,
+      "priceNote": null,
+      "useCase": "Fits every kit in the system.",
+      "image": "images/products/3001.jpg",
+      "flags": []
+    },
+    {
+      "model": "1040",
+      "category": "parts",
+      "name": "40\" Leg",
+      "dimensions": "40\" Leg",
+      "widthSeries": null,
+      "price": 21.25,
+      "priceNote": null,
+      "useCase": "Any height available.",
+      "image": "images/products/1040.jpg",
+      "flags": []
+    },
+    {
+      "model": "1048",
+      "category": "parts",
+      "name": "42\" to 48\" Leg, 2\" increments",
+      "dimensions": "42\" to 48\" Leg, 2\" increments",
+      "widthSeries": null,
+      "price": 25.25,
+      "priceNote": null,
+      "useCase": "Any height available.",
+      "image": "images/products/1048.jpg",
+      "flags": []
+    },
+    {
+      "model": "1058",
+      "category": "parts",
+      "name": "58\" Two-Level Leg",
+      "dimensions": "58\" Two-Level Leg",
+      "widthSeries": null,
+      "price": 29.5,
+      "priceNote": null,
+      "useCase": "Any height available.",
+      "image": "images/products/1058.jpg",
+      "flags": []
+    },
+    {
+      "model": "CAS-1",
+      "category": "parts",
+      "name": "2\" Adjustable Height Caster",
+      "dimensions": "2\" caster, locking or non-locking",
+      "widthSeries": null,
+      "price": 5.0,
+      "priceNote": "$5.00 / $5.75 locking",
+      "useCase": "Rolls your whole layout. $5.00 non-locking, $5.75 locking.",
+      "image": "images/products/cas-1.jpg",
+      "flags": []
+    },
+    {
+      "model": "LIFT-GATE",
+      "category": "accessories",
+      "name": "Motorized Lift-Gate Kit",
+      "dimensions": "Replaces a 5' opening, 24\"/30\"/36\" depths",
+      "widthSeries": null,
+      "price": 1029,
+      "priceNote": "Starting at $1,029",
+      "useCase": "A motorized section that rises out of your path at the push of a button. 64 inch clearance at standard height.",
+      "image": "images/products/lift-gate.jpg",
+      "flags": [
+        "catalog-only",
+        "confirm-tim"
+      ]
+    },
+    {
+      "model": "LG-3060-FS",
+      "category": "accessories",
+      "name": "Free-Standing Lift-Gate",
+      "dimensions": "Requires 62\" wide opening",
+      "widthSeries": null,
+      "price": 1049,
+      "priceNote": null,
+      "useCase": "The Lift-Gate for layouts that aren't Mianne. Yes, we'll still help you out.",
+      "image": "images/products/lg-3060-fs.jpg",
+      "flags": [
+        "catalog-only",
+        "confirm-tim"
+      ]
+    },
+    {
+      "model": "MULTI-DECK",
+      "category": "accessories",
+      "name": "Multi-Deck Second Level",
+      "dimensions": "Cantilevered 2nd level, 12\"/18\"/24\" depths, 58\" or 54\" height",
+      "widthSeries": null,
+      "price": null,
+      "priceNote": "Priced by parts. Call us.",
+      "useCase": "A cantilevered second deck over your existing layout. Adds up to 75 percent more railroad over the same floor.",
+      "image": "images/products/multi-deck.jpg",
+      "flags": [
+        "catalog-only",
+        "confirm-tim"
+      ]
+    },
+    {
+      "model": "TS-48F",
+      "category": "accessories",
+      "name": "Transformer Shelf",
+      "dimensions": "48\" x 12\", other sizes available",
+      "widthSeries": null,
+      "price": 129,
+      "priceNote": "$129, or $109 with any kit",
+      "useCase": "Keeps the power right where your hand expects it. $109 with any complete kit.",
+      "image": "images/products/ts-48f.jpg",
+      "flags": [
+        "catalog-only",
+        "confirm-tim"
+      ]
+    },
+    {
+      "model": "ROLLAWAY",
+      "category": "accessories",
+      "name": "High Rollaway Transformer Cart",
+      "dimensions": "36\" x 12\", heights 30\"/27\"/24\", casters and top included",
+      "widthSeries": null,
+      "price": 139,
+      "priceNote": null,
+      "useCase": "Power and controls on wheels. Rolls to the action, rolls out of the way.",
+      "image": "images/products/rollaway.jpg",
+      "flags": [
+        "catalog-only",
+        "confirm-tim"
+      ]
+    }
+  ]
+}
