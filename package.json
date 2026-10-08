@@ -1,0 +1,16 @@
+{
+  "name": "miannebenchwork",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && node scripts/postbuild-check.mjs",
+    "preview": "astro preview",
+    "fetch-images": "node scripts/fetch-old-images.mjs"
+  },
+  "dependencies": {
+    "astro": "^5.14.0",
+    "marked": "^14.1.4"
+  }
+}

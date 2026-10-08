@@ -1,0 +1,266 @@
+---
+import '../styles/global.css';
+import { rel, canonical, SITE } from '../lib/rel';
+import { PHONE, PHONE_TEL, FAX, EMAIL, YOUTUBE_CHANNEL } from '../lib/catalog';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string; // path under public/, e.g. images/og-default.jpg
+  schema?: object[];
+  preloadImage?: { href: string; srcset?: string; type?: string };
+  forceRoot?: boolean; // 404 page: served at arbitrary URLs, resolves from site root
+  noindex?: boolean;
+  ogType?: string;
+  baseHref?: string; // 404 only
+}
+
+const {
+  title,
+  description,
+  ogImage = 'images/og-default.jpg',
+  schema = [],
+  preloadImage,
+  forceRoot = false,
+  noindex = false,
+  ogType = 'website',
+  baseHref,
+} = Astro.props;
+
+const r = (p = '') => rel(Astro.url, p, forceRoot);
+const canon = canonical(Astro.url);
+const path = Astro.url.pathname;
+
+const nav = [
+  { label: 'HOME', href: '', match: (p: string) => p === '/' },
+  { label: 'CATALOG', href: 'catalog/', match: (p: string) => p.startsWith('/catalog/') },
+  { label: 'ASSEMBLY', href: 'assembly/', match: (p: string) => p.startsWith('/assembly/') },
+  { label: 'ABOUT', href: 'about/', match: (p: string) => p.startsWith('/about/') },
+  { label: 'REVIEWS', href: 'reviews/', match: (p: string) => p.startsWith('/reviews/') },
+  { label: 'FAQS', href: 'faqs/', match: (p: string) => p.startsWith('/faqs/') },
+  { label: 'CONTACT', href: 'contact/', match: (p: string) => p.startsWith('/contact/') },
+];
+
+const org = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': `${SITE}/#business`,
+  name: 'Mianne Benchwork',
+  legalName: 'Mianne Foley Woodworking Inc.',
+  url: `${SITE}/`,
+  logo: `${SITE}/images/logoRGB.png`,
+  image: `${SITE}/images/og-default.jpg`,
+  telephone: '+1-508-226-1600',
+  faxNumber: '+1-508-226-1666',
+  email: EMAIL,
+  foundingDate: '1997',
+  founder: { '@type': 'Person', name: 'Tim Foley' },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '44A Union Street',
+    addressLocality: 'Attleboro',
+    addressRegion: 'MA',
+    postalCode: '02703',
+    addressCountry: 'US',
+  },
+  areaServed: ['Attleboro', 'Massachusetts', 'United States'],
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '08:00',
+      closes: '16:30',
+    },
+  ],
+  sameAs: [YOUTUBE_CHANNEL],
+  description:
+    'Pre-fabricated solid hardwood model railroad benchwork kits that assemble with a screwdriver. Made in Attleboro, Massachusetts since 1997.',
+};
+const website = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${SITE}/#website`,
+  name: 'Mianne Benchwork',
+  url: `${SITE}/`,
+  publisher: { '@id': `${SITE}/#business` },
+};
+const allSchema = [org, website, ...schema];
+const fonts =
+  'https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500&family=Domine:wght@500;600;700&family=Inter:wght@400;500;600&display=swap';
+const ga4 = '<!-- GA4_PLACEHOLDER: paste the GA4 gtag.js snippet here (G-XXXXXXXXXX) once Jon supplies the ID -->';
+const gsc = '<!-- GSC_PLACEHOLDER: <meta name="google-site-verification" content="..."> once Jon supplies the token -->';
+---
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    {baseHref && <base href={baseHref} />}
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canon} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <meta name="theme-color" content="#4a3223" />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${SITE}/${ogImage}`} />
+    <meta property="og:image:width" content={ogImage.endsWith('og-default.jpg') ? '1200' : '1920'} />
+    <meta property="og:image:height" content={ogImage.endsWith('og-default.jpg') ? '630' : '1072'} />
+    <meta property="og:url" content={canon} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="Mianne Benchwork" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${SITE}/${ogImage}`} />
+
+    <link rel="icon" href={r('favicon.ico')} sizes="48x48" />
+    <link rel="icon" href={r('favicon-32.png')} type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href={r('apple-touch-icon.png')} />
+    <link rel="manifest" href={r('site.webmanifest')} />
+
+    {preloadImage && (
+      <link
+        rel="preload"
+        as="image"
+        href={r(preloadImage.href)}
+        imagesrcset={preloadImage.srcset}
+        imagesizes="100vw"
+        type={preloadImage.type}
+        fetchpriority="high"
+      />
+    )}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href={fonts} />
+    <link rel="stylesheet" href={fonts} media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href={fonts} /></noscript>
+
+    {allSchema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+
+    <Fragment set:html={ga4} />
+    <Fragment set:html={gsc} />
+    <script is:inline>document.documentElement.classList.remove('no-js');</script>
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="utility">
+      <div class="wrap">
+        <a href={`tel:${PHONE_TEL}`}>ORDERS: {PHONE}</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <span class="u-fax">FAX: {FAX}</span>
+        <span class="sep" aria-hidden="true">·</span>
+        <a class="u-email" href={`mailto:${EMAIL}`}>{EMAIL.toUpperCase()}</a>
+      </div>
+    </div>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href={r('')} aria-label="Mianne Benchwork home">
+          <img src={r('images/logoRGB.png')} alt="Mianne Benchwork" width="640" height="162" />
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+          <span class="bars" aria-hidden="true"><span></span></span>
+          MENU
+        </button>
+        <nav class="main-nav" id="main-nav" aria-label="Main">
+          <ul>
+            {nav.map((n) => (
+              <li>
+                <a href={r(n.href)} aria-current={n.match(path) ? 'page' : undefined}>{n.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-grid">
+        <div class="footer-col">
+          <a class="footer-logo" href={r('')} aria-label="Mianne Benchwork home">
+            <img src={r('images/logoRGB.png')} alt="Mianne Benchwork" width="640" height="162" loading="lazy" />
+          </a>
+          <address>
+            Mianne Foley Woodworking Inc.<br />
+            44A Union Street, Attleboro, MA 02703<br />
+            Made in the USA since 1997
+          </address>
+        </div>
+        <div class="footer-col">
+          <h2>Explore</h2>
+          <ul class="footer-nav">
+            {nav.slice(1).map((n) => (
+              <li><a href={r(n.href)}>{n.label}</a></li>
+            ))}
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2>Orders & Questions</h2>
+          <ul>
+            <li>ORDERS: <a href={`tel:${PHONE_TEL}`}>{PHONE}</a></li>
+            <li>FAX: {FAX}</li>
+            <li><a href={`mailto:${EMAIL}`}>{EMAIL}</a></li>
+            <li>Mon to Fri, 8:00 to 4:30 Eastern</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bar">
+        <div class="wrap footer-bar__inner">
+          <span>© 2026 Mianne Foley Woodworking Inc.</span>
+          <div class="footer-bar__lws">
+            <span class="footer-credit">Powered by <a href="https://livewebstudios.com" target="_blank" rel="noopener">Live Web Studios</a></span>
+            <a href="https://livewebstudios.com" class="footer-badge" target="_blank" rel="noopener">
+              <img src={r('images/verifiedsecured.png')} alt="Verified &amp; Secured by Live Web Studios" loading="lazy" width="150" height="37" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script is:inline>
+      (function () {
+        var btn = document.querySelector('.nav-toggle');
+        var nav = document.getElementById('main-nav');
+        if (btn && nav) {
+          btn.addEventListener('click', function () {
+            var open = btn.getAttribute('aria-expanded') === 'true';
+            btn.setAttribute('aria-expanded', String(!open));
+            nav.classList.toggle('is-open', !open);
+          });
+          document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+              btn.setAttribute('aria-expanded', 'false');
+              nav.classList.remove('is-open');
+              btn.focus();
+            }
+          });
+        }
+        var els = document.querySelectorAll('.reveal');
+        if (!('IntersectionObserver' in window)) {
+          els.forEach(function (el) { el.classList.add('is-in'); });
+          return;
+        }
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var el = entry.target;
+            var group = el.parentElement ? el.parentElement.querySelectorAll(':scope > .reveal:not(.is-in)') : [];
+            var idx = Array.prototype.indexOf.call(group, el);
+            el.style.transitionDelay = Math.max(0, idx) * 40 + 'ms';
+            el.classList.add('is-in');
+            io.unobserve(el);
+          });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+        els.forEach(function (el) { io.observe(el); });
+      })();
+    </script>
+    <slot name="scripts" />
+  </body>
+</html>

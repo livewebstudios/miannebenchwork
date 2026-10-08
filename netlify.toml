@@ -1,0 +1,262 @@
+# Mianne Benchwork: Netlify config. build/ is the repo root.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# 301 map: old WordPress URLs to the new site (seo.md). Netlify matches with or
+# without a trailing slash. /about, /contact and /assembly need no rule: Netlify
+# pretty URLs already send them to the trailing-slash pages.
+
+[[redirects]]
+  from = "/catalog/kits"
+  to = "/catalog/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/catalog/kits/starter-kits"
+  to = "/catalog/starter-kits/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/catalog/kits/24-series"
+  to = "/catalog/24-series/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/catalog/kits/30-series"
+  to = "/catalog/30-series/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/catalog/kits/series-36"
+  to = "/catalog/36-series/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/catalog/kits/around-the-room-kits"
+  to = "/catalog/around-the-room/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/catalog/kits/walk-through-kits"
+  to = "/catalog/walk-through/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/catalog/kits/expansion-sections"
+  to = "/catalog/expansion/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/catalog/kits/parts"
+  to = "/catalog/parts/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/catalog/benchwork-assembly"
+  to = "/assembly/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about-us"
+  to = "/about/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contact-us"
+  to = "/contact/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/publications"
+  to = "/reviews/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/benchwork-can-be-fun-o-guage-railroading"
+  to = "/reviews/benchwork-can-be-fun/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/railroad-model-craftsman-november-1997"
+  to = "/reviews/railroad-model-craftsman-1997/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/shop"
+  to = "/catalog/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/shop/*"
+  to = "/catalog/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/cart"
+  to = "/catalog/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/checkout"
+  to = "/catalog/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/my-account"
+  to = "/catalog/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/starter-kits"
+  to = "/catalog/starter-kits/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/24-series"
+  to = "/catalog/24-series/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/30-series"
+  to = "/catalog/30-series/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/series-36"
+  to = "/catalog/36-series/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/around-the-room-kits"
+  to = "/catalog/around-the-room/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/walk-through-kits"
+  to = "/catalog/walk-through/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/expansion-sections"
+  to = "/catalog/expansion/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/parts"
+  to = "/catalog/parts/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/kits"
+  to = "/catalog/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pdfs/catalog"
+  to = "/pdfs/catalog.pdf"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pdfs/2024%20catalog%20rev%203%2013%2024%20color%20cvr.pdf"
+  to = "/pdfs/catalog.pdf"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/wp-content/uploads/2024/03/Mianne-Benchwork-order-form-2024.pdf"
+  to = "/pdfs/order-form.pdf"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/feed"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/feed/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/wp-admin"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/wp-admin/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/wp-login.php"
+  to = "/"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/video/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/pdfs/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    Cache-Control = "no-cache"
+    X-Robots-Tag = "noindex"
