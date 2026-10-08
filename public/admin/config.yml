@@ -1,0 +1,28 @@
+# Decap CMS 3.1.2 (pinned in admin/index.html). Blog only: Tim edits posts, Jon edits pages.
+# LWS rule: file collection writing one JSON file, never a folder collection.
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "images/uploads"
+
+collections:
+  - name: "blog"
+    label: "The Mianne Workbench (Blog)"
+    files:
+      - label: "Blog Posts"
+        name: "posts"
+        file: "src/data/blog.json"
+        fields:
+          - label: "Posts"
+            name: "posts"
+            widget: "list"
+            summary: "{{fields.date}}: {{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "URL slug (lowercase, dashes)", name: "slug", widget: "string", pattern: ["^[a-z0-9-]+$", "Lowercase letters, numbers and dashes only"] }
+              - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+              - { label: "Summary (one or two sentences, used for Google)", name: "description", widget: "text" }
+              - { label: "Thumbnail", name: "thumbnail", widget: "image", required: false }
+              - { label: "Body", name: "body", widget: "markdown" }

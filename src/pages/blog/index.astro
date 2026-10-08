@@ -1,0 +1,59 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { posts, upcoming, prettyDate } from '../../lib/blog';
+import { rel } from '../../lib/rel';
+
+const r = (p: string) => rel(Astro.url, p);
+const empty = posts.length === 0;
+---
+<Base
+  title="The Mianne Workbench | Benchwork Articles"
+  description="Layout planning, sizing, and benchwork articles from Mianne: basement layouts, HO vs O gauge, around the room plans, and moving a layout."
+  ogImage="images/hero-parts.jpg"
+  noindex={empty}
+  preloadImage={{ href: 'images/hero-parts.avif', srcset: `${r('images/hero-parts-960.avif')} 960w, ${r('images/hero-parts.avif')} 1920w`, type: 'image/avif' }}
+>
+  <PageHero title="The Mianne Workbench" sub="Layout planning help from the people who build the benchwork." image="hero-parts" alt="Mianne I-beams, legs, and cam fasteners laid out on a workbench" />
+  <section class="section">
+    <div class="wrap narrow">
+      {empty ? (
+        <>
+          <h2>On the workbench now</h2>
+          <p>The first articles are being written. Here's what's coming:</p>
+          <ul class="upcoming">
+            {upcoming.map((t) => <li>{t}</li>)}
+          </ul>
+          <p>Can't wait? Call 508.226.1600 and ask. That's what the phone is for.</p>
+        </>
+      ) : (
+        <>
+          <h2>Latest articles</h2>
+          <ul class="posts">
+            {posts.map((p) => (
+              <li>
+                <a href={r(`blog/${p.slug}/`)}>
+                  <span class="spec">{prettyDate(p.date)}</span>
+                  <h3>{p.title}</h3>
+                  <p>{p.description}</p>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+    </div>
+  </section>
+  <CtaBand />
+</Base>
+<style>
+  .upcoming { padding-left: 1.2em; }
+  .upcoming li { margin-bottom: 8px; font-family: var(--font-display); color: var(--brown); }
+  .posts { list-style: none; margin: 0; padding: 0; display: grid; gap: 20px; }
+  .posts a { display: block; padding: 24px; background: var(--cream-deep); border-radius: var(--radius); text-decoration: none; color: var(--ink); }
+  .posts a:hover { box-shadow: var(--shadow-lift); color: var(--ink); }
+  .posts .spec { font-size: 13px; color: var(--brown-light); }
+  .posts h3 { font-family: var(--font-display); font-size: 24px; margin: 4px 0 8px; }
+  .posts p { margin: 0; }
+</style>

@@ -1,0 +1,36 @@
+---
+import { marked } from 'marked';
+import Base from '../../layouts/Base.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { posts, prettyDate, type Post } from '../../lib/blog';
+import { rel, SITE, canonical } from '../../lib/rel';
+
+export function getStaticPaths() {
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+const { post } = Astro.props as { post: Post };
+const r = (p: string) => rel(Astro.url, p);
+// Decap stores uploads as images/uploads/...; make them relative to this page.
+const html = (marked.parse(post.body ?? '', { async: false }) as string).replace(/(src|href)="images\//g, `$1="${r('images/')}`);
+const article = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.title,
+  datePublished: post.date,
+  description: post.description,
+  author: { '@type': 'Organization', name: 'Mianne Benchwork' },
+  publisher: { '@id': `${SITE}/#business` },
+  url: canonical(Astro.url),
+};
+---
+<Base title={`${post.title} | Mianne Benchwork`} description={post.description} schema={[article]} ogType="article">
+  <article class="section">
+    <div class="wrap narrow prose">
+      <p class="kicker"><a href={r('blog/')}>THE MIANNE WORKBENCH</a> · {prettyDate(post.date)}</p>
+      <h1>{post.title}</h1>
+      {post.thumbnail && <img src={r(post.thumbnail)} alt="" width="1200" height="675" />}
+      <Fragment set:html={html} />
+    </div>
+  </article>
+  <CtaBand />
+</Base>
