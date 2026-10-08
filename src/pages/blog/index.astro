@@ -15,7 +15,7 @@ const empty = posts.length === 0;
   noindex={empty}
   preloadImage={{ href: 'images/hero-parts.avif', srcset: `${r('images/hero-parts-960.avif')} 960w, ${r('images/hero-parts.avif')} 1920w`, type: 'image/avif' }}
 >
-  <PageHero title="The Mianne Workbench" sub="Layout planning help from the people who build the benchwork." image="hero-parts" alt="Mianne I-beams, legs, and cam fasteners laid out on a workbench" />
+  <PageHero title="The Mianne Workbench" sub="Layout planning help from the people who build the benchwork." image="hero-parts" alt="Mianne I-beams, 40 inch legs, connector blocks and cam fasteners laid out on a workbench" />
   <section class="section">
     <div class="wrap narrow">
       {empty ? (
@@ -52,8 +52,8 @@ const empty = posts.length === 0;
   .upcoming li { margin-bottom: 8px; font-family: var(--font-display); color: var(--brown); }
   .posts { list-style: none; margin: 0; padding: 0; display: grid; gap: 20px; }
   .posts a { display: block; padding: 24px; background: var(--cream-deep); border-radius: var(--radius); text-decoration: none; color: var(--ink); }
-  .posts a:hover { box-shadow: var(--shadow-lift); color: var(--ink); }
+  .posts a:hover { background: #e5e5df; color: var(--ink); }
   .posts .spec { font-size: 13px; color: var(--brown-light); }
-  .posts h3 { font-family: var(--font-display); font-size: 24px; margin: 4px 0 8px; }
+  .posts h3 { font-family: var(--font-display); font-size: 24px; font-weight: 350; margin: 4px 0 8px; }
   .posts p { margin: 0; }
 </style>

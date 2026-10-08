@@ -28,7 +28,7 @@ const list = {
     title="Benchwork Kits & Parts"
     sub="Every kit, every size, every price. Flip through and find the one that fits your room."
     image="hero-around"
-    alt="Mianne benchwork running around all four walls of a finished basement"
+    alt="A Mianne AR1012-30 around-the-room layout: one continuous loop of benchwork with an open center"
     kicker={`${products.length} MODELS · PRICES LISTED`}
   />
 
@@ -40,7 +40,10 @@ const list = {
         <p class="reveal">Standard height is 40 inches, and any height is available at no extra charge. The whole system works in 6 inch increments, so a size change in any direction needs no custom parts.</p>
       </div>
       <figure class="reveal">
-        <img src={r('images/products/ar1216-30.jpg')} alt="Mianne AR1216-30 benchwork kit, 12' x 16' room footprint, 30 inch sections" width="720" height="720" loading="lazy" decoding="async" />
+        <picture>
+          <source type="image/webp" srcset={r('images/photos/ar1216-30-room.webp')} />
+          <img src={r('images/photos/ar1216-30-room.jpg')} alt="A Mianne AR1216-30 around-the-room layout: a 16 by 12 foot ring of 30 inch benchwork with an open center" width="1080" height="1080" loading="lazy" decoding="async" />
+        </picture>
       </figure>
     </div>
   </section>

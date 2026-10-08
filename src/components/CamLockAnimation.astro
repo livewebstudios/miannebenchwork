@@ -1,185 +1,279 @@
 ---
-// Diagrammatic cam-lock sequence (design.md §6.1, build-plan.md):
-// 0.0-1.2s beam slides to leg, 1.2-2.6s cam turns 180 and the leg cinches 4px,
-// 2.6-3.2s joint flashes brass and the LOCKED tick draws, 3.2-4.5s level bubble settles.
-// Plays on scroll into view; click or REPLAY to run it again. Reduced motion shows the final frame.
+/**
+ * The cam-and-dowel joint, drawn and animated by hand in SVG. A cutaway side view.
+ *
+ * Everything is drawn in its FINAL, assembled position. The beam animates in from
+ * a negative translate. The steel dowel is threaded into the leg and never moves.
+ *
+ * The geometry is exact: the cam's spiral channel starts at the rim (r = R) and
+ * spirals in to r = R - PULL over exactly 180 degrees. The cam turns with the
+ * beam's last PULL units of travel, so the dowel head sits at the same point in
+ * space the whole time while the channel draws the beam onto it. That last bit
+ * of travel is the cam closing the joint, which is the whole point.
+ *
+ * With no JS, or with reduced motion, the markup is already the final frame.
+ */
+const CX = 490; // cam centre, assembled
+const CY = 220;
+const R = 36; // cam radius
+const PULL = 26; // travel produced by the half turn
+const SLIDE = 120; // approach travel before the cam engages
+
+// Spiral channel in the cam's own frame: at turn angle a (0..180), the head sits
+// at radius R - PULL * a/180 and local angle -a, which the rotation maps back to 0.
+const pts = [[R + 8, 0]];
+for (let a = 0; a <= 180; a += 15) {
+  const r = R - (PULL * a) / 180;
+  const t = (a * Math.PI) / 180;
+  pts.push([r * Math.cos(t), -r * Math.sin(t)]);
+}
+const channel = 'M' + pts.map(([x, y]) => `${x.toFixed(1)} ${y.toFixed(1)}`).join('L');
+const headX = CX + R - PULL; // 500: where the dowel head lives, always
 ---
-<figure class="camlock" data-camlock>
-  <button class="camlock__stage" type="button" aria-label="Replay the cam-lock animation">
-    <svg viewBox="0 0 640 400" role="img" aria-labelledby="camlock-title camlock-desc" focusable="false">
-      <title id="camlock-title">How a Mianne cam lock joins an I-beam to a leg</title>
-      <desc id="camlock-desc">The I-beam slides against the hardwood leg, the cam in the beam turns half a turn and grabs the dowel on the leg, the joint locks, and the level on top settles to center.</desc>
 
-      <!-- floor -->
-      <line class="cl-floor" x1="20" y1="372" x2="620" y2="372" />
+<figure class="cam" data-cam data-cx={CX} data-pull={PULL} data-slide={SLIDE}>
+  <div class="cam-stage">
+    <svg viewBox="250 14 560 410" role="img" aria-labelledby="cam-t cam-d" class="cam-svg">
+      <title id="cam-t">How a Mianne cam-lock joint closes</title>
+      <desc id="cam-d">
+        Cutaway side view. A hardwood I-beam slides onto a steel dowel threaded into a hardwood
+        leg. A screwdriver seats in the cam barrel inside the end of the beam and turns it
+        exactly one half turn. The spiral channel in the cam draws the dowel head toward its
+        center, pulling the beam the last inch onto the leg until the joint is flush and square.
+      </desc>
+      <defs>
+        <linearGradient id="cw" x2="0" y2="1">
+          <stop offset="0" stop-color="#ecdcb8"></stop><stop offset=".55" stop-color="#e0cb9f"></stop><stop offset="1" stop-color="#cfb685"></stop>
+        </linearGradient>
+        <linearGradient id="cl" x2="1">
+          <stop offset="0" stop-color="#eedfbd"></stop><stop offset=".5" stop-color="#e0cb9f"></stop><stop offset="1" stop-color="#c9ad7a"></stop>
+        </linearGradient>
+        <linearGradient id="cs" x2="0" y2="1">
+          <stop offset="0" stop-color="#f4f5f6"></stop><stop offset=".4" stop-color="#c9cdd0"></stop><stop offset=".75" stop-color="#8e9295"></stop><stop offset="1" stop-color="#dfe2e4"></stop>
+        </linearGradient>
+        <clipPath id="cc"><circle r={R}></circle></clipPath>
+      </defs>
 
-      <!-- leg (cinches 4px toward the beam) -->
-      <g class="cl-leg">
-        <rect class="cl-dowel" x="362" y="185" width="40" height="10" rx="2" />
-        <circle class="cl-dowel" cx="364" cy="190" r="8" />
-        <rect class="cl-pin" x="378" y="160" width="24" height="5" rx="2.5" />
-        <rect class="cl-pin" x="378" y="215" width="24" height="5" rx="2.5" />
-        <polygon class="cl-wood" points="402,72 412,60 444,60 454,72" />
-        <rect class="cl-wood" x="402" y="72" width="52" height="276" />
-        <line class="cl-grain" x1="418" y1="90" x2="418" y2="330" />
-        <line class="cl-grain" x1="436" y1="110" x2="436" y2="300" />
-        <rect class="cl-steel" x="420" y="348" width="16" height="10" />
-        <rect class="cl-steel cl-foot" x="408" y="358" width="40" height="14" rx="2" />
+      <line x1="250" y1="410" x2="800" y2="410" stroke="#d6d6cf" stroke-width="2"></line>
+      <g font-family="'JetBrains Mono',ui-monospace,monospace" font-size="12.5" letter-spacing="1.6" fill="#666666">
+        <text x="266" y="398">CUTAWAY</text>
+        <text x="610" y="26" text-anchor="middle">LEG</text>
+        <text x="548" y="136" text-anchor="end">STEEL DOWEL</text>
       </g>
 
-      <!-- I-beam with cam and level (slides in from the left) -->
-      <g class="cl-beam">
-        <rect class="cl-wood" x="60" y="140" width="340" height="16" />
-        <rect class="cl-wood" x="60" y="224" width="340" height="16" />
-        <rect class="cl-web" x="84" y="156" width="260" height="68" />
-        <rect class="cl-wood" x="60" y="140" width="26" height="100" />
-        <rect class="cl-wood" x="342" y="140" width="58" height="100" />
-        <line class="cl-grain" x1="96" y1="148" x2="330" y2="148" />
-        <line class="cl-grain" x1="110" y1="232" x2="320" y2="232" />
+      <!-- Leg, fixed. Pocket cut away to show the threaded bore. -->
+      <rect x="560" y="36" width="100" height="374" rx="2" fill="url(#cl)"></rect>
+      <rect x="560" y="202" width="54" height="36" fill="#eeeee9"></rect>
+      <rect x="560" y="36" width="100" height="374" rx="2" fill="none" stroke="#8a7350" stroke-width="2.5"></rect>
+      <rect x="560" y="212" width="48" height="16" fill="url(#cs)"></rect>
+      <path d="M566 212l6 16M574 212l6 16M582 212l6 16M590 212l6 16M598 212l6 16" stroke="#787e82" stroke-width="1.5"></path>
 
-        <!-- spirit level resting on the beam -->
-        <g class="cl-level">
-          <rect class="cl-level-body" x="150" y="112" width="170" height="28" rx="4" />
-          <rect class="cl-vial" x="205" y="118" width="60" height="16" rx="8" />
-          <line class="cl-mark" x1="227" y1="118" x2="227" y2="134" />
-          <line class="cl-mark" x1="243" y1="118" x2="243" y2="134" />
-          <ellipse class="cl-bubble" cx="235" cy="126" rx="7" ry="5" />
+      <!-- I-beam, slides in -->
+      <g data-cam-beam>
+        <rect x="40" y="150" width="520" height="22" fill="url(#cw)"></rect>
+        <rect x="40" y="172" width="410" height="96" fill="#d4bd92"></rect>
+        <rect x="40" y="268" width="520" height="22" fill="url(#cw)"></rect>
+        <rect x="440" y="150" width="120" height="140" fill="url(#cw)"></rect>
+        <rect x="448" y="174" width="112" height="92" fill="#e6d3aa"></rect>
+        <circle cx={CX} cy={CY} r={R + 2} fill="#eeeee9"></circle>
+        <rect x={CX} y="210" width={560 - CX} height="20" fill="#eeeee9"></rect>
+        <path d={`M${CX} 172v6M${CX} 262v6`} stroke="#698e79" stroke-width="2.5"></path>
+        <rect x="40" y="150" width="520" height="140" fill="none" stroke="#8a7350" stroke-width="2.5"></rect>
+        <path d="M440 150v140M448 174h112M448 266h112M448 174v92" fill="none" stroke="#8a7350" stroke-width="1.2"></path>
+        <g font-family="'JetBrains Mono',ui-monospace,monospace" font-size="12.5" letter-spacing="1.6" fill="#666666">
+          <text x="300" y="314">HARDWOOD I-BEAM</text>
+          <text x={CX} y="314" text-anchor="middle">CAM</text>
         </g>
-
-        <!-- cam (rotates 180) -->
-        <g class="cl-cam">
-          <circle class="cl-cam-body" cx="371" cy="190" r="21" />
-          <circle class="cl-cam-ring" cx="371" cy="190" r="14" />
-          <line class="cl-slot" x1="363" y1="190" x2="379" y2="190" />
-          <line class="cl-slot" x1="371" y1="182" x2="371" y2="198" />
-          <path class="cl-cam-mark" d="M371 170 l-5 -7 h10 z" />
-        </g>
       </g>
 
-      <!-- turn arrow around the cam -->
-      <path class="cl-turn" d="M343 172 A33 33 0 0 1 399 172" />
-      <path class="cl-turn-head" d="M399 172 l-10 -1 l6 -8 z" />
-
-      <!-- joint flash -->
-      <rect class="cl-flash" x="392" y="140" width="14" height="100" rx="2" />
-
-      <!-- locked tick -->
-      <g class="cl-lock">
-        <circle class="cl-lock-ring" cx="534" cy="190" r="24" />
-        <path class="cl-tick" d="M522 191 l8 8 l15 -17" />
-        <text class="cl-label cl-label--lock" x="534" y="238" text-anchor="middle">LOCKED</text>
+      <!-- Cam barrel, rides with the beam and turns. Final frame: half turn done. -->
+      <g data-cam-barrel transform={`translate(${CX} ${CY}) rotate(180)`}>
+        <circle r={R} fill="url(#cs)" stroke="#6f7376" stroke-width="2"></circle>
+        <path d={channel} clip-path="url(#cc)" fill="none" stroke="#3d4346" stroke-opacity=".7" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"></path>
+        <rect x="-19" y="-3.5" width="38" height="7" rx="1.5" fill="#2f3437"></rect>
+        <circle cy="-29" r="3.6" fill="#698e79"></circle>
       </g>
 
-      <!-- labels -->
-      <text class="cl-label" x="190" y="268" text-anchor="middle">I-BEAM</text>
-      <line class="cl-leader" x1="371" y1="256" x2="371" y2="244" />
-      <text class="cl-label" x="371" y="276" text-anchor="middle">CAM LOCK</text>
-      <text class="cl-label" x="472" y="80">LEG</text>
+      <!-- Dowel shank and head, fixed to the leg -->
+      <rect x={headX} y="213" width={560 - headX} height="14" fill="url(#cs)" stroke="#8e9295"></rect>
+      <circle cx={headX} cy={CY} r="10" fill="url(#cs)" stroke="#5f6568" stroke-width="1.5"></circle>
+
+      <!-- Screwdriver, comes in at an angle from in front of the page -->
+      <g data-cam-driver opacity="0" transform={`translate(${CX} ${CY}) rotate(-35)`}>
+        <path d="M-5 0h10l-1-12h-8z" fill="#5f6568"></path>
+        <rect x="-5" y="-122" width="10" height="112" fill="url(#cs)"></rect>
+        <rect x="-16" y="-236" width="32" height="118" rx="9" fill="#1c3a13"></rect>
+        <rect data-cam-glint x="-10" y="-228" width="7" height="102" rx="3.5" fill="#3d6a2e"></rect>
+      </g>
+
+      <!-- Flush and square -->
+      <g data-cam-square fill="none" stroke="#698e79" stroke-width="2.5">
+        <path d="M530 290v28h30"></path>
+        <path d="M528 145h64"></path>
+      </g>
     </svg>
-  </button>
-  <figcaption class="camlock__caption">
-    <span>Beam to leg. Half a turn. Locked and level.</span>
-    <button class="btn btn-ghost camlock__replay" type="button">REPLAY</button>
-  </figcaption>
+    <p class="cam-caption" data-cam-caption aria-hidden="true">Tight, flush and square.</p>
+  </div>
+
+  <div class="cam-controls" data-cam-controls hidden>
+    <button class="cam-btn" type="button" data-cam-toggle>PLAY</button>
+    <label class="cam-scrub">
+      <span class="visually-hidden">Scrub through the joint closing</span>
+      <input type="range" min="0" max="1000" value="1000" data-cam-range />
+    </label>
+  </div>
 </figure>
 
 <style>
-  .camlock { margin: 40px 0 0; }
-  .camlock__stage {
-    display: block; width: 100%; padding: 0; border: 1px solid var(--brass-soft);
-    border-radius: var(--radius); background: var(--cream); cursor: pointer;
-  }
-  .camlock__stage svg { width: 100%; height: auto; }
-  .camlock__caption {
-    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;
-    margin-top: 14px; color: var(--brown-light); font-size: 15px;
+  .cam {
+    margin: 0;
   }
 
-  .camlock :global(svg *) { vector-effect: non-scaling-stroke; }
-  .cl-floor { stroke: var(--brass); stroke-width: 2; stroke-dasharray: 6 6; }
-  .cl-wood { fill: #f2e6cf; stroke: var(--brown); stroke-width: 2.5; stroke-linejoin: round; }
-  .cl-web { fill: #dcc7a2; stroke: var(--brown); stroke-width: 1.5; }
-  .cl-grain { stroke: var(--brass); stroke-width: 1; opacity: 0.55; }
-  .cl-steel { fill: #c9c4bb; stroke: var(--brown); stroke-width: 2; }
-  .cl-dowel { fill: #d6d1c8; stroke: var(--brown); stroke-width: 2; }
-  .cl-pin { fill: #e7e3dc; stroke: var(--brown); stroke-width: 1.5; }
-  .cl-level-body { fill: var(--brown); }
-  .cl-vial { fill: #e9edc9; stroke: var(--cream); stroke-width: 1.5; }
-  .cl-mark { stroke: var(--brown); stroke-width: 1.5; }
-  .cl-bubble { fill: var(--white); stroke: var(--brown-light); stroke-width: 1; }
-  .cl-cam-body { fill: #cfc9bf; stroke: var(--brown); stroke-width: 2.5; }
-  .cl-cam-ring { fill: none; stroke: var(--brown); stroke-width: 1.5; }
-  .cl-slot { stroke: var(--brown); stroke-width: 3; stroke-linecap: round; }
-  .cl-cam-mark { fill: var(--brick); }
-  .cl-turn { fill: none; stroke: var(--brick); stroke-width: 2.5; stroke-linecap: round; opacity: 0; }
-  .cl-turn-head { fill: var(--brick); opacity: 0; }
-  .cl-flash { fill: var(--brass); opacity: 0; }
-  .cl-lock-ring { fill: none; stroke: var(--brass); stroke-width: 2.5; }
-  .cl-tick { fill: none; stroke: var(--brown); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 40; stroke-dashoffset: 0; }
-  .cl-label { font-family: var(--font-spec); font-weight: 500; font-size: 15px; letter-spacing: 0.12em; fill: var(--brown); }
-  .cl-label--lock { fill: var(--brick); }
-  .cl-leader { stroke: var(--brown); stroke-width: 1.5; }
-
-  .cl-cam, .cl-bubble { transform-box: fill-box; transform-origin: center; }
-  .cl-cam { transform: rotate(180deg); }
-  .cl-leg { transform: translateX(-4px); }
-
-  /* Armed: JS is running and motion is allowed; hold the opening frame until it plays. */
-  .camlock.is-armed:not(.is-playing) .cl-beam { transform: translateX(-90px); }
-  .camlock.is-armed:not(.is-playing) .cl-cam { transform: rotate(0deg); }
-  .camlock.is-armed:not(.is-playing) .cl-leg { transform: none; }
-  .camlock.is-armed:not(.is-playing) .cl-bubble { transform: translateX(22px); }
-  .camlock.is-armed:not(.is-playing) .cl-lock { opacity: 0; }
-  .camlock.is-armed:not(.is-playing) .cl-tick { stroke-dashoffset: 40; }
-
-  .camlock.is-playing .cl-beam { animation: cl-slide 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
-  .camlock.is-playing .cl-cam { animation: cl-turn 1.4s cubic-bezier(0.55, 0, 0.3, 1) 1.2s both; }
-  .camlock.is-playing .cl-turn,
-  .camlock.is-playing .cl-turn-head { animation: cl-arrow 1.4s ease 1.2s both; }
-  .camlock.is-playing .cl-leg { animation: cl-cinch 0.4s ease-in 2.2s both; }
-  .camlock.is-playing .cl-flash { animation: cl-flash 0.6s ease 2.6s both; }
-  .camlock.is-playing .cl-lock { animation: cl-fade 0.3s ease 2.6s both; }
-  .camlock.is-playing .cl-tick { animation: cl-draw 0.45s ease-out 2.75s both; }
-  .camlock.is-playing .cl-bubble { animation: cl-settle 1.3s linear 3.2s both; }
-
-  @keyframes cl-slide { from { transform: translateX(-90px); } to { transform: none; } }
-  @keyframes cl-turn { from { transform: rotate(0deg); } to { transform: rotate(180deg); } }
-  @keyframes cl-arrow { 0% { opacity: 0; } 25%, 70% { opacity: 1; } 100% { opacity: 0; } }
-  @keyframes cl-cinch { from { transform: none; } to { transform: translateX(-4px); } }
-  @keyframes cl-flash { 0% { opacity: 0; } 35% { opacity: 0.9; } 100% { opacity: 0; } }
-  @keyframes cl-fade { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes cl-draw { from { stroke-dashoffset: 40; } to { stroke-dashoffset: 0; } }
-  @keyframes cl-settle {
-    0% { transform: translateX(22px); animation-timing-function: ease-in-out; }
-    35% { transform: translateX(-9px); animation-timing-function: ease-in-out; }
-    60% { transform: translateX(4px); animation-timing-function: ease-in-out; }
-    80% { transform: translateX(-1.5px); animation-timing-function: ease-in-out; }
-    100% { transform: none; }
+  .cam-stage {
+    background: var(--cream-deep);
+    border-radius: var(--radius);
+    padding: clamp(0.75rem, 3vw, 2.5rem) clamp(0.75rem, 3vw, 2.5rem) clamp(1rem, 2vw, 1.5rem);
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .camlock__replay { display: none; }
+  .cam-svg {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .cam-caption {
+    margin-top: 0.75rem;
+    text-align: center;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brown);
+    min-height: 1.5em;
+  }
+
+  .cam-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .cam-controls[hidden] {
+    display: none;
+  }
+
+  .cam-btn {
+    flex: 0 0 auto;
+    min-width: 96px;
+    min-height: 44px;
+    padding: 0.5rem 1.1rem;
+    border: 1.5px solid var(--brown);
+    border-radius: var(--radius-pill);
+    background: transparent;
+    color: var(--brown);
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+  }
+
+  .cam-btn:hover {
+    background: var(--brown);
+    color: var(--cream);
+  }
+
+  .cam-scrub {
+    flex: 1 1 auto;
+  }
+
+  .cam-scrub input {
+    display: block;
+    width: 100%;
+    height: 44px;
+    accent-color: var(--brown);
+    cursor: pointer;
   }
 </style>
 
 <script is:inline>
   (function () {
-    var figs = document.querySelectorAll('[data-camlock]');
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    figs.forEach(function (fig) {
-      fig.classList.add('is-armed');
-      function play() {
-        fig.classList.remove('is-playing');
-        void fig.offsetWidth;
-        fig.classList.add('is-playing');
-      }
-      fig.querySelector('.camlock__stage').addEventListener('click', play);
-      fig.querySelector('.camlock__replay').addEventListener('click', play);
-      if (!('IntersectionObserver' in window)) { play(); return; }
-      var io = new IntersectionObserver(function (entries) {
-        if (entries[0].isIntersecting) { play(); io.disconnect(); }
-      }, { threshold: 0.45 });
-      io.observe(fig);
+    var root = document.querySelector('[data-cam]');
+    if (!root || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var q = function (s) { return root.querySelector(s); };
+    var beam = q('[data-cam-beam]'), barrel = q('[data-cam-barrel]'), driver = q('[data-cam-driver]');
+    var glint = q('[data-cam-glint]'), square = q('[data-cam-square]'), cap = q('[data-cam-caption]');
+    var btn = q('[data-cam-toggle]'), range = q('[data-cam-range]');
+    var CX = +root.dataset.cx, PULL = +root.dataset.pull, SLIDE = +root.dataset.slide;
+    var DUR = 6000, HOLD = 2400;
+
+    var clamp = function (v) { return v < 0 ? 0 : v > 1 ? 1 : v; };
+    var seg = function (t, a, b) { return clamp((t - a) / (b - a)); };
+    var ease = function (p) { return p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2; };
+    var CAPS = [[0, 'Slide the beam onto the dowel.'], [0.29, 'Seat the screwdriver in the cam.'], [0.44, 'One half turn.'], [0.8, 'Tight, flush and square.']];
+
+    var t = 0, playing = false, held = false, t0 = 0, raf = 0;
+
+    function render(v) {
+      t = v;
+      var turn = ease(seg(v, 0.45, 0.78));
+      var x = -(SLIDE + PULL) + ease(seg(v, 0, 0.27)) * SLIDE + turn * PULL;
+      var dIn = ease(seg(v, 0.29, 0.41)), dOut = ease(seg(v, 0.83, 0.93));
+      var off = 230 * (1 - dIn) + 230 * dOut;
+      beam.setAttribute('transform', 'translate(' + x.toFixed(2) + ' 0)');
+      barrel.setAttribute('transform', 'translate(' + (CX + x).toFixed(2) + ' 220) rotate(' + (turn * 180).toFixed(2) + ')');
+      driver.setAttribute('transform', 'translate(' + (CX + x - 0.574 * off).toFixed(2) + ' ' + (220 - 0.819 * off).toFixed(2) + ') rotate(-35)');
+      driver.setAttribute('opacity', Math.min(1, dIn * 1.6) * (1 - dOut));
+      glint.setAttribute('x', (-10 + 13 * Math.sin(turn * Math.PI)).toFixed(2));
+      square.setAttribute('opacity', ease(seg(v, 0.84, 0.95)));
+      var c = CAPS[0][1];
+      for (var i = 0; i < CAPS.length; i++) if (v >= CAPS[i][0]) c = CAPS[i][1];
+      if (cap.textContent !== c) cap.textContent = c;
+      if (document.activeElement !== range) range.value = Math.round(v * 1000);
+    }
+
+    function frame(now) {
+      var e = now - t0;
+      if (e > DUR + HOLD) { t0 = now; e = 0; }
+      render(clamp(e / DUR));
+      raf = requestAnimationFrame(frame);
+    }
+
+    function play() {
+      if (playing) return;
+      playing = true;
+      t0 = performance.now() - (t >= 1 ? 0 : t * DUR);
+      btn.textContent = 'PAUSE';
+      raf = requestAnimationFrame(frame);
+    }
+
+    function pause() {
+      playing = false;
+      cancelAnimationFrame(raf);
+      btn.textContent = 'PLAY';
+    }
+
+    btn.addEventListener('click', function () {
+      if (playing) { held = true; pause(); } else { held = false; play(); }
     });
+    range.addEventListener('input', function () {
+      held = true;
+      pause();
+      render(range.value / 1000);
+    });
+
+    q('[data-cam-controls]').hidden = false;
+    render(0);
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting && !held) play();
+          else if (!e.isIntersecting) pause();
+        });
+      }, { threshold: 0.35 }).observe(root);
+    } else play();
   })();
 </script>

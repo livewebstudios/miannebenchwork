@@ -86,7 +86,7 @@ const website = {
 };
 const allSchema = [org, website, ...schema];
 const fonts =
-  'https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500&family=Domine:wght@500;600;700&family=Inter:wght@400;500;600&display=swap';
+  'https://fonts.googleapis.com/css2?family=Inter:wght@300..600&family=JetBrains+Mono:wght@400;500&display=swap';
 const ga4 = '<!-- GA4_PLACEHOLDER: paste the GA4 gtag.js snippet here (G-XXXXXXXXXX) once Jon supplies the ID -->';
 const gsc = '<!-- GSC_PLACEHOLDER: <meta name="google-site-verification" content="..."> once Jon supplies the token -->';
 ---
@@ -100,7 +100,7 @@ const gsc = '<!-- GSC_PLACEHOLDER: <meta name="google-site-verification" content
     <meta name="description" content={description} />
     <link rel="canonical" href={canon} />
     {noindex && <meta name="robots" content="noindex, follow" />}
-    <meta name="theme-color" content="#4a3223" />
+    <meta name="theme-color" content="#1c3a13" />
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -145,7 +145,7 @@ const gsc = '<!-- GSC_PLACEHOLDER: <meta name="google-site-verification" content
     <script is:inline>document.documentElement.classList.remove('no-js');</script>
     <slot name="head" />
   </head>
-  <body>
+  <body style={`--wood-jpg: url('${r('images/textures/wood-grain.jpg')}'); --wood-webp: url('${r('images/textures/wood-grain.webp')}');`}>
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="utility">
       <div class="wrap">

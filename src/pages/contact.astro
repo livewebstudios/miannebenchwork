@@ -17,7 +17,7 @@ const r = (p: string) => rel(Astro.url, p);
     title="Contact Mianne"
     sub="Call, write, or send the form. You'll get Tim."
     image="hero-about"
-    alt="A New England woodshop with stacks of milled poplar and a workbench in warm light"
+    alt="Stacks of finished Mianne I-beams and legs in the shop, ready to box and ship"
   />
 
   <section class="section">
@@ -30,7 +30,7 @@ const r = (p: string) => rel(Astro.url, p);
         <address class="reveal">Mianne Foley Woodworking Inc.<br />44A Union Street<br />Attleboro, MA 02703</address>
 
         <h2 class="reveal contact-sub">Printable order form</h2>
-        <p class="reveal">Old school works here. <a href={r('pdfs/order-form.pdf')}>Print the order form</a> and mail or fax it in.</p>
+        <p class="reveal">Old school works here. <a href={r('pdfs/order-form.pdf')} target="_blank" rel="noopener">Print the order form</a> and mail or fax it in.</p>
       </div>
       <div class="contact-form-wrap reveal">
         <h2>Or send this and we'll call you</h2>
@@ -46,7 +46,7 @@ const r = (p: string) => rel(Astro.url, p);
   .contact-info .phone-big { color: var(--brick); margin-top: 8px; }
   .contact-info address { font-style: normal; margin-top: 18px; line-height: 1.7; }
   .contact-sub { margin-top: 48px; }
-  .contact-form-wrap { background: var(--cream-deep); padding: 32px 24px; border-radius: var(--radius); border-top: 3px solid var(--brass); }
+  .contact-form-wrap { background: var(--cream-deep); padding: 32px 24px; border-radius: var(--radius); }
   @media (min-width: 768px) { .contact-form-wrap { padding: 40px; } }
   .contact-form-wrap h2 { font-size: 26px; }
 </style>

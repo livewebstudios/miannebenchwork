@@ -21,7 +21,7 @@ export const categoryPages: Record<string, CategoryPage> = {
     description:
       'Rectangular model train tables that assemble in about an hour. 22 sizes with prices listed. Solid hardwood, no power tools.',
     hero: 'hero-starter',
-    heroAlt: 'A Mianne 4x8 starter table with a half-finished HO layout in a tidy garage',
+    heroAlt: 'A Mianne ST-4x8TSR starter table with a simple HO layout in a tidy garage',
     tile: 'STARTER KITS',
     tileSub: 'Rectangular tables, 2x6 to 8x8',
     widthFilter: false,
@@ -34,7 +34,7 @@ export const categoryPages: Record<string, CategoryPage> = {
     description:
       'Shaped layout benchwork with 24 inch sections that keep every rail in easy reach. Sizes and prices listed.',
     hero: 'hero-classic',
-    heroAlt: 'L-shaped Mianne benchwork along two basement walls with a sceniced layout on top',
+    heroAlt: 'A Mianne CL02-30 L-shaped layout in a basement, light maple I-beams and legs',
     tile: '24 SERIES',
     tileSub: 'Shaped classics, 24" sections',
     widthFilter: false,
@@ -48,7 +48,7 @@ export const categoryPages: Record<string, CategoryPage> = {
     description:
       'Classic shaped benchwork with 30 inch sections, the HO and O gauge sweet spot. Sizes and prices listed.',
     hero: 'hero-classic',
-    heroAlt: 'L-shaped Mianne benchwork along two basement walls with a sceniced layout on top',
+    heroAlt: 'A Mianne CL02-30 L-shaped layout in a basement, light maple I-beams and legs',
     tile: '30 SERIES',
     tileSub: 'Shaped classics, 30" sections',
     widthFilter: false,
@@ -62,7 +62,7 @@ export const categoryPages: Record<string, CategoryPage> = {
     description:
       'Classic shapes with 36 inches of depth for broad curves and big scenery. Sizes and prices listed.',
     hero: 'hero-classic',
-    heroAlt: 'L-shaped Mianne benchwork along two basement walls with a sceniced layout on top',
+    heroAlt: 'A Mianne CL02-30 L-shaped layout in a basement, light maple I-beams and legs',
     tile: '36 SERIES',
     tileSub: 'Shaped classics, 36" sections',
     widthFilter: false,
@@ -76,7 +76,7 @@ export const categoryPages: Record<string, CategoryPage> = {
     description:
       'Continuous-running benchwork that follows your walls. Footprints 8x12 to 12x24 in three depths, prices listed.',
     hero: 'hero-around',
-    heroAlt: 'Mianne benchwork running around all four walls of a finished basement',
+    heroAlt: 'A Mianne AR1012-30 around-the-room layout: one continuous loop of benchwork with an open center',
     tile: 'AROUND THE ROOM',
     tileSub: 'Continuous running, wall to wall',
     widthFilter: true,
@@ -89,7 +89,7 @@ export const categoryPages: Record<string, CategoryPage> = {
     description:
       'Around-the-room benchwork with a real walk-through opening. Lift-Gate ready versions available. Prices listed.',
     hero: 'hero-walkthrough',
-    heroAlt: 'U-shaped Mianne walk-through benchwork with an open entry between the two runs',
+    heroAlt: 'A Mianne WT1016-30 walk-through layout seen from the open entry',
     tile: 'WALK-THROUGH',
     tileSub: 'No duck-under, walk right in',
     widthFilter: true,
@@ -102,7 +102,7 @@ export const categoryPages: Record<string, CategoryPage> = {
     description:
       'Straight and corner sections that grow any Mianne layout, legs included. Nothing you own becomes obsolete.',
     hero: 'hero-expansion',
-    heroAlt: 'A new unfinished Mianne section joined to a finished, sceniced layout',
+    heroAlt: 'A bare Mianne 30B expansion section bolted onto the end of a finished bench',
     tile: 'EXPANSION SECTIONS',
     tileSub: "Grow what you've got",
     widthFilter: true,
@@ -115,7 +115,7 @@ export const categoryPages: Record<string, CategoryPage> = {
     description:
       'Every part in the Mianne system sold individually, with prices. Custom lengths and heights on request.',
     hero: 'hero-parts',
-    heroAlt: 'Mianne I-beams, legs, and cam fasteners laid out on a workbench',
+    heroAlt: 'Mianne I-beams, 40 inch legs, connector blocks and cam fasteners laid out on a workbench',
     tile: 'PARTS & ACCESSORIES',
     tileSub: 'Beams, legs, cams, casters',
     widthFilter: false,
@@ -127,8 +127,8 @@ export const categoryPages: Record<string, CategoryPage> = {
     title: 'Lift-Gates, Multi-Deck & Accessories | Mianne Benchwork',
     description:
       'Motorized Lift-Gates, cantilevered second decks, transformer shelves and rollaway carts for Mianne layouts.',
-    hero: 'hero-accessories',
-    heroAlt: 'Two-level Mianne benchwork with a cantilevered upper deck over a sceniced main level',
+    hero: 'hero-parts',
+    heroAlt: 'Mianne I-beams, 40 inch legs, connector blocks and cam fasteners laid out on a workbench',
     tile: 'LIFT-GATES & MULTI-DECK',
     tileSub: 'Lift-Gates, second decks, shelves, carts',
     widthFilter: false,

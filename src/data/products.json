@@ -65,14 +65,6 @@
       "sort": 8,
       "intro": "Every beam, leg, cam and caster in the system, sold individually.",
       "hero": "images/hero-parts.jpg"
-    },
-    {
-      "slug": "accessories",
-      "name": "Lift-Gates, Multi-Deck & More",
-      "nav": "ACCESSORIES",
-      "sort": 9,
-      "intro": "Lift-Gates, second decks, transformer shelves and rollaway carts.",
-      "hero": "images/hero-accessories.jpg"
     }
   ],
   "products": [
@@ -1754,8 +1746,8 @@
     {
       "model": "1245",
       "category": "parts",
-      "name": "17\" 45\u00b0 I-Beam",
-      "dimensions": "17\" 45\u00b0 I-Beam",
+      "name": "17\" 45° I-Beam",
+      "dimensions": "17\" 45° I-Beam",
       "widthSeries": null,
       "price": 11.0,
       "priceNote": null,
@@ -1766,8 +1758,8 @@
     {
       "model": "1845",
       "category": "parts",
-      "name": "25\" 45\u00b0 I-Beam",
-      "dimensions": "25\" 45\u00b0 I-Beam",
+      "name": "25\" 45° I-Beam",
+      "dimensions": "25\" 45° I-Beam",
       "widthSeries": null,
       "price": 14.5,
       "priceNote": null,
@@ -1778,8 +1770,8 @@
     {
       "model": "2445",
       "category": "parts",
-      "name": "34\" 45\u00b0 I-Beam",
-      "dimensions": "34\" 45\u00b0 I-Beam",
+      "name": "34\" 45° I-Beam",
+      "dimensions": "34\" 45° I-Beam",
       "widthSeries": null,
       "price": 19.0,
       "priceNote": null,
@@ -1790,8 +1782,8 @@
     {
       "model": "3045",
       "category": "parts",
-      "name": "42\" 45\u00b0 I-Beam",
-      "dimensions": "42\" 45\u00b0 I-Beam",
+      "name": "42\" 45° I-Beam",
+      "dimensions": "42\" 45° I-Beam",
       "widthSeries": null,
       "price": 21.5,
       "priceNote": null,
@@ -1908,81 +1900,6 @@
       "useCase": "Rolls your whole layout. $5.00 non-locking, $5.75 locking.",
       "image": "images/products/cas-1.jpg",
       "flags": []
-    },
-    {
-      "model": "LIFT-GATE",
-      "category": "accessories",
-      "name": "Motorized Lift-Gate Kit",
-      "dimensions": "Replaces a 5' opening, 24\"/30\"/36\" depths",
-      "widthSeries": null,
-      "price": 1029,
-      "priceNote": "Starting at $1,029",
-      "useCase": "A motorized section that rises out of your path at the push of a button. 64 inch clearance at standard height.",
-      "image": "images/products/lift-gate.jpg",
-      "flags": [
-        "catalog-only",
-        "confirm-tim"
-      ]
-    },
-    {
-      "model": "LG-3060-FS",
-      "category": "accessories",
-      "name": "Free-Standing Lift-Gate",
-      "dimensions": "Requires 62\" wide opening",
-      "widthSeries": null,
-      "price": 1049,
-      "priceNote": null,
-      "useCase": "The Lift-Gate for layouts that aren't Mianne. Yes, we'll still help you out.",
-      "image": "images/products/lg-3060-fs.jpg",
-      "flags": [
-        "catalog-only",
-        "confirm-tim"
-      ]
-    },
-    {
-      "model": "MULTI-DECK",
-      "category": "accessories",
-      "name": "Multi-Deck Second Level",
-      "dimensions": "Cantilevered 2nd level, 12\"/18\"/24\" depths, 58\" or 54\" height",
-      "widthSeries": null,
-      "price": null,
-      "priceNote": "Priced by parts. Call us.",
-      "useCase": "A cantilevered second deck over your existing layout. Adds up to 75 percent more railroad over the same floor.",
-      "image": "images/products/multi-deck.jpg",
-      "flags": [
-        "catalog-only",
-        "confirm-tim"
-      ]
-    },
-    {
-      "model": "TS-48F",
-      "category": "accessories",
-      "name": "Transformer Shelf",
-      "dimensions": "48\" x 12\", other sizes available",
-      "widthSeries": null,
-      "price": 129,
-      "priceNote": "$129, or $109 with any kit",
-      "useCase": "Keeps the power right where your hand expects it. $109 with any complete kit.",
-      "image": "images/products/ts-48f.jpg",
-      "flags": [
-        "catalog-only",
-        "confirm-tim"
-      ]
-    },
-    {
-      "model": "ROLLAWAY",
-      "category": "accessories",
-      "name": "High Rollaway Transformer Cart",
-      "dimensions": "36\" x 12\", heights 30\"/27\"/24\", casters and top included",
-      "widthSeries": null,
-      "price": 139,
-      "priceNote": null,
-      "useCase": "Power and controls on wheels. Rolls to the action, rolls out of the way.",
-      "image": "images/products/rollaway.jpg",
-      "flags": [
-        "catalog-only",
-        "confirm-tim"
-      ]
     }
   ]
 }

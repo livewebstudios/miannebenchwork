@@ -12,7 +12,7 @@ const faqs: { q: string; a: string; html?: string }[] = [
   {
     q: "Can I order online?",
     a: "Orders are by phone, 508.226.1600, Monday to Friday 8 to 4:30 Eastern. You'll talk to a person who can answer anything about your layout before you spend a dime. There's also a printable order form if you'd rather mail or fax it.",
-    html: `Orders are by phone, <a href="tel:+15082261600">508.226.1600</a>, Monday to Friday 8 to 4:30 Eastern. You'll talk to a person who can answer anything about your layout before you spend a dime. There's also a <a href="${r('pdfs/order-form.pdf')}">printable order form</a> if you'd rather mail or fax it.`,
+    html: `Orders are by phone, <a href="tel:+15082261600">508.226.1600</a>, Monday to Friday 8 to 4:30 Eastern. You'll talk to a person who can answer anything about your layout before you spend a dime. There's also a <a href="${r('pdfs/order-form.pdf')}" target="_blank" rel="noopener">printable order form</a> if you'd rather mail or fax it.`,
   },
   {
     q: "There doesn't seem to be a kit for the layout I want to build. What should I do?",
@@ -85,7 +85,7 @@ const faqSchema = {
     title="Frequently Asked Questions"
     sub="Straight answers about sizes, heights, shipping, and ordering Mianne benchwork."
     image="hero-about"
-    alt="A New England woodshop with stacks of milled poplar and a workbench in warm light"
+    alt="Stacks of finished Mianne I-beams and legs in the shop, ready to box and ship"
   />
 
   <section class="section">
@@ -115,9 +115,9 @@ const faqSchema = {
     padding: 20px 0; min-height: 48px;
   }
   .faq__item summary::-webkit-details-marker { display: none; }
-  .faq__item summary h3 { margin: 0; font-size: 18px; line-height: 1.4; color: var(--brown); }
+  .faq__item summary h3 { margin: 0; font-size: 20px; font-weight: 400; line-height: 1.35; color: var(--brown); }
   .faq__item summary::after {
-    content: '+'; flex: 0 0 auto; font: 500 26px/1 var(--font-spec); color: var(--brass);
+    content: '+'; flex: 0 0 auto; font: 300 28px/1 var(--font-body); color: var(--forest);
     transition: transform 0.25s var(--ease);
   }
   .faq__item[open] summary::after { transform: rotate(45deg); }

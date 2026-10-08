@@ -53,7 +53,10 @@ const video = {
         <p class="reveal">Every leg has a built-in leveling foot. Basement floors slope. Mianne doesn't care.</p>
       </div>
       <figure class="reveal">
-        <img src={r('images/products/ar1212-30.jpg')} alt="Mianne AR1212-30 benchwork kit, 12' x 12' room footprint, 30 inch sections" width="720" height="720" loading="lazy" decoding="async" />
+        <picture>
+          <source type="image/webp" srcset={r('images/photos/ar1212-30-room.webp')} />
+          <img src={r('images/photos/ar1212-30-room.jpg')} alt="A freshly assembled Mianne AR1212-30: a 12 by 12 foot ring of 30 inch benchwork, plywood down and ready for track" width="1080" height="1080" loading="lazy" decoding="async" />
+        </picture>
       </figure>
     </div>
   </section>
@@ -65,7 +68,7 @@ const video = {
         <YouTubeEmbed id="uA0jC3VzhQg" title="Mianne Benchwork 4x8 assembly" />
       </div>
       <div class="btn-row reveal">
-        <a class="btn btn-ghost" href={YOUTUBE_CHANNEL} target="_blank" rel="noopener">MORE ASSEMBLY VIDEOS ON OUR YOUTUBE CHANNEL</a>
+        <a class="btn btn-ghost" href={YOUTUBE_CHANNEL} target="_blank" rel="noopener">More assembly videos on our YouTube channel</a>
       </div>
       <TrainRule />
     </div>
