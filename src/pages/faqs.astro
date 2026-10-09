@@ -88,14 +88,14 @@ const faqSchema = {
     alt="Stacks of finished Mianne I-beams and legs in the shop, ready to box and ship"
   />
 
-  <section class="section">
+  <section class="section faq-section">
     <div class="wrap narrow">
       <h2 class="reveal">Model railroad benchwork questions</h2>
-      <p class="reveal">If your question isn't here, call 508.226.1600. You'll get Tim.</p>
+      <p class="reveal faq-lede">If your question isn't here, call <a href="tel:+15082261600">508.226.1600</a>. You'll get Tim.</p>
       <div class="faq">
         {faqs.map((f, i) => (
           <details class="faq__item reveal" open={i === 0}>
-            <summary><h3>{f.q}</h3></summary>
+            <summary><h3>{f.q}</h3><span class="faq__icon" aria-hidden="true">+</span></summary>
             <div class="faq__a"><p set:html={f.html ?? f.a} /></div>
           </details>
         ))}
@@ -108,20 +108,201 @@ const faqSchema = {
 </Base>
 
 <style>
-  .faq { margin-top: 32px; border-top: 1px solid var(--brass-soft); }
-  .faq__item { border-bottom: 1px solid var(--brass-soft); }
+  /* Stone band so the white question cards read as distinct objects. */
+  .faq-section { background: var(--stone); }
+  .faq-section .faq-lede { color: var(--forest); }
+  .faq-section .faq-lede a { font-weight: 600; }
+
+  .faq { margin-top: 32px; display: grid; gap: 12px; }
+  .faq__item {
+    position: relative;
+    background: var(--snow);
+    border: 1px solid rgba(28, 58, 19, 0.22);
+    border-radius: var(--radius-input);
+    transition: opacity 0.6s var(--ease), border-color 0.3s var(--ease), background-color 0.3s var(--ease), transform 0.3s var(--ease);
+  }
+  .faq__item:hover { border-color: rgba(28, 58, 19, 0.5); transform: translateY(-2px); }
+  .faq__item[open] { border-color: var(--forest); box-shadow: inset 4px 0 0 var(--forest); }
+
   .faq__item summary {
-    list-style: none; cursor: pointer; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
-    padding: 20px 0; min-height: 48px;
+    list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 18px 20px; min-height: 48px;
   }
   .faq__item summary::-webkit-details-marker { display: none; }
-  .faq__item summary h3 { margin: 0; font-size: 20px; font-weight: 400; line-height: 1.35; color: var(--brown); }
-  .faq__item summary::after {
-    content: '+'; flex: 0 0 auto; font: 300 28px/1 var(--font-body); color: var(--forest);
-    transition: transform 0.25s var(--ease);
+  .faq__item summary:focus-visible { outline: 2px solid var(--forest); outline-offset: 2px; border-radius: var(--radius-input); }
+  .faq__item summary h3 { margin: 0; font-size: 18px; font-weight: 600; line-height: 1.4; color: var(--forest); letter-spacing: -0.005em; }
+
+  .faq__icon {
+    flex: 0 0 auto; width: 34px; height: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    border: 1.5px solid var(--forest); color: var(--forest);
+    font: 400 22px/1 var(--font-body);
+    transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.3s var(--ease), color 0.3s var(--ease);
   }
-  .faq__item[open] summary::after { transform: rotate(45deg); }
-  .faq__item summary:hover h3 { color: var(--brown-light); }
-  .faq__a { padding: 0 0 20px; }
-  .faq__a p { margin: 0; }
+  .faq__item[open] .faq__icon { background: var(--forest); color: var(--snow); transform: rotate(135deg); }
+
+  .faq__a { padding: 0 20px 20px; }
+  .faq__a p { margin: 0; color: #1a2416; font-size: 17px; line-height: 1.7; }
+  .faq__a a { color: var(--forest); font-weight: 600; text-decoration-thickness: 1.5px; }
+
+  /* Smooth open where the browser supports animating details content. */
+  @supports (interpolate-size: allow-keywords) {
+    .faq__item { interpolate-size: allow-keywords; }
+    .faq__item::details-content {
+      height: 0; overflow: clip;
+      transition: height 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), content-visibility 0.4s allow-discrete;
+    }
+    .faq__item[open]::details-content { height: auto; }
+  }
+
+  /* FAQ effects (same as livewebstudios.com/faq): decode, typed answer, scan line. */
+  :global(.faq-fx-q.is-decoding) { color: var(--pewter); }
+  :global(.faq-fx-a .faq-w) { opacity: 0; transition: opacity 0.14s linear; }
+  :global(.faq-fx-a.is-typing .faq-w) { opacity: 1; }
+  .faq__item:global(.is-scanning)::after {
+    content: ''; position: absolute; top: -1px; left: 0; width: 100%; height: 2px; z-index: 2; pointer-events: none;
+    background: linear-gradient(90deg, transparent 0%, var(--eucalyptus) 50%, transparent 100%);
+    background-size: 220% 100%;
+    animation: faq-scan 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes faq-scan {
+    0% { opacity: 1; background-position: 100% 0; }
+    100% { opacity: 0; background-position: 0 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .faq__item, .faq__icon, .faq__item::details-content { transition: none; }
+    .faq__item:hover { transform: none; }
+  }
 </style>
+
+<script>
+  (function () {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var GLYPHS = '01<>/_#*+=:;[]{}';
+    var DECODE_MS = 1400, STAGGER_MS = 160, LINE_MS = 420;
+
+    type Item = { el: HTMLDetailsElement; q: HTMLElement | null; a: HTMLElement | null; vis?: HTMLElement; text?: string; words?: HTMLElement[] };
+    var items: Item[] = [];
+    document.querySelectorAll<HTMLDetailsElement>('.faq__item').forEach(function (el) {
+      items.push({ el: el, q: el.querySelector('summary h3'), a: el.querySelector('.faq__a p') });
+    });
+    if (!items.length) return;
+
+    /* 1. Question decode */
+    function prepQuestion(it: Item) {
+      var q = it.q;
+      if (!q || q.dataset.faqFx) return;
+      q.dataset.faqFx = '1';
+      var text = (q.textContent || '').trim();
+      var real = document.createElement('span');
+      real.className = 'visually-hidden';
+      real.textContent = text;
+      var vis = document.createElement('span');
+      vis.className = 'faq-fx-q';
+      vis.setAttribute('aria-hidden', 'true');
+      vis.textContent = text;
+      q.textContent = '';
+      q.appendChild(real);
+      q.appendChild(vis);
+      it.vis = vis;
+      it.text = text;
+    }
+    function decode(it: Item, delay: number) {
+      if (!it.vis || !it.text) return;
+      var vis = it.vis, text = it.text, t0 = performance.now() + delay;
+      vis.classList.add('is-decoding');
+      function tick(t: number) {
+        var k = Math.max(0, Math.min(1, (t - t0) / DECODE_MS));
+        var n = Math.floor(text.length * k);
+        var tail = '';
+        for (var i = n; i < text.length; i++) {
+          tail += text[i] === ' ' ? ' ' : GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+        }
+        vis.textContent = text.slice(0, n) + tail;
+        if (k < 1) requestAnimationFrame(tick);
+        else { vis.textContent = text; vis.classList.remove('is-decoding'); }
+      }
+      requestAnimationFrame(tick);
+    }
+
+    /* 2. Answer typing, swept line by line */
+    function prepAnswer(it: Item) {
+      var p = it.a;
+      if (!p || p.dataset.faqFx) return;
+      p.dataset.faqFx = '1';
+      Array.prototype.slice.call(p.childNodes).forEach(function (child: ChildNode) {
+        if (child.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          (child.textContent || '').split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+            var w = document.createElement('span');
+            w.className = 'faq-w';
+            w.textContent = part;
+            frag.appendChild(w);
+          });
+          child.replaceWith(frag);
+        } else if (child.nodeType === 1) {
+          (child as HTMLElement).classList.add('faq-w'); // links type in as one word
+        }
+      });
+      it.words = Array.prototype.slice.call(p.querySelectorAll('.faq-w'));
+      p.classList.add('faq-fx-a');
+    }
+    function type(it: Item) {
+      var p = it.a;
+      if (!p || !it.words) return;
+      p.classList.remove('is-typing');
+      it.words.forEach(function (w) { w.style.transitionDelay = ''; });
+      var rows: { top: number; words: HTMLElement[] }[] = [];
+      it.words.forEach(function (w) {
+        var top = w.offsetTop, row = null;
+        for (var i = 0; i < rows.length; i++) if (Math.abs(rows[i].top - top) < 4) { row = rows[i]; break; }
+        if (!row) rows.push((row = { top: top, words: [] }));
+        row.words.push(w);
+      });
+      rows.sort(function (a, b) { return a.top - b.top; });
+      var pw = p.clientWidth || 1;
+      rows.forEach(function (r, i) {
+        r.words.forEach(function (w) {
+          w.style.transitionDelay = Math.round(i * LINE_MS + (w.offsetLeft / pw) * LINE_MS) + 'ms';
+        });
+      });
+      void p.offsetWidth;
+      p.classList.add('is-typing');
+    }
+    function untype(it: Item) { if (it.a) it.a.classList.remove('is-typing'); }
+
+    /* 3. Scan line */
+    function scan(it: Item) {
+      var el = it.el;
+      el.classList.remove('is-scanning');
+      void el.offsetWidth;
+      el.classList.add('is-scanning');
+      setTimeout(function () { el.classList.remove('is-scanning'); }, 950);
+    }
+
+    items.forEach(function (it) {
+      prepQuestion(it);
+      prepAnswer(it);
+      // The first item starts open; show its answer rather than leaving it blank.
+      if (it.el.open && it.a) it.a.classList.add('is-typing');
+      it.el.addEventListener('toggle', function () {
+        if (it.el.open) { type(it); scan(it); } else untype(it);
+      });
+    });
+
+    // Decode the questions the first time the list scrolls into view.
+    var list = document.querySelector('.faq');
+    if (!list || !('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        items.forEach(function (it, k) { decode(it, k * STAGGER_MS); });
+        io.disconnect();
+      });
+    }, { threshold: 0.2 });
+    io.observe(list);
+  })();
+</script>
