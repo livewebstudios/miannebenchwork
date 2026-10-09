@@ -94,9 +94,9 @@ const faqSchema = {
       <p class="reveal faq-lede">If your question isn't here, call <a href="tel:+15082261600">508.226.1600</a>. You'll get Tim.</p>
       <div class="faq">
         {faqs.map((f, i) => (
-          <div class:list={['faq__item reveal', { 'is-open': i === 0 }]}>
+          <div class="faq__item reveal">
             <h3>
-              <button class="faq__q-btn" type="button" aria-expanded={i === 0 ? 'true' : 'false'} aria-controls={`faq-panel-${i}`}>
+              <button class="faq__q-btn" type="button" aria-expanded="false" aria-controls={`faq-panel-${i}`}>
                 <span class="faq__q">{f.q}</span>
                 <span class="faq__icon" aria-hidden="true">+</span>
               </button>
@@ -138,7 +138,7 @@ const faqSchema = {
     padding: 18px 20px; min-height: 48px;
   }
   .faq__q-btn:focus-visible { outline: 2px solid var(--forest); outline-offset: 2px; border-radius: var(--radius-input); }
-  .faq__q { font-size: 18px; font-weight: 600; line-height: 1.4; color: var(--forest); letter-spacing: -0.005em; }
+  .faq__q { flex: 1 1 auto; min-width: 0; font-size: 18px; font-weight: 600; line-height: 1.4; color: var(--forest); letter-spacing: -0.005em; }
 
   .faq__icon {
     flex: 0 0 auto; width: 34px; height: 34px; border-radius: 50%;
@@ -162,7 +162,14 @@ const faqSchema = {
   .faq__a a { color: var(--forest); font-weight: 600; text-decoration-thickness: 1.5px; }
 
   /* FAQ effects (same as livewebstudios.com/faq): decode, typed answer, scan line. */
-  :global(.faq-fx-q.is-decoding) { color: var(--pewter); }
+  /* Each letter keeps its real width; the scramble glyph is painted over it, so the line never reflows. */
+  :global(.faq-fx-word) { white-space: nowrap; }
+  :global(.faq-fx-c) { position: relative; }
+  :global(.faq-fx-c.is-scr) { color: transparent; }
+  :global(.faq-fx-c.is-scr::after) {
+    content: attr(data-g); position: absolute; left: 50%; top: 0; transform: translateX(-50%);
+    color: var(--pewter); pointer-events: none;
+  }
   :global(.faq-fx-a .faq-w) { opacity: 0; transition: opacity 0.14s linear; }
   :global(.faq-fx-a.is-typing .faq-w) { opacity: 1; }
   .faq__item:global(.is-scanning)::after {
@@ -200,7 +207,7 @@ const faqSchema = {
     var GLYPHS = '01<>/_#*+=:;[]{}';
     var DECODE_MS = 1400, STAGGER_MS = 160, LINE_MS = 420;
 
-    type Item = { el: HTMLElement; q: HTMLElement | null; a: HTMLElement | null; vis?: HTMLElement; text?: string; words?: HTMLElement[] };
+    type Item = { el: HTMLElement; q: HTMLElement | null; a: HTMLElement | null; chars?: HTMLElement[]; words?: HTMLElement[] };
     var items: Item[] = [];
     document.querySelectorAll<HTMLElement>('.faq__item').forEach(function (el) {
       items.push({ el: el, q: el.querySelector('.faq__q'), a: el.querySelector('.faq__a p') });
@@ -209,6 +216,7 @@ const faqSchema = {
     var isOpen = function (it: Item) { return it.el.classList.contains('is-open'); };
 
     /* 1. Question decode */
+    var SCRAMBLE_MS = 60; // new glyphs every 60ms, not every frame
     function prepQuestion(it: Item) {
       var q = it.q;
       if (!q || q.dataset.faqFx) return;
@@ -220,27 +228,45 @@ const faqSchema = {
       var vis = document.createElement('span');
       vis.className = 'faq-fx-q';
       vis.setAttribute('aria-hidden', 'true');
-      vis.textContent = text;
+      var chars: HTMLElement[] = [];
+      text.split(/(\s+)/).forEach(function (part) {
+        if (!part) return;
+        if (/^\s+$/.test(part)) { vis.appendChild(document.createTextNode(part)); return; }
+        var word = document.createElement('span');
+        word.className = 'faq-fx-word';
+        for (var i = 0; i < part.length; i++) {
+          var c = document.createElement('span');
+          c.className = 'faq-fx-c';
+          c.textContent = part[i];
+          word.appendChild(c);
+          chars.push(c);
+        }
+        vis.appendChild(word);
+      });
       q.textContent = '';
       q.appendChild(real);
       q.appendChild(vis);
-      it.vis = vis;
-      it.text = text;
+      it.chars = chars;
     }
     function decode(it: Item, delay: number) {
-      if (!it.vis || !it.text) return;
-      var vis = it.vis, text = it.text, t0 = performance.now() + delay;
-      vis.classList.add('is-decoding');
+      var chars = it.chars;
+      if (!chars || !chars.length) return;
+      var t0 = performance.now() + delay, last = -Infinity;
       function tick(t: number) {
         var k = Math.max(0, Math.min(1, (t - t0) / DECODE_MS));
-        var n = Math.floor(text.length * k);
-        var tail = '';
-        for (var i = n; i < text.length; i++) {
-          tail += text[i] === ' ' ? ' ' : GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+        var n = Math.floor(chars!.length * k);
+        var reroll = t - last >= SCRAMBLE_MS;
+        if (reroll) last = t;
+        for (var i = 0; i < chars!.length; i++) {
+          var c = chars![i];
+          if (i < n) { if (c.classList.contains('is-scr')) c.classList.remove('is-scr'); }
+          else if (reroll) {
+            c.dataset.g = GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+            c.classList.add('is-scr');
+          }
         }
-        vis.textContent = text.slice(0, n) + tail;
         if (k < 1) requestAnimationFrame(tick);
-        else { vis.textContent = text; vis.classList.remove('is-decoding'); }
+        else chars!.forEach(function (c) { c.classList.remove('is-scr'); });
       }
       requestAnimationFrame(tick);
     }
