@@ -94,10 +94,17 @@ const faqSchema = {
       <p class="reveal faq-lede">If your question isn't here, call <a href="tel:+15082261600">508.226.1600</a>. You'll get Tim.</p>
       <div class="faq">
         {faqs.map((f, i) => (
-          <details class="faq__item reveal" open={i === 0}>
-            <summary><h3>{f.q}</h3><span class="faq__icon" aria-hidden="true">+</span></summary>
-            <div class="faq__a"><p set:html={f.html ?? f.a} /></div>
-          </details>
+          <div class:list={['faq__item reveal', { 'is-open': i === 0 }]}>
+            <h3>
+              <button class="faq__q-btn" type="button" aria-expanded={i === 0 ? 'true' : 'false'} aria-controls={`faq-panel-${i}`}>
+                <span class="faq__q">{f.q}</span>
+                <span class="faq__icon" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div class="faq__panel" id={`faq-panel-${i}`}>
+              <div class="faq__panel-inner"><div class="faq__a"><p set:html={f.html ?? f.a} /></div></div>
+            </div>
+          </div>
         ))}
       </div>
       <TrainRule />
@@ -122,15 +129,16 @@ const faqSchema = {
     transition: opacity 0.6s var(--ease), border-color 0.3s var(--ease), background-color 0.3s var(--ease), transform 0.3s var(--ease);
   }
   .faq__item:hover { border-color: rgba(28, 58, 19, 0.5); transform: translateY(-2px); }
-  .faq__item[open] { border-color: var(--forest); box-shadow: inset 4px 0 0 var(--forest); }
+  .faq__item.is-open { border-color: var(--forest); box-shadow: inset 4px 0 0 var(--forest); }
 
-  .faq__item summary {
-    list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  .faq__item h3 { margin: 0; }
+  .faq__q-btn {
+    all: unset; box-sizing: border-box; cursor: pointer; width: 100%;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
     padding: 18px 20px; min-height: 48px;
   }
-  .faq__item summary::-webkit-details-marker { display: none; }
-  .faq__item summary:focus-visible { outline: 2px solid var(--forest); outline-offset: 2px; border-radius: var(--radius-input); }
-  .faq__item summary h3 { margin: 0; font-size: 18px; font-weight: 600; line-height: 1.4; color: var(--forest); letter-spacing: -0.005em; }
+  .faq__q-btn:focus-visible { outline: 2px solid var(--forest); outline-offset: 2px; border-radius: var(--radius-input); }
+  .faq__q { font-size: 18px; font-weight: 600; line-height: 1.4; color: var(--forest); letter-spacing: -0.005em; }
 
   .faq__icon {
     flex: 0 0 auto; width: 34px; height: 34px; border-radius: 50%;
@@ -139,21 +147,19 @@ const faqSchema = {
     font: 400 22px/1 var(--font-body);
     transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.3s var(--ease), color 0.3s var(--ease);
   }
-  .faq__item[open] .faq__icon { background: var(--forest); color: var(--snow); transform: rotate(135deg); }
+  .faq__item.is-open .faq__icon { background: var(--forest); color: var(--snow); transform: rotate(135deg); }
+
+  /* Height slides open and shut (grid 0fr to 1fr), same as the LWS FAQ. */
+  .faq__panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .faq__item.is-open .faq__panel { grid-template-rows: 1fr; }
+  .faq__panel-inner { overflow: hidden; opacity: 0; transition: opacity 0.3s var(--ease); }
+  .faq__item.is-open .faq__panel-inner { opacity: 1; }
+  :global(.no-js) .faq__panel { grid-template-rows: 1fr; }
+  :global(.no-js) .faq__panel-inner { opacity: 1; }
 
   .faq__a { padding: 0 20px 20px; }
   .faq__a p { margin: 0; color: #1a2416; font-size: 17px; line-height: 1.7; }
   .faq__a a { color: var(--forest); font-weight: 600; text-decoration-thickness: 1.5px; }
-
-  /* Smooth open where the browser supports animating details content. */
-  @supports (interpolate-size: allow-keywords) {
-    .faq__item { interpolate-size: allow-keywords; }
-    .faq__item::details-content {
-      height: 0; overflow: clip;
-      transition: height 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), content-visibility 0.4s allow-discrete;
-    }
-    .faq__item[open]::details-content { height: auto; }
-  }
 
   /* FAQ effects (same as livewebstudios.com/faq): decode, typed answer, scan line. */
   :global(.faq-fx-q.is-decoding) { color: var(--pewter); }
@@ -170,24 +176,37 @@ const faqSchema = {
     100% { opacity: 0; background-position: 0 0; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .faq__item, .faq__icon, .faq__item::details-content { transition: none; }
+    .faq__item, .faq__icon, .faq__panel, .faq__panel-inner { transition: none; }
     .faq__item:hover { transform: none; }
   }
 </style>
 
 <script>
+  // Accordion: any number of answers can be open at once.
+  document.querySelectorAll<HTMLElement>('.faq__item').forEach(function (item) {
+    var btn = item.querySelector<HTMLButtonElement>('.faq__q-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var willOpen = !item.classList.contains('is-open');
+      item.classList.toggle('is-open', willOpen);
+      btn!.setAttribute('aria-expanded', String(willOpen));
+      item.dispatchEvent(new Event('faq:toggle'));
+    });
+  });
+
   (function () {
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     var GLYPHS = '01<>/_#*+=:;[]{}';
     var DECODE_MS = 1400, STAGGER_MS = 160, LINE_MS = 420;
 
-    type Item = { el: HTMLDetailsElement; q: HTMLElement | null; a: HTMLElement | null; vis?: HTMLElement; text?: string; words?: HTMLElement[] };
+    type Item = { el: HTMLElement; q: HTMLElement | null; a: HTMLElement | null; vis?: HTMLElement; text?: string; words?: HTMLElement[] };
     var items: Item[] = [];
-    document.querySelectorAll<HTMLDetailsElement>('.faq__item').forEach(function (el) {
-      items.push({ el: el, q: el.querySelector('summary h3'), a: el.querySelector('.faq__a p') });
+    document.querySelectorAll<HTMLElement>('.faq__item').forEach(function (el) {
+      items.push({ el: el, q: el.querySelector('.faq__q'), a: el.querySelector('.faq__a p') });
     });
     if (!items.length) return;
+    var isOpen = function (it: Item) { return it.el.classList.contains('is-open'); };
 
     /* 1. Question decode */
     function prepQuestion(it: Item) {
@@ -287,9 +306,9 @@ const faqSchema = {
       prepQuestion(it);
       prepAnswer(it);
       // The first item starts open; show its answer rather than leaving it blank.
-      if (it.el.open && it.a) it.a.classList.add('is-typing');
-      it.el.addEventListener('toggle', function () {
-        if (it.el.open) { type(it); scan(it); } else untype(it);
+      if (isOpen(it) && it.a) it.a.classList.add('is-typing');
+      it.el.addEventListener('faq:toggle', function () {
+        if (isOpen(it)) { type(it); scan(it); } else untype(it);
       });
     });
 
